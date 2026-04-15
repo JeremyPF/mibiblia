@@ -3,7 +3,8 @@ import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 import 'package:path_provider/path_provider.dart';
 import 'package:package_info_plus/package_info_plus.dart';
-import 'package:open_file/open_file.dart';
+import 'package:android_intent_plus/android_intent.dart';
+import 'package:android_intent_plus/flag.dart';
 import 'dart:convert';
 
 class UpdateInfo {
@@ -116,10 +117,24 @@ class UpdateService extends ChangeNotifier {
     }
   }
 
-  /// Lanza el instalador del sistema
+  /// Lanza el instalador del sistema usando FileProvider (Android 7+)
   Future<void> installUpdate() async {
     if (_apkPath == null) return;
-    await OpenFile.open(_apkPath!);
+    if (!Platform.isAndroid) return;
+
+    // Construir el content:// URI via FileProvider
+    // La autoridad debe coincidir con AndroidManifest.xml
+    const authority = 'com.personal.mi_biblia.fileprovider';
+    final intent = AndroidIntent(
+      action: 'android.intent.action.VIEW',
+      data: 'content://$authority/cache/${_apkPath!.split('/').last}',
+      type: 'application/vnd.android.package-archive',
+      flags: [
+        Flag.FLAG_ACTIVITY_NEW_TASK,
+        Flag.FLAG_GRANT_READ_URI_PERMISSION,
+      ],
+    );
+    await intent.launch();
   }
 
   void dismiss() {

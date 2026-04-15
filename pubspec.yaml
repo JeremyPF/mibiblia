@@ -18,6 +18,7 @@ dependencies:
   http: ^1.2.1
   open_file: ^3.3.2
   package_info_plus: ^8.0.0
+  android_intent_plus: ^4.0.3
 
 dev_dependencies:
   flutter_test:
