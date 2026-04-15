@@ -3,6 +3,8 @@ import 'screens/reading_screen.dart';
 import 'theme/app_theme.dart';
 import 'providers/reading_settings_provider.dart';
 import 'services/bible_service.dart';
+import 'services/update_service.dart';
+import 'widgets/update_banner.dart';
 
 void main() {
   runApp(const SacredTextApp());
@@ -31,10 +33,19 @@ class SacredTextApp extends StatefulWidget {
 
 class _SacredTextAppState extends State<SacredTextApp> {
   final ReadingSettingsProvider _settings = ReadingSettingsProvider();
+  final UpdateService _updateService = UpdateService();
+
+  @override
+  void initState() {
+    super.initState();
+    // Verificar actualizaciones al arrancar (con delay para no bloquear el inicio)
+    Future.delayed(const Duration(seconds: 3), _updateService.checkForUpdates);
+  }
 
   @override
   void dispose() {
     _settings.dispose();
+    _updateService.dispose();
     super.dispose();
   }
 
@@ -49,15 +60,40 @@ class _SacredTextAppState extends State<SacredTextApp> {
           theme: AppTheme.lightTheme,
           darkTheme: AppTheme.darkTheme,
           themeMode: _settings.isDarkMode ? ThemeMode.dark : ThemeMode.light,
-          home: const _StartupScreen(),
           debugShowCheckedModeBanner: false,
+          builder: (context, child) => _AppShell(
+            updateService: _updateService,
+            child: child!,
+          ),
+          home: const _StartupScreen(),
         ),
       ),
     );
   }
 }
 
-/// Carga el primer libro disponible y navega a ReadingScreen
+/// Wrapper global que superpone el UpdateBanner en bottom-right
+class _AppShell extends StatelessWidget {
+  final UpdateService updateService;
+  final Widget child;
+
+  const _AppShell({required this.updateService, required this.child});
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: [
+        child,
+        Positioned(
+          bottom: 24,
+          right: 16,
+          child: UpdateBanner(service: updateService),
+        ),
+      ],
+    );
+  }
+}
+
 class _StartupScreen extends StatefulWidget {
   const _StartupScreen();
 

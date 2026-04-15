@@ -31,8 +31,8 @@ jobs:
     - name: Get dependencies
       run: flutter pub get
 
-    - name: Build APK
-      run: flutter build apk --release
+    - name: Build APK with build number
+      run: flutter build apk --release --build-number=${{ github.run_number }} --build-name=1.0.${{ github.run_number }}
 
     - name: Upload APK to Release
       uses: softprops/action-gh-release@v2
