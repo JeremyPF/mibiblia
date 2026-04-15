@@ -122,8 +122,6 @@ class UpdateService extends ChangeNotifier {
     if (_apkPath == null) return;
     if (!Platform.isAndroid) return;
 
-    // Construir el content:// URI via FileProvider
-    // La autoridad debe coincidir con AndroidManifest.xml
     const authority = 'com.personal.mi_biblia.fileprovider';
     final intent = AndroidIntent(
       action: 'android.intent.action.VIEW',
@@ -135,6 +133,13 @@ class UpdateService extends ChangeNotifier {
       ],
     );
     await intent.launch();
+
+    // Limpiar el APK del cache — el instalador ya lo tiene en memoria
+    try {
+      final file = File(_apkPath!);
+      if (await file.exists()) await file.delete();
+    } catch (_) {}
+    _apkPath = null;
   }
 
   void dismiss() {

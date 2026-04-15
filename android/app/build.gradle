@@ -13,14 +13,10 @@ if (localPropertiesFile.exists()) {
 }
 
 def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
-if (flutterVersionCode == null) {
-    flutterVersionCode = '1'
-}
+if (flutterVersionCode == null) { flutterVersionCode = '1' }
 
 def flutterVersionName = localProperties.getProperty('flutter.versionName')
-if (flutterVersionName == null) {
-    flutterVersionName = '1.0'
-}
+if (flutterVersionName == null) { flutterVersionName = '1.0' }
 
 android {
     namespace "com.personal.mi_biblia"
@@ -32,12 +28,27 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
-    kotlinOptions {
-        jvmTarget = '1.8'
-    }
+    kotlinOptions { jvmTarget = '1.8' }
 
-    sourceSets {
-        main.java.srcDirs += 'src/main/kotlin'
+    sourceSets { main.java.srcDirs += 'src/main/kotlin' }
+
+    signingConfigs {
+        release {
+            // Usa keystore desde variables de entorno (CI) o local si existe
+            def keystoreFile = System.getenv("KEYSTORE_PATH") ?: ""
+            if (keystoreFile) {
+                storeFile file(keystoreFile)
+                storePassword System.getenv("KEYSTORE_PASSWORD") ?: ""
+                keyAlias System.getenv("KEY_ALIAS") ?: ""
+                keyPassword System.getenv("KEY_PASSWORD") ?: ""
+            } else {
+                // Fallback a debug para desarrollo local
+                storeFile signingConfigs.debug.storeFile
+                storePassword signingConfigs.debug.storePassword
+                keyAlias signingConfigs.debug.keyAlias
+                keyPassword signingConfigs.debug.keyPassword
+            }
+        }
     }
 
     defaultConfig {
@@ -50,13 +61,11 @@ android {
 
     buildTypes {
         release {
-            signingConfig signingConfigs.debug
+            signingConfig signingConfigs.release
         }
     }
 }
 
-flutter {
-    source '../..'
-}
+flutter { source '../..' }
 
 dependencies {}

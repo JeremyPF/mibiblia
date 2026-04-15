@@ -28,10 +28,19 @@ jobs:
         channel: 'stable'
         cache: true
 
+    - name: Decode keystore
+      run: |
+        echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 --decode > $HOME/mibiblia.jks
+
     - name: Get dependencies
       run: flutter pub get
 
-    - name: Build APK with build number
+    - name: Build APK
+      env:
+        KEYSTORE_PATH: ${{ env.HOME }}/mibiblia.jks
+        KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+        KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+        KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
       run: flutter build apk --release --build-number=${{ github.run_number }} --build-name=1.0.${{ github.run_number }}
 
     - name: Upload APK to Release
