@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'screens/reading_screen.dart';
 import 'screens/search_screen.dart';
+import 'screens/onboarding_screen.dart';
+import 'services/user_profile_service.dart';
 import 'theme/app_theme.dart';
 import 'providers/reading_settings_provider.dart';
 import 'services/bible_service.dart';
@@ -110,17 +112,28 @@ class _StartupScreenState extends State<_StartupScreen> {
   }
 
   Future<void> _loadFirstBook() async {
+    // Verificar si es la primera vez
+    final firstTime = await UserProfileService.isFirstTime();
+    if (!mounted) return;
+
+    if (firstTime) {
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(builder: (_) => const OnboardingScreen()),
+      );
+      return;
+    }
+
     final books = await BibleService.getAvailableBooks();
     if (!mounted) return;
     final book = books.isNotEmpty ? books.first : null;
     if (book == null) return;
     Navigator.of(context).pushReplacement(
       MaterialPageRoute(
-        builder: (_) => ReadingScreen(
+        builder: (ctx) => ReadingScreen(
           bookId: book.id,
           bookName: book.name,
           chapterNumber: 1,
-          onSearchTap: () => Navigator.of(context).push(
+          onSearchTap: () => Navigator.of(ctx).push(
             MaterialPageRoute(builder: (_) => const SearchScreen()),
           ),
         ),
