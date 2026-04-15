@@ -7,6 +7,18 @@ class ReadingSettingsProvider extends ChangeNotifier {
   bool isDarkMode = false;
   TextAlign textAlign = TextAlign.left;
   Color textColor = const Color(0xFF2E342F);
+  String fontFamily = 'Newsreader';
+
+  static const List<String> elegantFonts = [
+    'Newsreader',
+    'Lora',
+    'Merriweather',
+    'Playfair Display',
+    'EB Garamond',
+    'Cormorant Garamond',
+    'Libre Baskerville',
+    'Crimson Text',
+  ];
 
   void setFontSize(double v) { fontSize = v; notifyListeners(); }
   void setLineHeight(double v) { lineHeight = v; notifyListeners(); }
@@ -18,4 +30,5 @@ class ReadingSettingsProvider extends ChangeNotifier {
   }
   void setTextAlign(TextAlign v) { textAlign = v; notifyListeners(); }
   void setTextColor(Color v) { textColor = v; notifyListeners(); }
+  void setFontFamily(String v) { fontFamily = v; notifyListeners(); }
 }
