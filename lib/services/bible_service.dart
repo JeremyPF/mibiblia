@@ -16,8 +16,9 @@ class BibleService {
     
     for (int bookId in _availableBooks) {
       try {
+        final fileName = 'sample_${bookId}_${_getBookFileName(bookId)}.json';
         final String jsonString = await rootBundle.loadString(
-          'assets/data/sample_${bookId}_*.json'.replaceAll('*', _getBookFileName(bookId)),
+          'assets/data/$fileName',
         );
         final Map<String, dynamic> bookData = json.decode(jsonString);
         
@@ -46,8 +47,9 @@ class BibleService {
     }
 
     try {
+      final fileName = 'sample_${bookId}_${_getBookFileName(bookId)}.json';
       final String jsonString = await rootBundle.loadString(
-        'assets/data/sample_${bookId}_${_getBookFileName(bookId)}.json',
+        'assets/data/$fileName',
       );
       
       final Map<String, dynamic> bookData = json.decode(jsonString);
@@ -70,9 +72,13 @@ class BibleService {
 
     try {
       final bookData = await loadBook(bookId);
-      if (bookData == null) return null;
+      if (bookData == null) {
+        print('Book data is null for bookId: $bookId');
+        return null;
+      }
       
       final List<dynamic> chapters = bookData['chapters'];
+      print('Total chapters in book $bookId: ${chapters.length}');
       
       // Buscar el capítulo específico
       final chapterData = chapters.firstWhere(
@@ -81,14 +87,26 @@ class BibleService {
       );
       
       if (chapterData != null) {
-        final chapter = Chapter.fromJson(chapterData);
+        print('Found chapter $chapterNumber with ${chapterData['verses'].length} verses');
+        
+        // Agregar bookId al chapterData
+        final Map<String, dynamic> chapterWithBookId = {
+          'bookId': bookId,
+          'chapterNumber': chapterData['chapterNumber'],
+          'verses': chapterData['verses'],
+        };
+        
+        final chapter = Chapter.fromJson(chapterWithBookId);
         _cache[key] = chapter;
         return chapter;
+      } else {
+        print('Chapter $chapterNumber not found in book $bookId');
       }
       
       return null;
-    } catch (e) {
+    } catch (e, stackTrace) {
       print('Error loading chapter $bookId:$chapterNumber - $e');
+      print('Stack trace: $stackTrace');
       return null;
     }
   }
