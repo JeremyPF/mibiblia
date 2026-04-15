@@ -3,6 +3,7 @@ import '../theme/app_theme.dart';
 import '../models/bible_book.dart';
 import '../services/bible_service.dart';
 import '../screens/reading_screen.dart';
+import '../screens/search_screen.dart';
 import 'settings_modal.dart';
 
 class SideDrawer extends StatefulWidget {
@@ -27,13 +28,16 @@ class _SideDrawerState extends State<SideDrawer> {
   }
 
   void _openBook(BibleBook book) {
-    Navigator.of(context).pop(); // cerrar drawer
+    Navigator.of(context).pop();
     Navigator.of(context).pushReplacement(
       MaterialPageRoute(
-        builder: (_) => ReadingScreen(
+        builder: (ctx) => ReadingScreen(
           bookId: book.id,
           bookName: book.name,
           chapterNumber: 1,
+          onSearchTap: () => Navigator.of(ctx).push(
+            MaterialPageRoute(builder: (_) => const SearchScreen()),
+          ),
         ),
       ),
     );

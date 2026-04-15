@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'screens/reading_screen.dart';
+import 'screens/search_screen.dart';
 import 'theme/app_theme.dart';
 import 'providers/reading_settings_provider.dart';
 import 'services/bible_service.dart';
@@ -119,6 +120,9 @@ class _StartupScreenState extends State<_StartupScreen> {
           bookId: book.id,
           bookName: book.name,
           chapterNumber: 1,
+          onSearchTap: () => Navigator.of(context).push(
+            MaterialPageRoute(builder: (_) => const SearchScreen()),
+          ),
         ),
       ),
     );

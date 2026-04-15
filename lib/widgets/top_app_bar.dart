@@ -6,6 +6,7 @@ class TopAppBar extends StatelessWidget {
   final String? bookName;
   final int? chapterNumber;
   final bool showSubtitle;
+  final VoidCallback? onSearchTap;
 
   const TopAppBar({
     super.key,
@@ -13,6 +14,7 @@ class TopAppBar extends StatelessWidget {
     this.bookName,
     this.chapterNumber,
     this.showSubtitle = false,
+    this.onSearchTap,
   });
 
   @override
@@ -20,81 +22,68 @@ class TopAppBar extends StatelessWidget {
     final bg = Theme.of(context).scaffoldBackgroundColor;
     return Container(
       decoration: BoxDecoration(
-        color: bg.withOpacity(opacity.clamp(0.0, 1.0)),
-        border: showSubtitle
-            ? Border(
-                bottom: BorderSide(
-                  color: AppTheme.outlineVariant.withOpacity(0.15),
-                  width: 1,
-                ),
-              )
-            : null,
+        color: bg.withOpacity(opacity.clamp(0.6, 1.0)),
+        border: Border(
+          bottom: BorderSide(
+            color: AppTheme.outlineVariant.withOpacity(
+              showSubtitle ? 0.15 : 0.0,
+            ),
+            width: 1,
+          ),
+        ),
       ),
       child: SafeArea(
         child: SizedBox(
-          height: showSubtitle ? 64 : 56,
-          child: Stack(
-            alignment: Alignment.center,
+          height: 56,
+          child: Row(
             children: [
-              // Título + subtítulo centrados
-              AnimatedSwitcher(
-                duration: const Duration(milliseconds: 350),
-                transitionBuilder: (child, anim) => FadeTransition(
-                  opacity: anim,
-                  child: SlideTransition(
-                    position: Tween(
-                      begin: const Offset(0, -0.3),
-                      end: Offset.zero,
-                    ).animate(CurvedAnimation(
-                        parent: anim, curve: Curves.easeOut)),
-                    child: child,
-                  ),
-                ),
-                child: showSubtitle && bookName != null
-                    ? Column(
-                        key: const ValueKey('with-subtitle'),
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            'MiBiblia',
-                            style:
-                                Theme.of(context).appBarTheme.titleTextStyle,
-                          ),
-                          const SizedBox(height: 2),
-                          Text(
-                            '${bookName!.toUpperCase()}  ·  $chapterNumber',
-                            style: Theme.of(context)
-                                .textTheme
-                                .labelSmall
-                                ?.copyWith(
-                                  color: AppTheme.secondary.withOpacity(0.8),
-                                  letterSpacing: 2.5,
-                                  fontSize: 9,
-                                ),
-                          ),
-                        ],
-                      )
-                    : Text(
-                        key: const ValueKey('title-only'),
-                        'MiBiblia',
-                        style: Theme.of(context).appBarTheme.titleTextStyle,
-                      ),
-              ),
               // Menú izquierda
-              Positioned(
-                left: 8,
-                child: IconButton(
-                  icon: const Icon(Icons.menu, color: AppTheme.secondary),
-                  onPressed: () => Scaffold.of(context).openDrawer(),
+              IconButton(
+                icon: const Icon(Icons.menu, color: AppTheme.secondary),
+                onPressed: () => Scaffold.of(context).openDrawer(),
+              ),
+              // Título centrado (Expanded para ocupar el espacio restante)
+              Expanded(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'MiBiblia',
+                      style: Theme.of(context).appBarTheme.titleTextStyle,
+                    ),
+                    // Subtítulo animado in-place — no cambia la altura del navbar
+                    AnimatedSize(
+                      duration: const Duration(milliseconds: 300),
+                      curve: Curves.easeInOut,
+                      child: showSubtitle && bookName != null
+                          ? Padding(
+                              padding: const EdgeInsets.only(top: 2),
+                              child: AnimatedOpacity(
+                                opacity: showSubtitle ? 1.0 : 0.0,
+                                duration: const Duration(milliseconds: 250),
+                                child: Text(
+                                  '${bookName!.toUpperCase()}  ·  $chapterNumber',
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .labelSmall
+                                      ?.copyWith(
+                                        color:
+                                            AppTheme.secondary.withOpacity(0.8),
+                                        letterSpacing: 2.0,
+                                        fontSize: 9,
+                                      ),
+                                ),
+                              ),
+                            )
+                          : const SizedBox.shrink(),
+                    ),
+                  ],
                 ),
               ),
               // Búsqueda derecha
-              Positioned(
-                right: 8,
-                child: IconButton(
-                  icon: const Icon(Icons.search, color: AppTheme.secondary),
-                  onPressed: () {},
-                ),
+              IconButton(
+                icon: const Icon(Icons.search, color: AppTheme.secondary),
+                onPressed: onSearchTap,
               ),
             ],
           ),
