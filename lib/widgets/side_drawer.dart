@@ -4,6 +4,7 @@ import '../models/bible_book.dart';
 import '../services/bible_service.dart';
 import '../screens/reading_screen.dart';
 import '../screens/search_screen.dart';
+import '../screens/progress_screen.dart';
 import 'settings_modal.dart';
 
 class SideDrawer extends StatefulWidget {
@@ -90,7 +91,30 @@ class _SideDrawerState extends State<SideDrawer> {
               height: 1,
             ),
             Padding(
-              padding: const EdgeInsets.all(12),
+              padding: const EdgeInsets.fromLTRB(12, 0, 12, 4),
+              child: ListTile(
+                leading: const Icon(Icons.bar_chart_outlined,
+                    color: AppTheme.secondary),
+                title: Text(
+                  'Progreso',
+                  style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                        fontSize: 16,
+                        color: AppTheme.secondary,
+                      ),
+                ),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8)),
+                onTap: () {
+                  Navigator.of(context).pop();
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                        builder: (_) => const ProgressScreen()),
+                  );
+                },
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(12, 0, 12, 12),
               child: ListTile(
                 leading: const Icon(Icons.settings_outlined,
                     color: AppTheme.secondary),
@@ -104,7 +128,7 @@ class _SideDrawerState extends State<SideDrawer> {
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8)),
                 onTap: () {
-                  Navigator.of(context).pop(); // cerrar drawer
+                  Navigator.of(context).pop();
                   SettingsModal.show(context);
                 },
               ),
