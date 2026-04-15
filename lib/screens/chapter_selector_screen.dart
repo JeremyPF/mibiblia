@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import '../theme/app_theme.dart';
+import '../models/bible_book.dart';
+import 'reading_screen.dart';
 
 class ChapterSelectorScreen extends StatefulWidget {
-  final String bookName;
-  final int totalChapters;
+  final BibleBook book;
 
   const ChapterSelectorScreen({
     super.key,
-    required this.bookName,
-    required this.totalChapters,
+    required this.book,
   });
 
   @override
@@ -69,14 +69,14 @@ class _ChapterSelectorScreenState extends State<ChapterSelectorScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'NAVIGATE TO',
+                      'SELECCIONAR CAPÍTULO',
                       style: Theme.of(context).textTheme.labelSmall?.copyWith(
                             color: AppTheme.secondary.withOpacity(0.8),
                           ),
                     ),
                     const SizedBox(height: 8),
                     Text(
-                      widget.bookName,
+                      widget.book.name,
                       style: Theme.of(context).textTheme.headlineLarge?.copyWith(
                             fontSize: 30,
                           ),
@@ -84,46 +84,13 @@ class _ChapterSelectorScreenState extends State<ChapterSelectorScreen> {
                   ],
                 ),
               ),
-              Row(
-                children: [
-                  _buildTabButton('CHAPTER', true),
-                  const SizedBox(width: 32),
-                  _buildTabButton('VERSE', false),
-                ],
+              IconButton(
+                icon: const Icon(Icons.close),
+                onPressed: () => Navigator.pop(context),
               ),
             ],
           ),
         ],
-      ),
-    );
-  }
-
-  Widget _buildTabButton(String label, bool isActive) {
-    return InkWell(
-      onTap: () {
-        setState(() {
-          isChapterView = isActive;
-        });
-      },
-      child: Container(
-        padding: const EdgeInsets.only(bottom: 8),
-        decoration: BoxDecoration(
-          border: Border(
-            bottom: BorderSide(
-              color: isActive ? AppTheme.secondary : Colors.transparent,
-              width: 2,
-            ),
-          ),
-        ),
-        child: Text(
-          label,
-          style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                color: isActive
-                    ? AppTheme.secondary
-                    : AppTheme.onSurface.withOpacity(0.4),
-                fontWeight: FontWeight.w500,
-              ),
-        ),
       ),
     );
   }
@@ -140,7 +107,7 @@ class _ChapterSelectorScreenState extends State<ChapterSelectorScreen> {
           crossAxisSpacing: 16,
           mainAxisSpacing: 16,
         ),
-        itemCount: widget.totalChapters,
+        itemCount: widget.book.chapters,
         itemBuilder: (context, index) {
           final number = index + 1;
           final isSelected = number == selectedChapter;
@@ -151,11 +118,15 @@ class _ChapterSelectorScreenState extends State<ChapterSelectorScreen> {
                 selectedChapter = number;
               });
             },
+            onDoubleTap: () {
+              _navigateToReading(number);
+            },
             child: Container(
               decoration: BoxDecoration(
                 color: isSelected
                     ? const Color(0xFFD2B48C).withOpacity(0.2)
                     : Colors.transparent,
+                borderRadius: BorderRadius.circular(4),
               ),
               child: Stack(
                 alignment: Alignment.center,
@@ -199,45 +170,44 @@ class _ChapterSelectorScreenState extends State<ChapterSelectorScreen> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          InkWell(
-            onTap: () {},
-            child: Row(
-              children: [
-                const Icon(
-                  Icons.arrow_back,
-                  color: AppTheme.onSurface,
-                  size: 16,
-                ),
-                const SizedBox(width: 8),
-                Text(
-                  'PREVIOUS BOOK',
-                  style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                        color: AppTheme.onSurface.withOpacity(0.4),
-                      ),
-                ),
-              ],
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: Text(
+              'CANCELAR',
+              style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                    color: AppTheme.onSurface.withOpacity(0.6),
+                  ),
             ),
           ),
-          InkWell(
-            onTap: () {},
-            child: Row(
-              children: [
-                Text(
-                  'NEXT BOOK',
-                  style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                        color: AppTheme.onSurface.withOpacity(0.4),
-                      ),
-                ),
-                const SizedBox(width: 8),
-                const Icon(
-                  Icons.arrow_forward,
-                  color: AppTheme.onSurface,
-                  size: 16,
-                ),
-              ],
+          ElevatedButton(
+            onPressed: () => _navigateToReading(selectedChapter),
+            style: ElevatedButton.styleFrom(
+              backgroundColor: AppTheme.secondary,
+              foregroundColor: AppTheme.onSecondary,
+              padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+            ),
+            child: Text(
+              'LEER CAPÍTULO $selectedChapter',
+              style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                    color: AppTheme.onSecondary,
+                  ),
             ),
           ),
         ],
+      ),
+    );
+  }
+
+  void _navigateToReading(int chapterNumber) {
+    Navigator.pop(context); // Cerrar el diálogo
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => ReadingScreen(
+          bookId: widget.book.id,
+          bookName: widget.book.name,
+          chapterNumber: chapterNumber,
+        ),
       ),
     );
   }
