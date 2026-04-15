@@ -31,12 +31,11 @@ jobs:
     - name: Decode keystore and write key.properties
       run: |
         echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 --decode > android/app/mibiblia.jks
-        cat > android/key.properties <<EOF
-        storePassword=${{ secrets.KEYSTORE_PASSWORD }}
-        keyPassword=${{ secrets.KEY_PASSWORD }}
-        keyAlias=${{ secrets.KEY_ALIAS }}
-        storeFile=mibiblia.jks
-        EOF
+        printf 'storePassword=%s\nkeyPassword=%s\nkeyAlias=%s\nstoreFile=mibiblia.jks\n' \
+          '${{ secrets.KEYSTORE_PASSWORD }}' \
+          '${{ secrets.KEY_PASSWORD }}' \
+          '${{ secrets.KEY_ALIAS }}' \
+          > android/key.properties
 
     - name: Get dependencies
       run: flutter pub get
