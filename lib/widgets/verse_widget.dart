@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../theme/app_theme.dart';
+import '../main.dart';
 
 class VerseWidget extends StatefulWidget {
   final int number;
@@ -24,11 +25,10 @@ class _VerseWidgetState extends State<VerseWidget> {
 
   @override
   Widget build(BuildContext context) {
-    Widget content = GestureDetector(
+    final settings = ReadingSettingsScope.of(context);
+    return GestureDetector(
       onLongPress: () {
-        setState(() {
-          _isSelected = !_isSelected;
-        });
+        setState(() => _isSelected = !_isSelected);
         if (_isSelected && widget.onVerseLongPress != null) {
           widget.onVerseLongPress!(widget.number, widget.text);
         }
@@ -40,44 +40,43 @@ class _VerseWidgetState extends State<VerseWidget> {
         decoration: BoxDecoration(
           color: _isSelected
               ? AppTheme.secondary.withOpacity(0.15)
-              : (widget.isHighlighted ? AppTheme.surfaceContainerLow : Colors.transparent),
+              : (widget.isHighlighted
+                  ? AppTheme.surfaceContainerLow
+                  : Colors.transparent),
           border: widget.isHighlighted
               ? const Border(
-                  left: BorderSide(
-                    color: AppTheme.secondary,
-                    width: 2,
-                  ),
-                )
+                  left: BorderSide(color: AppTheme.secondary, width: 2))
               : null,
         ),
-        child: _buildVerseContent(context, italic: widget.isHighlighted),
-      ),
-    );
-
-    return content;
-  }
-
-  Widget _buildVerseContent(BuildContext context, {bool italic = false}) {
-    return RichText(
-      text: TextSpan(
-        children: [
-          TextSpan(
-            text: '${widget.number}  ',
-            style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                  color: AppTheme.outline,
-                  fontSize: 10,
-                ),
+        child: RichText(
+          textAlign: settings.textAlign,
+          text: TextSpan(
+            children: [
+              TextSpan(
+                text: '${widget.number}  ',
+                style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                      color: AppTheme.outline,
+                      fontSize: 10,
+                    ),
+              ),
+              TextSpan(
+                text: widget.text,
+                style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                      fontSize: settings.fontSize,
+                      height: settings.lineHeight,
+                      letterSpacing: settings.letterSpacing,
+                      color: settings.textColor,
+                      fontStyle: widget.isHighlighted
+                          ? FontStyle.italic
+                          : FontStyle.normal,
+                      backgroundColor: _isSelected
+                          ? AppTheme.secondary.withOpacity(0.2)
+                          : Colors.transparent,
+                    ),
+              ),
+            ],
           ),
-          TextSpan(
-            text: widget.text,
-            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                  fontStyle: italic ? FontStyle.italic : FontStyle.normal,
-                  backgroundColor: _isSelected
-                      ? AppTheme.secondary.withOpacity(0.2)
-                      : Colors.transparent,
-                ),
-          ),
-        ],
+        ),
       ),
     );
   }

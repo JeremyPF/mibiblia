@@ -33,7 +33,7 @@ class _ReadingScreenState extends State<ReadingScreen> {
   String? _selectedVerseText;
   final List<Highlight> _highlights = [];
   final List<Note> _notes = [];
-  
+
   Chapter? _chapter;
   bool _isLoading = true;
 
@@ -48,7 +48,6 @@ class _ReadingScreenState extends State<ReadingScreen> {
       widget.bookId,
       widget.chapterNumber,
     );
-    
     setState(() {
       _chapter = chapter;
       _isLoading = false;
@@ -76,7 +75,6 @@ class _ReadingScreenState extends State<ReadingScreen> {
       verseText: verseText,
       createdAt: DateTime.now(),
     );
-    
     setState(() {
       _highlights.add(highlight);
       _selectedVerseNumber = null;
@@ -103,7 +101,6 @@ class _ReadingScreenState extends State<ReadingScreen> {
         noteText: noteText,
         createdAt: DateTime.now(),
       );
-
       setState(() {
         _notes.add(note);
         _selectedVerseNumber = null;
@@ -157,26 +154,29 @@ class _ReadingScreenState extends State<ReadingScreen> {
               : NotificationListener<ScrollNotification>(
                   onNotification: (scrollNotification) {
                     setState(() {
-                      _appBarOpacity = scrollNotification.metrics.pixels > 100 ? 1.0 : 0.6;
+                      _appBarOpacity =
+                          scrollNotification.metrics.pixels > 100 ? 1.0 : 0.6;
                     });
                     return true;
                   },
                   child: SingleChildScrollView(
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 24.0),
-                      child: ConstrainedBox(
-                        constraints: const BoxConstraints(maxWidth: 800),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const SizedBox(height: 128),
-                            _buildHeader(),
-                            const SizedBox(height: 80),
-                            _buildScriptureContent(),
-                            const SizedBox(height: 128),
-                            _buildFooter(),
-                            const SizedBox(height: 160),
-                          ],
+                    child: Center(
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                        child: ConstrainedBox(
+                          constraints: const BoxConstraints(maxWidth: 800),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const SizedBox(height: 128),
+                              _buildHeader(),
+                              const SizedBox(height: 80),
+                              _buildScriptureContent(),
+                              const SizedBox(height: 128),
+                              _buildFooter(),
+                              const SizedBox(height: 160),
+                            ],
+                          ),
                         ),
                       ),
                     ),
@@ -193,11 +193,7 @@ class _ReadingScreenState extends State<ReadingScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Icon(
-              Icons.error_outline,
-              size: 64,
-              color: AppTheme.secondary,
-            ),
+            const Icon(Icons.error_outline, size: 64, color: AppTheme.secondary),
             const SizedBox(height: 24),
             Text(
               'No se pudo cargar el capítulo',
@@ -231,9 +227,10 @@ class _ReadingScreenState extends State<ReadingScreen> {
       children: [
         Text(
           widget.bookName.toUpperCase(),
-          style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                color: AppTheme.secondary,
-              ),
+          style: Theme.of(context)
+              .textTheme
+              .labelSmall
+              ?.copyWith(color: AppTheme.secondary),
         ),
         const SizedBox(height: 16),
         Text(
@@ -254,7 +251,6 @@ class _ReadingScreenState extends State<ReadingScreen> {
     if (_chapter == null || _chapter!.verses.isEmpty) {
       return const SizedBox.shrink();
     }
-
     return Column(
       children: _chapter!.verses.map((verse) {
         return Padding(
