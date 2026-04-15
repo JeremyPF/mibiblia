@@ -10,35 +10,37 @@ class TopAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: AppTheme.background.withOpacity(0.85),
+        color: Theme.of(context).scaffoldBackgroundColor.withOpacity(0.85),
       ),
       child: SafeArea(
         child: AnimatedOpacity(
           opacity: opacity,
           duration: const Duration(milliseconds: 300),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 16.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          child: SizedBox(
+            height: 56,
+            child: Stack(
+              alignment: Alignment.center,
               children: [
-                Row(
-                  children: [
-                    IconButton(
-                      icon: const Icon(Icons.menu, color: AppTheme.secondary),
-                      onPressed: () {
-                        Scaffold.of(context).openDrawer();
-                      },
-                    ),
-                    const SizedBox(width: 16),
-                    Text(
-                      'MiBiblia',
-                      style: Theme.of(context).appBarTheme.titleTextStyle,
-                    ),
-                  ],
+                // Título centrado
+                Text(
+                  'MiBiblia',
+                  style: Theme.of(context).appBarTheme.titleTextStyle,
                 ),
-                IconButton(
-                  icon: const Icon(Icons.search, color: AppTheme.secondary),
-                  onPressed: () {},
+                // Botón menú izquierda
+                Positioned(
+                  left: 8,
+                  child: IconButton(
+                    icon: const Icon(Icons.menu, color: AppTheme.secondary),
+                    onPressed: () => Scaffold.of(context).openDrawer(),
+                  ),
+                ),
+                // Botón búsqueda derecha
+                Positioned(
+                  right: 8,
+                  child: IconButton(
+                    icon: const Icon(Icons.search, color: AppTheme.secondary),
+                    onPressed: () {},
+                  ),
                 ),
               ],
             ),

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import '../theme/app_theme.dart';
 import '../widgets/top_app_bar.dart';
-import '../widgets/bottom_nav_bar.dart';
 import '../widgets/side_drawer.dart';
 import '../main.dart';
 
@@ -38,7 +37,7 @@ class SettingsScreen extends StatelessWidget {
           ),
         ),
       ),
-      bottomNavigationBar: const BottomNavBar(currentIndex: 3),
+
     );
   }
 

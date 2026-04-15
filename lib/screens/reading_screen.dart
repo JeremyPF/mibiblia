@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../widgets/top_app_bar.dart';
-import '../widgets/bottom_nav_bar.dart';
 import '../widgets/verse_widget.dart';
 import '../widgets/side_drawer.dart';
 import '../widgets/verse_action_bar.dart';
@@ -182,7 +181,7 @@ class _ReadingScreenState extends State<ReadingScreen> {
                     ),
                   ),
                 ),
-      bottomNavigationBar: const BottomNavBar(currentIndex: 0),
+
     );
   }
 

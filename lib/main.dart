@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'screens/home_screen.dart';
+import 'screens/reading_screen.dart';
 import 'theme/app_theme.dart';
 import 'providers/reading_settings_provider.dart';
+import 'services/bible_service.dart';
 
 void main() {
   runApp(const SacredTextApp());
 }
 
-// InheritedWidget para exponer el provider en todo el árbol
 class ReadingSettingsScope extends InheritedNotifier<ReadingSettingsProvider> {
   const ReadingSettingsScope({
     super.key,
@@ -49,10 +49,49 @@ class _SacredTextAppState extends State<SacredTextApp> {
           theme: AppTheme.lightTheme,
           darkTheme: AppTheme.darkTheme,
           themeMode: _settings.isDarkMode ? ThemeMode.dark : ThemeMode.light,
-          home: const HomeScreen(),
+          home: const _StartupScreen(),
           debugShowCheckedModeBanner: false,
         ),
       ),
+    );
+  }
+}
+
+/// Carga el primer libro disponible y navega a ReadingScreen
+class _StartupScreen extends StatefulWidget {
+  const _StartupScreen();
+
+  @override
+  State<_StartupScreen> createState() => _StartupScreenState();
+}
+
+class _StartupScreenState extends State<_StartupScreen> {
+  @override
+  void initState() {
+    super.initState();
+    _loadFirstBook();
+  }
+
+  Future<void> _loadFirstBook() async {
+    final books = await BibleService.getAvailableBooks();
+    if (!mounted) return;
+    final book = books.isNotEmpty ? books.first : null;
+    if (book == null) return;
+    Navigator.of(context).pushReplacement(
+      MaterialPageRoute(
+        builder: (_) => ReadingScreen(
+          bookId: book.id,
+          bookName: book.name,
+          chapterNumber: 1,
+        ),
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return const Scaffold(
+      body: Center(child: CircularProgressIndicator()),
     );
   }
 }
