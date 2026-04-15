@@ -28,13 +28,15 @@ jobs:
         channel: 'stable'
         cache: true
 
-    - name: Decode keystore and set env vars
+    - name: Decode keystore and write key.properties
       run: |
-        echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 --decode > $HOME/mibiblia.jks
-        echo "KEYSTORE_PATH=$HOME/mibiblia.jks" >> $GITHUB_ENV
-        echo "KEYSTORE_PASSWORD=${{ secrets.KEYSTORE_PASSWORD }}" >> $GITHUB_ENV
-        echo "KEY_ALIAS=${{ secrets.KEY_ALIAS }}" >> $GITHUB_ENV
-        echo "KEY_PASSWORD=${{ secrets.KEY_PASSWORD }}" >> $GITHUB_ENV
+        echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 --decode > android/app/mibiblia.jks
+        cat > android/key.properties <<EOF
+        storePassword=${{ secrets.KEYSTORE_PASSWORD }}
+        keyPassword=${{ secrets.KEY_PASSWORD }}
+        keyAlias=${{ secrets.KEY_ALIAS }}
+        storeFile=mibiblia.jks
+        EOF
 
     - name: Get dependencies
       run: flutter pub get
