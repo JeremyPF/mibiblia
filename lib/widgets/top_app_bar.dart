@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../theme/app_theme.dart';
-import 'side_drawer.dart';
 
 class TopAppBar extends StatelessWidget {
   final double opacity;

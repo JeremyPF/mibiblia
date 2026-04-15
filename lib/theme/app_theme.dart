@@ -9,6 +9,7 @@ class AppTheme {
   static const Color background = Color(0xFFF9FAF6);
   static const Color onSurface = Color(0xFF2E342F);
   static const Color surfaceContainerLow = Color(0xFFF3F4EF);
+  static const Color surfaceContainerHigh = Color(0xFFE8E9E4);
   static const Color outline = Color(0xFF767C76);
   static const Color outlineVariant = Color(0xFFADB4AC);
 

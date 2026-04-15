@@ -22,7 +22,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
       extendBodyBehindAppBar: true,
       drawer: const SideDrawer(),
       appBar: const PreferredSize(
-        preferredSize: Size.full(80),
+        preferredSize: Size.fromHeight(80),
         child: TopAppBar(opacity: 0.85),
       ),
       body: SingleChildScrollView(

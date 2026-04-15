@@ -115,7 +115,7 @@ class _ReadingScreenState extends State<ReadingScreen> {
               ),
             )
           : PreferredSize(
-              preferredSize: const Size.full(80),
+              preferredSize: const Size.fromHeight(80),
               child: TopAppBar(opacity: _appBarOpacity),
             ),
       body: NotificationListener<ScrollNotification>(
