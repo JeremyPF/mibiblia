@@ -31,13 +31,13 @@ jobs:
     - name: Decode keystore
       run: |
         echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 --decode > $HOME/mibiblia.jks
+        echo "KEYSTORE_PATH=$HOME/mibiblia.jks" >> $GITHUB_ENV
 
     - name: Get dependencies
       run: flutter pub get
 
     - name: Build APK
       env:
-        KEYSTORE_PATH: ${{ env.HOME }}/mibiblia.jks
         KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
         KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
         KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
