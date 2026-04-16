@@ -31,6 +31,33 @@ jobs:
     - name: Get dependencies
       run: flutter pub get
 
+    - name: Verify keystore secret
+      env:
+        KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
+        KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+        KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+      run: |
+        # Decode
+        printf '%s' "$KEYSTORE_BASE64" | base64 -d > /tmp/verify.p12
+        
+        # Check file size (must be > 100 bytes)
+        SIZE=$(stat -c%s /tmp/verify.p12)
+        echo "Keystore size: $SIZE bytes"
+        if [ "$SIZE" -lt 100 ]; then
+          echo "ERROR: Keystore file is too small ($SIZE bytes) - Base64 secret is likely corrupted or empty"
+          exit 1
+        fi
+        
+        # Verify keystore is readable with the password
+        keytool -list -keystore /tmp/verify.p12 -storetype PKCS12 -storepass "$KEYSTORE_PASSWORD" -alias "$KEY_ALIAS"
+        if [ $? -ne 0 ]; then
+          echo "ERROR: Could not read keystore - check KEYSTORE_PASSWORD and KEY_ALIAS secrets"
+          exit 1
+        fi
+        
+        echo "Keystore verification PASSED"
+        rm /tmp/verify.p12
+
     - name: Build APK
       run: flutter build apk --release --build-number=${{ github.run_number }} --build-name=1.0.${{ github.run_number }}
 
