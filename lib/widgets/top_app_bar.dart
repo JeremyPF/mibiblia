@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import '../theme/app_theme.dart';
+import '../services/supabase_service.dart';
+import '../widgets/email_link_dialog.dart';
 
-class TopAppBar extends StatelessWidget {
+class TopAppBar extends StatefulWidget {
   final double opacity;
   final String? bookName;
   final int? chapterNumber;
@@ -18,15 +20,43 @@ class TopAppBar extends StatelessWidget {
   });
 
   @override
+  State<TopAppBar> createState() => _TopAppBarState();
+}
+
+class _TopAppBarState extends State<TopAppBar>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _pulse;
+  late Animation<double> _pulseAnim;
+
+  @override
+  void initState() {
+    super.initState();
+    _pulse = AnimationController(
+        vsync: this,
+        duration: const Duration(milliseconds: 900))
+      ..repeat(reverse: true);
+    _pulseAnim = Tween<double>(begin: 0.4, end: 1.0).animate(
+        CurvedAnimation(parent: _pulse, curve: Curves.easeInOut));
+  }
+
+  @override
+  void dispose() {
+    _pulse.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final bg = Theme.of(context).scaffoldBackgroundColor;
+    final linked = SupabaseService.isLinked;
+
     return Container(
       decoration: BoxDecoration(
-        color: bg.withOpacity(opacity.clamp(0.6, 1.0)),
+        color: bg.withOpacity(widget.opacity.clamp(0.6, 1.0)),
         border: Border(
           bottom: BorderSide(
             color: AppTheme.outlineVariant.withOpacity(
-              showSubtitle ? 0.15 : 0.0,
+              widget.showSubtitle ? 0.15 : 0.0,
             ),
             width: 1,
           ),
@@ -37,12 +67,10 @@ class TopAppBar extends StatelessWidget {
           height: 56,
           child: Row(
             children: [
-              // Menú izquierda
               IconButton(
                 icon: const Icon(Icons.menu, color: AppTheme.secondary),
                 onPressed: () => Scaffold.of(context).openDrawer(),
               ),
-              // Título centrado (Expanded para ocupar el espacio restante)
               Expanded(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -51,24 +79,22 @@ class TopAppBar extends StatelessWidget {
                       'MiBiblia',
                       style: Theme.of(context).appBarTheme.titleTextStyle,
                     ),
-                    // Subtítulo animado in-place — no cambia la altura del navbar
                     AnimatedSize(
                       duration: const Duration(milliseconds: 300),
                       curve: Curves.easeInOut,
-                      child: showSubtitle && bookName != null
+                      child: widget.showSubtitle && widget.bookName != null
                           ? Padding(
                               padding: const EdgeInsets.only(top: 2),
                               child: AnimatedOpacity(
-                                opacity: showSubtitle ? 1.0 : 0.0,
+                                opacity: widget.showSubtitle ? 1.0 : 0.0,
                                 duration: const Duration(milliseconds: 250),
                                 child: Text(
-                                  '${bookName!.toUpperCase()}  ·  $chapterNumber',
+                                  '${widget.bookName!.toUpperCase()}  ·  ${widget.chapterNumber}',
                                   style: Theme.of(context)
                                       .textTheme
                                       .labelSmall
                                       ?.copyWith(
-                                        color:
-                                            AppTheme.secondary.withOpacity(0.8),
+                                        color: AppTheme.secondary.withOpacity(0.8),
                                         letterSpacing: 2.0,
                                         fontSize: 9,
                                       ),
@@ -80,10 +106,24 @@ class TopAppBar extends StatelessWidget {
                   ],
                 ),
               ),
-              // Búsqueda derecha
+              // Icono palpitante de correo si no está vinculado
+              if (!linked)
+                AnimatedBuilder(
+                  animation: _pulseAnim,
+                  builder: (_, __) => IconButton(
+                    icon: Icon(Icons.mail_outline,
+                        color: AppTheme.secondary.withOpacity(_pulseAnim.value),
+                        size: 22),
+                    tooltip: 'Vincular correo',
+                    onPressed: () async {
+                      await showEmailLinkDialog(context);
+                      if (mounted) setState(() {});
+                    },
+                  ),
+                ),
               IconButton(
                 icon: const Icon(Icons.search, color: AppTheme.secondary),
-                onPressed: onSearchTap,
+                onPressed: widget.onSearchTap,
               ),
             ],
           ),

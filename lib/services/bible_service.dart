@@ -111,7 +111,7 @@ class BibleService {
             'bookId': bookId,
             'bookName': bookName,
             'chapter': chapterNum,
-            'verse': verse['verseNumber'] as int,
+            'verse': verse['number'] as int,
             'text': verse['text'] as String,
           });
         }

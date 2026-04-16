@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'screens/reading_screen.dart';
 import 'screens/search_screen.dart';
 import 'screens/onboarding_screen.dart';
@@ -45,8 +46,13 @@ class _SacredTextAppState extends State<SacredTextApp> {
   @override
   void initState() {
     super.initState();
-    // Verificar actualizaciones al arrancar (con delay para no bloquear el inicio)
     Future.delayed(const Duration(seconds: 3), _updateService.checkForUpdates);
+    // Flush progreso pendiente cuando vuelva la conexión
+    Connectivity().onConnectivityChanged.listen((results) {
+      if (results.any((r) => r != ConnectivityResult.none)) {
+        ReadingProgressService.flushPendingSync();
+      }
+    });
   }
 
   @override

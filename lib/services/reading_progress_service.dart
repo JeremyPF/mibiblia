@@ -3,24 +3,32 @@ import 'supabase_service.dart';
 
 class ReadingProgressService {
   static const _key = 'read_chapters';
-  static const _userIdKey = 'anon_user_id';
+  static const _anonIdKey = 'anon_user_id';
+  static const _pendingSyncKey = 'pending_sync';
 
   static String _id(int bookId, int chapter) => '$bookId:$chapter';
 
-  /// Retorna (o genera) un userId anónimo persistido localmente.
+  /// Retorna el userId efectivo: autenticado si existe, anónimo si no.
   static Future<String> getUserId() async {
+    if (SupabaseService.isLinked) return SupabaseService.currentUser!.id;
     final prefs = await SharedPreferences.getInstance();
-    var uid = prefs.getString(_userIdKey);
+    var uid = prefs.getString(_anonIdKey);
     if (uid == null) {
-      uid = 'user_${DateTime.now().millisecondsSinceEpoch}';
-      await prefs.setString(_userIdKey, uid);
+      uid = 'anon_${DateTime.now().millisecondsSinceEpoch}';
+      await prefs.setString(_anonIdKey, uid);
     }
     return uid;
   }
 
-  /// Al arrancar la app: descarga progreso de la nube y lo fusiona con el local.
+  static Future<String> getAnonId() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getString(_anonIdKey) ?? '';
+  }
+
+  /// Sincroniza desde la nube al arrancar. Fusiona remoto + local.
   static Future<void> syncFromCloud() async {
     final uid = await getUserId();
+    if (uid.isEmpty) return;
     final remote = await SupabaseService.downloadProgress(uid);
     if (remote == null || remote.isEmpty) return;
     final prefs = await SharedPreferences.getInstance();
@@ -37,9 +45,34 @@ class ReadingProgressService {
     if (set.contains(id)) return false;
     set.add(id);
     await prefs.setStringList(_key, set.toList());
-    // Sync en background — no bloquea la UI
-    getUserId().then((uid) => SupabaseService.uploadProgress(uid, set));
+    // Intentar sync en background; si falla, marcar pendiente
+    _syncOrQueue(set);
     return true;
+  }
+
+  static void _syncOrQueue(Set<String> chapters) async {
+    try {
+      final uid = await getUserId();
+      await SupabaseService.uploadProgress(uid, chapters);
+      // Limpiar flag de pendiente si subió bien
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.setBool(_pendingSyncKey, false);
+    } catch (_) {
+      // Sin internet: marcar como pendiente
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.setBool(_pendingSyncKey, true);
+    }
+  }
+
+  /// Llama esto cuando se detecta que volvió la conexión.
+  static Future<void> flushPendingSync() async {
+    final prefs = await SharedPreferences.getInstance();
+    if (prefs.getBool(_pendingSyncKey) != true) return;
+    final set = prefs.getStringList(_key)?.toSet() ?? {};
+    if (set.isEmpty) return;
+    final uid = await getUserId();
+    await SupabaseService.uploadProgress(uid, set);
+    await prefs.setBool(_pendingSyncKey, false);
   }
 
   static Future<Set<String>> getReadChapters() async {
