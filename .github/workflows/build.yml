@@ -28,35 +28,28 @@ jobs:
         channel: 'stable'
         cache: true
 
-    - name: Decode keystore and write key.properties
-      env:
-        KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
-        KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
-        KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
-        KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
-      run: |
-        printf '%s' "$KEYSTORE_BASE64" | base64 --decode > android/app/mibiblia.jks
-        printf 'storePassword=%s\nkeyPassword=%s\nkeyAlias=%s\nstoreFile=mibiblia.jks\n' \
-          "$KEYSTORE_PASSWORD" "$KEY_PASSWORD" "$KEY_ALIAS" \
-          > android/key.properties
-
-    - name: Verify keystore
-      run: |
-        echo "=== key.properties ==="
-        cat android/key.properties
-        echo "=== keystore type ==="
-        keytool -list -keystore android/app/mibiblia.jks \
-          -storepass '${{ secrets.KEYSTORE_PASSWORD }}' 2>&1 | head -5
-
     - name: Get dependencies
       run: flutter pub get
 
-    - name: Build APK
-      run: flutter build apk --release --build-number=${{ github.run_number }} --build-name=1.0.${{ github.run_number }}
+    - name: Build APK (unsigned)
+      run: flutter build apk --release --no-shrink \
+        --build-number=${{ github.run_number }} \
+        --build-name=1.0.${{ github.run_number }}
+
+    - name: Sign APK
+      uses: Tlaster/android-sign@v1.2
+      with:
+        releaseDirectory: build/app/outputs/apk/release
+        signingKeyBase64: ${{ secrets.KEYSTORE_BASE64 }}
+        alias: ${{ secrets.KEY_ALIAS }}
+        keyStorePassword: ${{ secrets.KEYSTORE_PASSWORD }}
+        keyPassword: ${{ secrets.KEY_PASSWORD }}
+      env:
+        BUILD_TOOLS_VERSION: "33.0.1"
 
     - name: Upload APK to Release
       uses: softprops/action-gh-release@v2
       with:
         tag_name: build-${{ github.run_number }}
         name: Build ${{ github.run_number }}
-        files: build/app/outputs/flutter-apk/app-release.apk
+        files: build/release/signed/*.apk
