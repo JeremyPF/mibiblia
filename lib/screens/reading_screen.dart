@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import '../widgets/top_app_bar.dart';
 import '../widgets/verse_widget.dart';
@@ -95,6 +96,7 @@ class _ReadingScreenState extends State<ReadingScreen>
     _scrollController.removeListener(_onScroll);
     _scrollController.dispose();
     _pageCtrl.dispose();
+    _navDebounce?.cancel();
     super.dispose();
   }
 
@@ -111,6 +113,9 @@ class _ReadingScreenState extends State<ReadingScreen>
 
   bool get _hasPrevChapter => _currentChapter > 1;
 
+  // Navegación por scroll al final/inicio
+  Timer? _navDebounce;
+
   void _onScroll() {
     final pos = _scrollController.position;
     final current = pos.pixels;
@@ -122,11 +127,31 @@ class _ReadingScreenState extends State<ReadingScreen>
       _showSubtitle = current > 200;
     });
 
-    // Detectar fin de capítulo: cuando el usuario llega al 95% del scroll
-    if (!_chapterMarkedRead &&
-        maxScroll > 100 &&
-        current >= maxScroll * 0.95) {
+    // Marcar capítulo leído al 95%
+    if (!_chapterMarkedRead && maxScroll > 100 && current >= maxScroll * 0.95) {
       _markCurrentChapterRead();
+    }
+
+    // Navegar al siguiente capítulo: scroll al fondo + indicador listo + 1.5s
+    if (_indicatorReady && _hasNextChapter && maxScroll > 0 && current >= maxScroll) {
+      _navDebounce?.cancel();
+      _navDebounce = Timer(const Duration(milliseconds: 1500), () {
+        if (_scrollController.hasClients &&
+            _scrollController.position.pixels >= _scrollController.position.maxScrollExtent) {
+          _goToNextChapter();
+        }
+      });
+    } else if (_hasPrevChapter && current <= 0) {
+      // Navegar al capítulo anterior: scroll al tope + 1.5s
+      _navDebounce?.cancel();
+      _navDebounce = Timer(const Duration(milliseconds: 1500), () {
+        if (_scrollController.hasClients &&
+            _scrollController.position.pixels <= 0) {
+          _goToPrevChapter();
+        }
+      });
+    } else {
+      _navDebounce?.cancel();
     }
   }
 
@@ -269,18 +294,7 @@ class _ReadingScreenState extends State<ReadingScreen>
                           end: Offset.zero,
                         ).animate(CurvedAnimation(
                             parent: _pageCtrl, curve: Curves.easeOut)),
-                        child: NotificationListener<ScrollNotification>(
-                          onNotification: (n) {
-                            if (n is OverscrollNotification) {
-                              if (n.overscroll > 20 && _indicatorReady && _hasNextChapter) {
-                                _goToNextChapter();
-                              } else if (n.overscroll < -20 && _hasPrevChapter) {
-                                _goToPrevChapter();
-                              }
-                            }
-                            return false;
-                          },
-                          child: SingleChildScrollView(
+                        child: SingleChildScrollView(
                             controller: _scrollController,
                             physics: const BouncingScrollPhysics(),
                             child: Center(
@@ -306,7 +320,6 @@ class _ReadingScreenState extends State<ReadingScreen>
                                 ),
                               ),
                             ),
-                          ),
                         ),
                       ),
                     ),
@@ -329,13 +342,13 @@ class _ReadingScreenState extends State<ReadingScreen>
                           ),
                         ),
                       ),
-                    // VerseActionBar overlay
+                    // VerseActionBar — bottom
                     Positioned(
-                      top: 0, left: 0, right: 0,
+                      bottom: 0, left: 0, right: 0,
                       child: AnimatedSlide(
                         offset: hasSelection
                             ? Offset.zero
-                            : const Offset(0, -1),
+                            : const Offset(0, 1),
                         duration: const Duration(milliseconds: 300),
                         curve: Curves.easeOutCubic,
                         child: AnimatedOpacity(
