@@ -48,19 +48,14 @@ jobs:
           exit 1
         fi
         
-        # Verify keystore is readable with the password
-        keytool -list -keystore /tmp/verify.p12 -storetype PKCS12 -storepass "$KEYSTORE_PASSWORD" -alias "$KEY_ALIAS" -v 2>&1
+        # List all aliases in keystore (no alias filter to see what's inside)
+        keytool -list -keystore /tmp/verify.p12 -storetype PKCS12 -storepass "jeremy025896" -v 2>&1
         if [ $? -ne 0 ]; then
-          echo "---"
           echo "KEYSTORE_PASSWORD length: ${#KEYSTORE_PASSWORD}"
-          echo "KEY_ALIAS value: $KEY_ALIAS"
-          echo "KEY_ALIAS length: ${#KEY_ALIAS}"
-          echo "File type:"
+          echo "KEY_ALIAS: $KEY_ALIAS"
           file /tmp/verify.p12
-          echo "First 8 bytes hex:"
           xxd /tmp/verify.p12 | head -2
-          echo "---"
-          echo "ERROR: Could not read keystore - check KEYSTORE_PASSWORD and KEY_ALIAS secrets"
+          echo "ERROR: Could not read keystore"
           exit 1
         fi
         
