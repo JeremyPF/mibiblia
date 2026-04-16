@@ -3,13 +3,13 @@ name: Build Flutter App (Android)
 on:
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
   workflow_dispatch:
 
 jobs:
   build-android:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     
     steps:
     - uses: actions/checkout@v4
@@ -31,15 +31,33 @@ jobs:
     - name: Get dependencies
       run: flutter pub get
     
-    - name: Build APK (Universal)
-      run: flutter build apk --release
+    - name: Build APK
+      run: flutter build apk --release --build-number=${{ github.run_number }} --build-name=1.0.${{ github.run_number }}
     
     - name: Rename APK
-      run: mv build/app/outputs/flutter-apk/app-release.apk build/app/outputs/flutter-apk/mibiblia-universal.apk
+      run: mv build/app/outputs/flutter-apk/app-release.apk build/app/outputs/flutter-apk/mibiblia-v1.0.${{ github.run_number }}.apk
     
-    - name: Upload Universal APK
-      uses: actions/upload-artifact@v4
+    - name: Create Release
+      uses: softprops/action-gh-release@v2
       with:
-        name: mibiblia-universal-apk
-        path: build/app/outputs/flutter-apk/mibiblia-universal.apk
-        compression-level: 0
+        tag_name: v1.0.${{ github.run_number }}
+        name: MiBiblia v1.0.${{ github.run_number }}
+        body: |
+          ## MiBiblia v1.0.${{ github.run_number }}
+          
+          ### Cambios en esta versión
+          - Build automático #${{ github.run_number }}
+          - Commit: ${{ github.sha }}
+          
+          ### Instalación
+          1. Descarga el archivo APK
+          2. Activa "Instalar apps de fuentes desconocidas" en tu dispositivo Android
+          3. Instala la aplicación
+          
+          ### Libros disponibles
+          - Proverbios (31 capítulos)
+          - Mateo (28 capítulos)
+          - Juan (21 capítulos)
+        files: build/app/outputs/flutter-apk/mibiblia-v1.0.${{ github.run_number }}.apk
+        draft: false
+        prerelease: false
