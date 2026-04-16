@@ -37,6 +37,14 @@ jobs:
           '${{ secrets.KEY_ALIAS }}' \
           > android/key.properties
 
+    - name: Verify keystore
+      run: |
+        echo "=== key.properties ==="
+        cat android/key.properties
+        echo "=== keystore type ==="
+        keytool -list -keystore android/app/mibiblia.jks \
+          -storepass '${{ secrets.KEYSTORE_PASSWORD }}' 2>&1 | head -5
+
     - name: Get dependencies
       run: flutter pub get
 
