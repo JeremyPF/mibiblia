@@ -11,6 +11,7 @@ import '../models/chapter.dart';
 import '../services/bible_service.dart';
 import '../services/reading_progress_service.dart';
 import '../data/bible_data.dart';
+import 'search_screen.dart';
 
 class ReadingScreen extends StatefulWidget {
   final int bookId;
@@ -128,43 +129,31 @@ class _ReadingScreenState extends State<ReadingScreen>
     }
   }
 
+  // Estado del indicador de capítulo completado
+  bool _showCompleteIndicator = false;
+  bool _indicatorReady = false; // true = ya mostró el check, listo para flecha
+
   Future<void> _markCurrentChapterRead() async {
     if (_chapterMarkedRead) return;
     _chapterMarkedRead = true;
-    final wasNew = await ReadingProgressService.markChapterRead(
-        widget.bookId, _currentChapter);
-    if (wasNew && mounted) {
-      // Mostrar indicador sutil de capítulo completado
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Row(
-            children: [
-              const Icon(Icons.check_circle_outline,
-                  color: AppTheme.secondary, size: 18),
-              const SizedBox(width: 10),
-              Text(
-                '${widget.bookName} ${_currentChapter} completado',
-                style: const TextStyle(fontSize: 13),
-              ),
-            ],
-          ),
-          backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-          behavior: SnackBarBehavior.floating,
-          duration: const Duration(seconds: 2),
-          margin: const EdgeInsets.fromLTRB(16, 0, 16, 80),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8),
-            side: BorderSide(color: AppTheme.secondary.withOpacity(0.3)),
-          ),
-        ),
-      );
-    }
+    await ReadingProgressService.markChapterRead(widget.bookId, _currentChapter);
+    if (!mounted) return;
+    setState(() => _showCompleteIndicator = true);
+    // Después de 1.2s transiciona de check a flecha
+    Future.delayed(const Duration(milliseconds: 1200), () {
+      if (mounted) setState(() => _indicatorReady = true);
+    });
   }
 
   Future<void> _loadChapter({bool forward = true}) async {
     _navigatingForward = forward;
     _pageCtrl.reset();
-    setState(() { _isLoading = true; _chapterMarkedRead = false; });
+    setState(() {
+      _isLoading = true;
+      _chapterMarkedRead = false;
+      _showCompleteIndicator = false;
+      _indicatorReady = false;
+    });
     final chapter = await BibleService.loadChapter(widget.bookId, _currentChapter);
     if (!mounted) return;
     setState(() { _chapter = chapter; _isLoading = false; });
@@ -257,7 +246,9 @@ class _ReadingScreenState extends State<ReadingScreen>
           bookName: widget.bookName,
           chapterNumber: _currentChapter,
           showSubtitle: _showSubtitle,
-          onSearchTap: widget.onSearchTap,
+          onSearchTap: widget.onSearchTap ?? () => Navigator.of(context).push(
+            MaterialPageRoute(builder: (_) => const SearchScreen()),
+          ),
         ),
       ),
       body: _isLoading
@@ -275,27 +266,40 @@ class _ReadingScreenState extends State<ReadingScreen>
                           end: Offset.zero,
                         ).animate(CurvedAnimation(
                             parent: _pageCtrl, curve: Curves.easeOut)),
-                        child: SingleChildScrollView(
-                          controller: _scrollController,
-                          child: Center(
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 24.0),
-                              child: ConstrainedBox(
-                                constraints:
-                                    const BoxConstraints(maxWidth: 800),
-                                child: Column(
-                                  crossAxisAlignment:
-                                      CrossAxisAlignment.start,
-                                  children: [
-                                    const SizedBox(height: 100),
-                                    _buildHeader(),
-                                    const SizedBox(height: 80),
-                                    _buildScriptureContent(),
-                                    const SizedBox(height: 64),
-                                    _buildChapterNav(),
-                                    const SizedBox(height: 80),
-                                  ],
+                        child: NotificationListener<ScrollNotification>(
+                          onNotification: (n) {
+                            if (n is OverscrollNotification) {
+                              if (n.overscroll > 20 && _indicatorReady && _hasNextChapter) {
+                                _goToNextChapter();
+                              } else if (n.overscroll < -20 && _hasPrevChapter) {
+                                _goToPrevChapter();
+                              }
+                            }
+                            return false;
+                          },
+                          child: SingleChildScrollView(
+                            controller: _scrollController,
+                            physics: const BouncingScrollPhysics(),
+                            child: Center(
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 24.0),
+                                child: ConstrainedBox(
+                                  constraints:
+                                      const BoxConstraints(maxWidth: 800),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      const SizedBox(height: 100),
+                                      _buildHeader(),
+                                      const SizedBox(height: 80),
+                                      _buildScriptureContent(),
+                                      const SizedBox(height: 64),
+                                      _buildChapterNav(),
+                                      const SizedBox(height: 80),
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),
@@ -309,6 +313,19 @@ class _ReadingScreenState extends State<ReadingScreen>
                       child: _ReadingProgressIndicator(
                           progress: _scrollProgress),
                     ),
+                    // Indicador de capítulo completado
+                    if (_showCompleteIndicator)
+                      Positioned(
+                        bottom: 32,
+                        left: 0, right: 0,
+                        child: Center(
+                          child: _ChapterCompleteIndicator(
+                            ready: _indicatorReady,
+                            hasNext: _hasNextChapter,
+                            onNext: _goToNextChapter,
+                          ),
+                        ),
+                      ),
                     // VerseActionBar overlay
                     Positioned(
                       top: 0, left: 0, right: 0,
@@ -417,116 +434,105 @@ class _ReadingScreenState extends State<ReadingScreen>
     );
   }
 
-  /// Navegación entre capítulos al final del contenido
+  /// Solo el separador "Amén" — la navegación es por scroll/overscroll
   Widget _buildChapterNav() {
-    return Column(
-      children: [
-        // Separador "Amén"
-        Center(
-          child: Column(
-            children: [
-              Container(
-                  width: 96,
-                  height: 1,
-                  color: AppTheme.secondary.withOpacity(0.2)),
-              const SizedBox(height: 24),
-              Text('Amén',
-                  style: Theme.of(context).textTheme.headlineLarge?.copyWith(
-                        fontStyle: FontStyle.italic,
-                        color: AppTheme.onSurface.withOpacity(0.4),
-                        fontSize: 14,
-                      )),
-            ],
-          ),
-        ),
-        const SizedBox(height: 40),
-        // Botones de navegación
-        Row(
-          children: [
-            // Capítulo anterior
-            if (_hasPrevChapter)
-              Expanded(
-                child: _NavButton(
-                  label: 'Capítulo ${_currentChapter - 1}',
-                  icon: Icons.arrow_back_ios,
-                  iconOnLeft: true,
-                  onTap: _goToPrevChapter,
-                ),
-              )
-            else
-              const Expanded(child: SizedBox()),
-            const SizedBox(width: 16),
-            // Capítulo siguiente
-            if (_hasNextChapter)
-              Expanded(
-                child: _NavButton(
-                  label: 'Capítulo ${_currentChapter + 1}',
-                  icon: Icons.arrow_forward_ios,
-                  iconOnLeft: false,
-                  onTap: _goToNextChapter,
-                ),
-              )
-            else
-              const Expanded(child: SizedBox()),
-          ],
-        ),
-      ],
+    return Center(
+      child: Column(
+        children: [
+          Container(
+              width: 96,
+              height: 1,
+              color: AppTheme.secondary.withOpacity(0.2)),
+          const SizedBox(height: 24),
+          Text('Amén',
+              style: Theme.of(context).textTheme.headlineLarge?.copyWith(
+                    fontStyle: FontStyle.italic,
+                    color: AppTheme.onSurface.withOpacity(0.4),
+                    fontSize: 14,
+                  )),
+        ],
+      ),
     );
   }
 }
 
-class _NavButton extends StatelessWidget {
-  final String label;
-  final IconData icon;
-  final bool iconOnLeft;
-  final VoidCallback onTap;
+/// Indicador animado: check → flecha de siguiente capítulo
+class _ChapterCompleteIndicator extends StatefulWidget {
+  final bool ready;       // false = muestra check, true = muestra flecha
+  final bool hasNext;
+  final VoidCallback onNext;
 
-  const _NavButton({
-    required this.label,
-    required this.icon,
-    required this.iconOnLeft,
-    required this.onTap,
+  const _ChapterCompleteIndicator({
+    required this.ready,
+    required this.hasNext,
+    required this.onNext,
   });
 
   @override
-  Widget build(BuildContext context) {
-    final content = Row(
-      mainAxisAlignment:
-          iconOnLeft ? MainAxisAlignment.start : MainAxisAlignment.end,
-      children: iconOnLeft
-          ? [
-              Icon(icon, size: 14, color: AppTheme.secondary),
-              const SizedBox(width: 8),
-              Flexible(
-                child: Text(label,
-                    style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                          color: AppTheme.secondary,
-                          letterSpacing: 1.5,
-                        )),
-              ),
-            ]
-          : [
-              Flexible(
-                child: Text(label,
-                    style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                          color: AppTheme.secondary,
-                          letterSpacing: 1.5,
-                        )),
-              ),
-              const SizedBox(width: 8),
-              Icon(icon, size: 14, color: AppTheme.secondary),
-            ],
-    );
+  State<_ChapterCompleteIndicator> createState() =>
+      _ChapterCompleteIndicatorState();
+}
 
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
-        decoration: BoxDecoration(
-          border: Border.all(color: AppTheme.secondary.withOpacity(0.25)),
-          borderRadius: BorderRadius.circular(8),
+class _ChapterCompleteIndicatorState extends State<_ChapterCompleteIndicator>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _ctrl;
+  late Animation<double> _scale;
+
+  @override
+  void initState() {
+    super.initState();
+    _ctrl = AnimationController(
+        vsync: this, duration: const Duration(milliseconds: 400));
+    _scale = CurvedAnimation(parent: _ctrl, curve: Curves.elasticOut);
+    _ctrl.forward();
+  }
+
+  @override
+  void didUpdateWidget(_ChapterCompleteIndicator old) {
+    super.didUpdateWidget(old);
+    if (widget.ready != old.ready) {
+      // Pequeño rebote al transicionar de check a flecha
+      _ctrl.forward(from: 0.6);
+    }
+  }
+
+  @override
+  void dispose() {
+    _ctrl.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final icon = widget.ready && widget.hasNext
+        ? Icons.keyboard_arrow_down_rounded
+        : Icons.check_rounded;
+    final color = AppTheme.secondary;
+
+    return ScaleTransition(
+      scale: _scale,
+      child: GestureDetector(
+        onTap: widget.ready && widget.hasNext ? widget.onNext : null,
+        child: Container(
+          width: 48,
+          height: 48,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            color: color.withOpacity(0.12),
+            border: Border.all(color: color.withOpacity(0.35), width: 1.5),
+          ),
+          child: AnimatedSwitcher(
+            duration: const Duration(milliseconds: 300),
+            transitionBuilder: (child, anim) =>
+                ScaleTransition(scale: anim, child: child),
+            child: Icon(
+              icon,
+              key: ValueKey(icon),
+              color: color,
+              size: 24,
+            ),
+          ),
         ),
-        child: content,
       ),
     );
   }

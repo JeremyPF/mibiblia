@@ -1,12 +1,35 @@
 import 'package:shared_preferences/shared_preferences.dart';
+import 'supabase_service.dart';
 
-/// Clave de almacenamiento: 'read_chapters' → Set de strings 'bookId:chapter'
 class ReadingProgressService {
   static const _key = 'read_chapters';
+  static const _userIdKey = 'anon_user_id';
 
   static String _id(int bookId, int chapter) => '$bookId:$chapter';
 
-  /// Marca un capítulo como leído. Retorna true si fue nuevo (no estaba marcado).
+  /// Retorna (o genera) un userId anónimo persistido localmente.
+  static Future<String> getUserId() async {
+    final prefs = await SharedPreferences.getInstance();
+    var uid = prefs.getString(_userIdKey);
+    if (uid == null) {
+      uid = 'user_${DateTime.now().millisecondsSinceEpoch}';
+      await prefs.setString(_userIdKey, uid);
+    }
+    return uid;
+  }
+
+  /// Al arrancar la app: descarga progreso de la nube y lo fusiona con el local.
+  static Future<void> syncFromCloud() async {
+    final uid = await getUserId();
+    final remote = await SupabaseService.downloadProgress(uid);
+    if (remote == null || remote.isEmpty) return;
+    final prefs = await SharedPreferences.getInstance();
+    final local = prefs.getStringList(_key)?.toSet() ?? {};
+    final merged = {...local, ...remote};
+    await prefs.setStringList(_key, merged.toList());
+  }
+
+  /// Marca un capítulo como leído. Retorna true si fue nuevo.
   static Future<bool> markChapterRead(int bookId, int chapter) async {
     final prefs = await SharedPreferences.getInstance();
     final set = prefs.getStringList(_key)?.toSet() ?? {};
@@ -14,34 +37,31 @@ class ReadingProgressService {
     if (set.contains(id)) return false;
     set.add(id);
     await prefs.setStringList(_key, set.toList());
+    // Sync en background — no bloquea la UI
+    getUserId().then((uid) => SupabaseService.uploadProgress(uid, set));
     return true;
   }
 
-  /// Retorna el set de capítulos leídos como 'bookId:chapter'
   static Future<Set<String>> getReadChapters() async {
     final prefs = await SharedPreferences.getInstance();
     return prefs.getStringList(_key)?.toSet() ?? {};
   }
 
-  /// Verifica si un capítulo específico está leído
   static Future<bool> isChapterRead(int bookId, int chapter) async {
     final set = await getReadChapters();
     return set.contains(_id(bookId, chapter));
   }
 
-  /// Retorna cuántos capítulos leídos tiene un libro
   static Future<int> getReadCountForBook(int bookId) async {
     final set = await getReadChapters();
     return set.where((s) => s.startsWith('$bookId:')).length;
   }
 
-  /// Retorna el total de capítulos leídos en toda la Biblia
   static Future<int> getTotalRead() async {
     final set = await getReadChapters();
     return set.length;
   }
 
-  /// Retorna los capítulos leídos de un libro como lista de ints
   static Future<List<int>> getReadChaptersForBook(int bookId) async {
     final set = await getReadChapters();
     return set

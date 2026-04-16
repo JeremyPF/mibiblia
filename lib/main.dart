@@ -3,13 +3,17 @@ import 'screens/reading_screen.dart';
 import 'screens/search_screen.dart';
 import 'screens/onboarding_screen.dart';
 import 'services/user_profile_service.dart';
+import 'services/supabase_service.dart';
+import 'services/reading_progress_service.dart';
 import 'theme/app_theme.dart';
 import 'providers/reading_settings_provider.dart';
 import 'services/bible_service.dart';
 import 'services/update_service.dart';
 import 'widgets/update_banner.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await SupabaseService.initialize();
   runApp(const SacredTextApp());
 }
 
@@ -112,6 +116,9 @@ class _StartupScreenState extends State<_StartupScreen> {
   }
 
   Future<void> _loadFirstBook() async {
+    // Sincronizar progreso desde la nube en background
+    ReadingProgressService.syncFromCloud();
+
     // Verificar si es la primera vez
     final firstTime = await UserProfileService.isFirstTime();
     if (!mounted) return;
