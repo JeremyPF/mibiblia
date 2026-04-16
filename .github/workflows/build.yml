@@ -39,7 +39,7 @@ jobs:
       run: |
         # Decode
         # Decode using Python to avoid shell string handling issues
-        python3 -c "import base64,os; open('/tmp/verify.p12','wb').write(base64.b64decode(os.environ['KEYSTORE_BASE64']))"
+        python3 -c "import base64,os; data=os.environ['KEYSTORE_BASE64']; print('Base64 length:',len(data)); decoded=base64.b64decode(data); print('Decoded size:',len(decoded),'bytes'); open('/tmp/verify.p12','wb').write(decoded)"
         
         # Check file size (must be > 100 bytes)
         SIZE=$(stat -c%s /tmp/verify.p12)
