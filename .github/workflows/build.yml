@@ -31,20 +31,33 @@ jobs:
     - name: Get dependencies
       run: flutter pub get
 
-    - name: Build APK (unsigned)
+    - name: Build APK
       run: flutter build apk --release --build-number=${{ github.run_number }} --build-name=1.0.${{ github.run_number }}
 
     - name: Sign APK
-      id: sign
-      uses: r0adkll/sign-android-release@v1
-      with:
-        releaseDirectory: build/app/outputs/apk/release
-        signingKeyBase64: ${{ secrets.KEYSTORE_BASE64 }}
-        alias: ${{ secrets.KEY_ALIAS }}
-        keyStorePassword: ${{ secrets.KEYSTORE_PASSWORD }}
-        keyPassword: ${{ secrets.KEY_PASSWORD }}
       env:
-        BUILD_TOOLS_VERSION: "33.0.1"
+        KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
+        KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+        KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+      run: |
+        # Decode keystore
+        printf '%s' "$KEYSTORE_BASE64" | base64 -d > /tmp/signing.p12
+        
+        # Verify file is valid
+        ls -la /tmp/signing.p12
+        
+        # Sign with apksigner
+        BUILD_TOOLS=$ANDROID_SDK_ROOT/build-tools/33.0.1
+        $BUILD_TOOLS/apksigner sign \
+          --ks /tmp/signing.p12 \
+          --ks-key-alias "$KEY_ALIAS" \
+          --ks-pass "pass:$KEYSTORE_PASSWORD" \
+          --key-pass "pass:$KEYSTORE_PASSWORD" \
+          --out build/app/outputs/apk/release/app-release-signed.apk \
+          build/app/outputs/apk/release/app-release.apk
+        
+        # Cleanup
+        rm /tmp/signing.p12
 
     - name: Upload APK to Release
       uses: softprops/action-gh-release@v2
