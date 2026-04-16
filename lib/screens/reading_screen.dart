@@ -11,6 +11,7 @@ import '../models/chapter.dart';
 import '../services/bible_service.dart';
 import '../services/reading_progress_service.dart';
 import '../data/bible_data.dart';
+import '../services/user_profile_service.dart';
 import 'search_screen.dart';
 
 class ReadingScreen extends StatefulWidget {
@@ -157,6 +158,8 @@ class _ReadingScreenState extends State<ReadingScreen>
     final chapter = await BibleService.loadChapter(widget.bookId, _currentChapter);
     if (!mounted) return;
     setState(() { _chapter = chapter; _isLoading = false; });
+    // Guardar posición actual
+    UserProfileService.saveLastPosition(widget.bookId, widget.bookName, _currentChapter);
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (_scrollController.hasClients) _scrollController.jumpTo(0);
     });

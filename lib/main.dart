@@ -15,7 +15,9 @@ import 'widgets/update_banner.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await SupabaseService.initialize();
-  runApp(const SacredTextApp());
+  final settings = ReadingSettingsProvider();
+  await settings.load();
+  runApp(SacredTextApp(settings: settings));
 }
 
 class ReadingSettingsScope extends InheritedNotifier<ReadingSettingsProvider> {
@@ -33,14 +35,15 @@ class ReadingSettingsScope extends InheritedNotifier<ReadingSettingsProvider> {
 }
 
 class SacredTextApp extends StatefulWidget {
-  const SacredTextApp({super.key});
+  final ReadingSettingsProvider settings;
+  const SacredTextApp({super.key, required this.settings});
 
   @override
   State<SacredTextApp> createState() => _SacredTextAppState();
 }
 
 class _SacredTextAppState extends State<SacredTextApp> {
-  final ReadingSettingsProvider _settings = ReadingSettingsProvider();
+  late final ReadingSettingsProvider _settings = widget.settings;
   final UpdateService _updateService = UpdateService();
 
   @override
@@ -136,6 +139,24 @@ class _StartupScreenState extends State<_StartupScreen> {
       return;
     }
 
+    // Restaurar última posición guardada
+    final last = await UserProfileService.getLastPosition();
+    if (!mounted) return;
+
+    if (last != null) {
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(
+          builder: (ctx) => ReadingScreen(
+            bookId: last['bookId'] as int,
+            bookName: last['bookName'] as String,
+            chapterNumber: last['chapter'] as int,
+          ),
+        ),
+      );
+      return;
+    }
+
+    // Fallback: primer libro disponible
     final books = await BibleService.getAvailableBooks();
     if (!mounted) return;
     final book = books.isNotEmpty ? books.first : null;
@@ -146,9 +167,6 @@ class _StartupScreenState extends State<_StartupScreen> {
           bookId: book.id,
           bookName: book.name,
           chapterNumber: 1,
-          onSearchTap: () => Navigator.of(ctx).push(
-            MaterialPageRoute(builder: (_) => const SearchScreen()),
-          ),
         ),
       ),
     );

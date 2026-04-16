@@ -45,6 +45,27 @@ class UserProfileService {
   static const _keyFirstTime = 'first_time';
   static const _keyPlan = 'reading_plan';
   static const _keyAssessment = 'assessment_answers';
+  static const _keyLastBookId = 'last_book_id';
+  static const _keyLastBookName = 'last_book_name';
+  static const _keyLastChapter = 'last_chapter';
+
+  static Future<void> saveLastPosition(int bookId, String bookName, int chapter) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setInt(_keyLastBookId, bookId);
+    await prefs.setString(_keyLastBookName, bookName);
+    await prefs.setInt(_keyLastChapter, chapter);
+  }
+
+  static Future<Map<String, dynamic>?> getLastPosition() async {
+    final prefs = await SharedPreferences.getInstance();
+    final bookId = prefs.getInt(_keyLastBookId);
+    if (bookId == null) return null;
+    return {
+      'bookId': bookId,
+      'bookName': prefs.getString(_keyLastBookName) ?? '',
+      'chapter': prefs.getInt(_keyLastChapter) ?? 1,
+    };
+  }
 
   static Future<bool> isFirstTime() async {
     final prefs = await SharedPreferences.getInstance();
