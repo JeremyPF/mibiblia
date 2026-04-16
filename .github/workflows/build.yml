@@ -38,7 +38,8 @@ jobs:
         KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
       run: |
         # Decode
-        printf '%s' "$KEYSTORE_BASE64" | base64 -d > /tmp/verify.p12
+        # Decode using Python to avoid shell string handling issues
+        python3 -c "import base64,os; open('/tmp/verify.p12','wb').write(base64.b64decode(os.environ['KEYSTORE_BASE64']))"
         
         # Check file size (must be > 100 bytes)
         SIZE=$(stat -c%s /tmp/verify.p12)
@@ -71,8 +72,8 @@ jobs:
         KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
         KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
       run: |
-        # Decode keystore
-        printf '%s' "$KEYSTORE_BASE64" | base64 -d > /tmp/signing.p12
+        # Decode keystore using Python to avoid shell string handling issues
+        python3 -c "import base64,os; open('/tmp/signing.p12','wb').write(base64.b64decode(os.environ['KEYSTORE_BASE64']))"
         
         # Verify file is valid
         ls -la /tmp/signing.p12
