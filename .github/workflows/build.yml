@@ -51,4 +51,4 @@ jobs:
       with:
         tag_name: build-${{ github.run_number }}
         name: Build ${{ github.run_number }}
-        files: ${{ steps.sign.outputs.signedReleaseFile }}
+        files: build/app/outputs/apk/release/app-release-signed.apk
