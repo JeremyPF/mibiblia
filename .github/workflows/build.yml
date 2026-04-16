@@ -3,97 +3,43 @@ name: Build Flutter App (Android)
 on:
   push:
     branches: [ main ]
+  pull_request:
+    branches: [ main ]
   workflow_dispatch:
 
 jobs:
   build-android:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-
+    
     steps:
     - uses: actions/checkout@v4
-
+    
     - name: Setup Java
       uses: actions/setup-java@v4
       with:
         distribution: 'zulu'
         java-version: '17'
         cache: 'gradle'
-
+    
     - name: Setup Flutter
       uses: subosito/flutter-action@v2
       with:
         flutter-version: '3.24.0'
         channel: 'stable'
         cache: true
-
+    
     - name: Get dependencies
       run: flutter pub get
-
-    - name: Verify keystore secret
-      env:
-        KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
-        KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
-        KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
-      run: |
-        # Decode
-        # Decode using Python to avoid shell string handling issues
-        python3 -c "import base64,os; data=os.environ['KEYSTORE_BASE64']; print('Base64 length:',len(data)); decoded=base64.b64decode(data); print('Decoded size:',len(decoded),'bytes'); open('/tmp/verify.p12','wb').write(decoded)"
-        
-        # Check file size (must be > 100 bytes)
-        SIZE=$(stat -c%s /tmp/verify.p12)
-        echo "Keystore size: $SIZE bytes"
-        if [ "$SIZE" -lt 100 ]; then
-          echo "ERROR: Keystore file is too small ($SIZE bytes) - Base64 secret is likely corrupted or empty"
-          exit 1
-        fi
-        
-        # List all aliases in keystore (no alias filter to see what's inside)
-        keytool -list -keystore /tmp/verify.p12 -storetype PKCS12 -storepass "jeremy025896" -v 2>&1
-        if [ $? -ne 0 ]; then
-          echo "KEYSTORE_PASSWORD length: ${#KEYSTORE_PASSWORD}"
-          echo "KEY_ALIAS: $KEY_ALIAS"
-          file /tmp/verify.p12
-          xxd /tmp/verify.p12 | head -2
-          echo "ERROR: Could not read keystore"
-          exit 1
-        fi
-        
-        echo "Keystore verification PASSED"
-        rm /tmp/verify.p12
-
-    - name: Build APK
-      run: flutter build apk --release --build-number=${{ github.run_number }} --build-name=1.0.${{ github.run_number }}
-
-    - name: Sign APK
-      env:
-        KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
-        KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
-        KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
-      run: |
-        # Decode keystore using Python to avoid shell string handling issues
-        python3 -c "import base64,os; open('/tmp/signing.p12','wb').write(base64.b64decode(os.environ['KEYSTORE_BASE64']))"
-        
-        # Verify file is valid
-        ls -la /tmp/signing.p12
-        
-        # Sign with apksigner
-        BUILD_TOOLS=$ANDROID_SDK_ROOT/build-tools/33.0.1
-        $BUILD_TOOLS/apksigner sign \
-          --ks /tmp/signing.p12 \
-          --ks-key-alias "$KEY_ALIAS" \
-          --ks-pass "pass:$KEYSTORE_PASSWORD" \
-          --key-pass "pass:$KEYSTORE_PASSWORD" \
-          --out build/app/outputs/apk/release/app-release-signed.apk \
-          build/app/outputs/apk/release/app-release.apk
-        
-        # Cleanup
-        rm /tmp/signing.p12
-
-    - name: Upload APK to Release
-      uses: softprops/action-gh-release@v2
+    
+    - name: Build APK (Universal)
+      run: flutter build apk --release
+    
+    - name: Rename APK
+      run: mv build/app/outputs/flutter-apk/app-release.apk build/app/outputs/flutter-apk/mibiblia-universal.apk
+    
+    - name: Upload Universal APK
+      uses: actions/upload-artifact@v4
       with:
-        tag_name: build-${{ github.run_number }}
-        name: Build ${{ github.run_number }}
-        files: build/app/outputs/apk/release/app-release-signed.apk
+        name: mibiblia-universal-apk
+        path: build/app/outputs/flutter-apk/mibiblia-universal.apk
+        compression-level: 0
