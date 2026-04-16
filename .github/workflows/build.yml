@@ -30,7 +30,7 @@ jobs:
 
     - name: Decode keystore and write key.properties
       run: |
-        echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 --decode > android/app/mibiblia.jks
+        echo "${{ secrets.KEYSTORE_BASE64 }}" | tr -d '\n\r ' | base64 --decode > android/app/mibiblia.jks
         printf 'storePassword=%s\nkeyPassword=%s\nkeyAlias=%s\nstoreFile=mibiblia.jks\n' \
           '${{ secrets.KEYSTORE_PASSWORD }}' \
           '${{ secrets.KEY_PASSWORD }}' \
