@@ -115,6 +115,7 @@ class _ReadingScreenState extends State<ReadingScreen>
 
   // Navegación por scroll al final/inicio
   Timer? _navDebounce;
+  bool _loadingChapter = false; // evita que jumpTo(0) dispare nav al cap anterior
 
   void _onScroll() {
     final pos = _scrollController.position;
@@ -132,24 +133,17 @@ class _ReadingScreenState extends State<ReadingScreen>
       _markCurrentChapterRead();
     }
 
-    // Navegar al siguiente capítulo: scroll al fondo + indicador listo + 1.5s
-    if (_indicatorReady && _hasNextChapter && maxScroll > 0 && current >= maxScroll) {
+    if (_loadingChapter) return; // ignorar eventos de scroll durante carga
+
+    // Siguiente cap: llegar al fondo + indicador listo → 1.5s
+    if (_indicatorReady && _hasNextChapter && maxScroll > 0 && current >= maxScroll - 1) {
       _navDebounce?.cancel();
-      _navDebounce = Timer(const Duration(milliseconds: 1500), () {
-        if (_scrollController.hasClients &&
-            _scrollController.position.pixels >= _scrollController.position.maxScrollExtent) {
-          _goToNextChapter();
-        }
-      });
-    } else if (_hasPrevChapter && current <= 0) {
-      // Navegar al capítulo anterior: scroll al tope + 1.5s
+      _navDebounce = Timer(const Duration(milliseconds: 1500), _goToNextChapter);
+    }
+    // Cap anterior: scroll al tope (solo si el usuario ya había bajado antes)
+    else if (_hasPrevChapter && current <= 0 && _scrollProgress > 0) {
       _navDebounce?.cancel();
-      _navDebounce = Timer(const Duration(milliseconds: 1500), () {
-        if (_scrollController.hasClients &&
-            _scrollController.position.pixels <= 0) {
-          _goToPrevChapter();
-        }
-      });
+      _navDebounce = Timer(const Duration(milliseconds: 1500), _goToPrevChapter);
     } else {
       _navDebounce?.cancel();
     }
@@ -185,8 +179,12 @@ class _ReadingScreenState extends State<ReadingScreen>
     setState(() { _chapter = chapter; _isLoading = false; });
     // Guardar posición actual
     UserProfileService.saveLastPosition(widget.bookId, widget.bookName, _currentChapter);
+    _loadingChapter = true;
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (_scrollController.hasClients) _scrollController.jumpTo(0);
+      Future.delayed(const Duration(milliseconds: 300), () {
+        if (mounted) _loadingChapter = false;
+      });
     });
     _pageCtrl.forward();
   }
@@ -338,7 +336,6 @@ class _ReadingScreenState extends State<ReadingScreen>
                           child: _ChapterCompleteIndicator(
                             ready: _indicatorReady,
                             hasNext: _hasNextChapter,
-                            onNext: _goToNextChapter,
                           ),
                         ),
                       ),
@@ -474,14 +471,12 @@ class _ReadingScreenState extends State<ReadingScreen>
 
 /// Indicador animado: check → flecha de siguiente capítulo
 class _ChapterCompleteIndicator extends StatefulWidget {
-  final bool ready;       // false = muestra check, true = muestra flecha
+  final bool ready;
   final bool hasNext;
-  final VoidCallback onNext;
 
   const _ChapterCompleteIndicator({
     required this.ready,
     required this.hasNext,
-    required this.onNext,
   });
 
   @override
@@ -527,26 +522,23 @@ class _ChapterCompleteIndicatorState extends State<_ChapterCompleteIndicator>
 
     return ScaleTransition(
       scale: _scale,
-      child: GestureDetector(
-        onTap: widget.ready && widget.hasNext ? widget.onNext : null,
-        child: Container(
-          width: 48,
-          height: 48,
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            color: color.withOpacity(0.12),
-            border: Border.all(color: color.withOpacity(0.35), width: 1.5),
-          ),
-          child: AnimatedSwitcher(
-            duration: const Duration(milliseconds: 300),
-            transitionBuilder: (child, anim) =>
-                ScaleTransition(scale: anim, child: child),
-            child: Icon(
-              icon,
-              key: ValueKey(icon),
-              color: color,
-              size: 24,
-            ),
+      child: Container(
+        width: 48,
+        height: 48,
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          color: color.withOpacity(0.12),
+          border: Border.all(color: color.withOpacity(0.35), width: 1.5),
+        ),
+        child: AnimatedSwitcher(
+          duration: const Duration(milliseconds: 300),
+          transitionBuilder: (child, anim) =>
+              ScaleTransition(scale: anim, child: child),
+          child: Icon(
+            icon,
+            key: ValueKey(icon),
+            color: color,
+            size: 24,
           ),
         ),
       ),

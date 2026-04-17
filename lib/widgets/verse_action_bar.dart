@@ -28,7 +28,7 @@ class VerseActionBar extends StatelessWidget {
     return Container(
       height: 64,
       decoration: BoxDecoration(
-        color: AppTheme.surfaceContainerHigh,
+        color: Theme.of(context).colorScheme.surface,
         boxShadow: [
           BoxShadow(
             color: Colors.black.withOpacity(0.1),

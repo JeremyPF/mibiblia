@@ -103,12 +103,7 @@ class _VerseWidgetState extends State<VerseWidget>
                   ),
                   TextSpan(
                     text: widget.text,
-                    style: textStyle.copyWith(
-                      backgroundColor: _isSelected
-                          ? AppTheme.secondary
-                              .withOpacity(0.18 * _highlightAnim.value)
-                          : Colors.transparent,
-                    ),
+                    style: textStyle,
                   ),
                 ],
               ),
