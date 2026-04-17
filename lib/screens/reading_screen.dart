@@ -409,10 +409,6 @@ class _ReadingProgressIndicator extends StatelessWidget {
     );
   }
 }
-      }),
-    );
-  }
-}
 
 
 /// Helper: listens to 3 ValueNotifiers without rebuilding the whole tree.
