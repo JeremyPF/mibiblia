@@ -1,9 +1,12 @@
 import 'dart:async';
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:share_plus/share_plus.dart';
 import '../services/groq_service.dart';
 import '../theme/app_theme.dart';
+import '../widgets/app_toast.dart';
 
 class ModoIAScreen extends StatefulWidget {
   const ModoIAScreen({super.key});
@@ -15,6 +18,8 @@ class _ModoIAScreenState extends State<ModoIAScreen> {
   final _ctrl = TextEditingController();
   bool _loading = false;
   _IAResult? _result;
+  // Historial de consultas
+  final List<_HistoryEntry> _history = [];
 
   static const _suggestions = [
     '¿Qué dice la Biblia sobre el perdón?',
@@ -68,13 +73,18 @@ Usa máximo 3 versículos relevantes.''';
 
       // Parse manually to avoid dart:convert issues with dynamic
       final result = _parseResult(jsonStr);
-      if (mounted) setState(() { _result = result; _loading = false; });
-    } catch (e) {
-      if (mounted) setState(() { _loading = false; });
       if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Error: $e'), duration: const Duration(seconds: 3)),
-        );
+        setState(() {
+          _result = result;
+          _loading = false;
+          _history.insert(0, _HistoryEntry(query: query, result: result));
+        });
+      }
+    } catch (e) {
+      if (mounted) {
+        setState(() { _loading = false; });
+        showAppToast(context, 'No pude procesar la respuesta. Intenta de nuevo.',
+            icon: Icons.error_outline);
       }
     }
   }
@@ -87,33 +97,108 @@ Usa máximo 3 versículos relevantes.''';
   }
 
   String? _extractJson(String raw) {
-    final start = raw.indexOf('{');
-    final end = raw.lastIndexOf('}');
-    if (start == -1 || end == -1) return null;
-    return raw.substring(start, end + 1);
+    // Strip markdown code fences if present
+    var text = raw.replaceAll(RegExp(r'```json\s*'), '').replaceAll(RegExp(r'```\s*'), '');
+
+    // Find the outermost JSON object by counting braces
+    int start = -1;
+    int depth = 0;
+    for (int i = 0; i < text.length; i++) {
+      if (text[i] == '{') {
+        if (start == -1) start = i;
+        depth++;
+      } else if (text[i] == '}') {
+        depth--;
+        if (depth == 0 && start != -1) {
+          return text.substring(start, i + 1);
+        }
+      }
+    }
+    return null;
   }
 
-  _IAResult _parseResult(String json) {
-    final map = jsonDecode(json) as Map<String, dynamic>;
+  _IAResult _parseResult(String jsonStr) {
+    // Sanitize: remove control characters that break JSON parsing
+    final clean = jsonStr.replaceAll(RegExp(r'[\x00-\x08\x0B\x0C\x0E-\x1F]'), '');
+    Map<String, dynamic> map;
+    try {
+      map = jsonDecode(clean) as Map<String, dynamic>;
+    } catch (_) {
+      // Fallback: treat entire response as explanation text
+      return _IAResult.text(verses: [], explanation: clean, suggestions: []);
+    }
     final mode = map['mode'] as String? ?? 'text';
     final versesList = (map['verses'] as List? ?? [])
-        .map((v) => _Verse(ref: v['ref'] ?? '', text: v['text'] ?? ''))
+        .map((v) => _Verse(
+              ref: (v['ref'] ?? '').toString(),
+              text: (v['text'] ?? '').toString(),
+            ))
         .toList();
 
     if (mode == 'story') {
       return _IAResult.story(
-        title: map['title'] ?? '',
+        title: (map['title'] ?? '').toString(),
         verses: versesList,
-        narrative: (map['narrative'] as List? ?? []).cast<String>(),
-        reflection: map['reflection'] ?? '',
+        narrative: (map['narrative'] as List? ?? [])
+            .map((e) => e.toString())
+            .toList(),
+        reflection: (map['reflection'] ?? '').toString(),
       );
     } else {
       return _IAResult.text(
         verses: versesList,
-        explanation: map['explanation'] ?? '',
-        suggestions: (map['suggestions'] as List? ?? []).cast<String>(),
+        explanation: (map['explanation'] ?? '').toString(),
+        suggestions: (map['suggestions'] as List? ?? [])
+            .map((e) => e.toString())
+            .toList(),
       );
     }
+  }
+
+  void _showHistory() {
+    showModalBottomSheet(
+      context: context,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(top: Radius.circular(16))),
+      builder: (_) => SafeArea(
+        child: Column(mainAxisSize: MainAxisSize.min, children: [
+          const SizedBox(height: 12),
+          Container(width: 36, height: 4,
+              decoration: BoxDecoration(
+                  color: AppTheme.outlineVariant.withOpacity(0.4),
+                  borderRadius: BorderRadius.circular(2))),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(20, 12, 20, 4),
+            child: Text('Historial', style: GoogleFonts.newsreader(
+                fontSize: 16, fontWeight: FontWeight.w600)),
+          ),
+          ConstrainedBox(
+            constraints: BoxConstraints(
+                maxHeight: MediaQuery.of(context).size.height * 0.4),
+            child: ListView.builder(
+              shrinkWrap: true,
+              itemCount: _history.length,
+              itemBuilder: (_, i) => ListTile(
+                leading: Icon(
+                  _history[i].result.isStory
+                      ? Icons.auto_stories_rounded
+                      : Icons.lightbulb_outline_rounded,
+                  color: AppTheme.secondary, size: 18),
+                title: Text(_history[i].query,
+                    style: GoogleFonts.newsreader(fontSize: 14),
+                    maxLines: 1, overflow: TextOverflow.ellipsis),
+                onTap: () {
+                  Navigator.pop(context);
+                  setState(() => _result = _history[i].result);
+                },
+              ),
+            ),
+          ),
+          const SizedBox(height: 8),
+        ]),
+      ),
+    );
   }
 
   @override
@@ -136,6 +221,14 @@ Usa máximo 3 versículos relevantes.''';
           Text('Modo IA', style: GoogleFonts.newsreader(
               fontSize: 18, fontStyle: FontStyle.italic)),
         ]),
+        actions: [
+          if (_history.isNotEmpty)
+            IconButton(
+              icon: const Icon(Icons.history_rounded, color: AppTheme.secondary),
+              tooltip: 'Historial',
+              onPressed: _showHistory,
+            ),
+        ],
       ),
       body: Column(children: [
         Expanded(
@@ -280,8 +373,24 @@ class _TextView extends StatelessWidget {
           const SizedBox(height: 20),
         ],
         // Explicación
-        Text('EXPLICACIÓN', style: Theme.of(context).textTheme.labelSmall
-            ?.copyWith(color: AppTheme.secondary, letterSpacing: 2)),
+        Row(children: [
+          Text('EXPLICACIÓN', style: Theme.of(context).textTheme.labelSmall
+              ?.copyWith(color: AppTheme.secondary, letterSpacing: 2)),
+          const Spacer(),
+          IconButton(
+            icon: const Icon(Icons.content_copy, size: 16, color: AppTheme.secondary),
+            tooltip: 'Copiar',
+            onPressed: () {
+              Clipboard.setData(ClipboardData(text: result.explanation));
+              showAppToast(context, 'Copiado', icon: Icons.content_copy);
+            },
+          ),
+          IconButton(
+            icon: const Icon(Icons.share, size: 16, color: AppTheme.secondary),
+            tooltip: 'Compartir',
+            onPressed: () => Share.share(result.explanation),
+          ),
+        ]),
         const SizedBox(height: 12),
         Text(result.explanation, style: GoogleFonts.newsreader(
             fontSize: 15, height: 1.75,
@@ -506,6 +615,12 @@ class _NarrativeParagraphState extends State<_NarrativeParagraph>
 class _Verse {
   final String ref, text;
   const _Verse({required this.ref, required this.text});
+}
+
+class _HistoryEntry {
+  final String query;
+  final _IAResult result;
+  const _HistoryEntry({required this.query, required this.result});
 }
 
 class _IAResult {
