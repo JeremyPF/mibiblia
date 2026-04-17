@@ -402,28 +402,13 @@ class _ReadingProgressIndicator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    // Barra estática decorativa — sin fill de progreso
+    return Container(
       width: 3,
-      child: LayoutBuilder(builder: (context, constraints) {
-        return Stack(children: [
-          Container(
-              width: 3,
-              height: constraints.maxHeight,
-              color: AppTheme.outlineVariant.withOpacity(0.12)),
-          AnimatedContainer(
-            duration: const Duration(milliseconds: 80),
-            curve: Curves.easeOut,
-            width: 3,
-            height: constraints.maxHeight * progress,
-            decoration: BoxDecoration(
-              color: AppTheme.secondary.withOpacity(0.6),
-              borderRadius: const BorderRadius.only(
-                bottomRight: Radius.circular(2),
-                bottomLeft: Radius.circular(2),
-              ),
-            ),
-          ),
-        ]);
+      color: AppTheme.outlineVariant.withOpacity(0.12),
+    );
+  }
+}
       }),
     );
   }

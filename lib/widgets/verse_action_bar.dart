@@ -6,6 +6,8 @@ import '../services/share_service.dart';
 import '../services/saved_verses_service.dart';
 import '../models/highlight.dart';
 import '../screens/notes_screen.dart';
+import 'app_toast.dart';
+import 'ai_chat_sheet.dart';
 
 class VerseActionBar extends StatelessWidget {
   final String bookName;
@@ -47,6 +49,17 @@ class VerseActionBar extends StatelessWidget {
             onPressed: onClose,
           ),
           const Spacer(),
+          // Chat IA
+          IconButton(
+            icon: const Icon(Icons.auto_awesome_rounded),
+            tooltip: 'Preguntar a la IA',
+            color: AppTheme.secondary,
+            onPressed: () => showAIChatSheet(
+              context,
+              '$bookName $chapterNumber:$verseNumber',
+              verseText,
+            ),
+          ),
           // Compartir
           IconButton(
             icon: const Icon(Icons.share),
@@ -59,11 +72,8 @@ class VerseActionBar extends StatelessWidget {
             tooltip: 'Copiar',
             onPressed: () {
               Clipboard.setData(ClipboardData(text: verseText));
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(
-                    content: Text('Versículo copiado'),
-                    duration: Duration(seconds: 2)),
-              );
+              showAppToast(context, 'Versículo copiado',
+                  icon: Icons.content_copy);
             },
           ),
           // Guardar con categoría
@@ -206,6 +216,8 @@ class _SaveVerseSheetState extends State<_SaveVerseSheet> {
     ));
     if (mounted) {
       Navigator.of(context).pop();
+      showAppToast(context, 'Versículo guardado 🔖',
+          icon: Icons.bookmark_rounded);
       widget.onSaved();
     }
   }

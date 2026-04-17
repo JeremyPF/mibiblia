@@ -230,32 +230,59 @@ class _OnboardingScreenState extends State<OnboardingScreen>
   }
 
   Widget _buildSettingsPreview() {
+    final textColor = _darkBg ? const Color(0xFFDEE4DC) : const Color(0xFF2E342F);
     final textStyle = GoogleFonts.getFont(
       _fontFamily,
       fontSize: _fontSize,
       height: _lineHeight,
-      color: _darkBg ? const Color(0xFFDEE4DC) : const Color(0xFF2E342F),
+      color: textColor,
     );
+    final numStyle = TextStyle(
+        fontSize: 10,
+        color: textColor.withOpacity(0.4),
+        letterSpacing: 1);
+
     return Column(mainAxisSize: MainAxisSize.min, children: [
-      Text('✨', style: const TextStyle(fontSize: 40)),
-      const SizedBox(height: 12),
-      Text('Personaliza tu lectura',
+      Text('✨', style: const TextStyle(fontSize: 36)),
+      const SizedBox(height: 8),
+      Text('Así se verá tu lectura',
           style: GoogleFonts.notoSerif(
-              fontSize: 22, fontWeight: FontWeight.w300,
+              fontSize: 20, fontWeight: FontWeight.w300,
               color: _darkBg ? Colors.white70 : const Color(0xFF3D2E1A))),
-      const SizedBox(height: 20),
-      // Preview del texto
-      Container(
-        padding: const EdgeInsets.all(20),
+      const SizedBox(height: 16),
+      // Preview inmersivo — simula una página real
+      AnimatedContainer(
+        duration: const Duration(milliseconds: 250),
+        width: double.infinity,
+        padding: const EdgeInsets.fromLTRB(24, 28, 24, 28),
         decoration: BoxDecoration(
           color: _darkBg ? const Color(0xFF1C1C1C) : Colors.white,
-          borderRadius: BorderRadius.circular(12),
-          border: Border.all(
-              color: AppTheme.outlineVariant.withOpacity(0.2)),
+          borderRadius: BorderRadius.circular(16),
+          boxShadow: [BoxShadow(
+              color: Colors.black.withOpacity(_darkBg ? 0.4 : 0.08),
+              blurRadius: 20, offset: const Offset(0, 4))],
         ),
-        child: Text(_sampleText, style: textStyle, textAlign: TextAlign.center),
+        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          // Número de capítulo simulado
+          Text('3', style: GoogleFonts.notoSerif(
+              fontSize: 48, fontWeight: FontWeight.w200, color: textColor)),
+          const SizedBox(height: 16),
+          // Versículos de muestra
+          _previewVerse(16, '«Porque tanto amó Dios al mundo, que dio a su Hijo único, para que todo el que crea en él no se pierda, sino que tenga vida eterna.»', textStyle, numStyle),
+          const SizedBox(height: 16),
+          _previewVerse(17, '«Dios no mandó a su Hijo al mundo para condenar al mundo, sino para salvarlo.»', textStyle, numStyle),
+        ]),
       ),
     ]);
+  }
+
+  Widget _previewVerse(int n, String text, TextStyle style, TextStyle numStyle) {
+    return RichText(
+      text: TextSpan(children: [
+        TextSpan(text: '$n  ', style: numStyle),
+        TextSpan(text: text, style: style),
+      ]),
+    );
   }
 
   Widget _buildWelcomeFinal() {

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../services/reading_progress_service.dart';
+import '../services/supabase_service.dart';
 import '../theme/app_theme.dart';
 
 Future<void> showEmailLinkDialog(BuildContext context) async {
@@ -21,8 +22,10 @@ class _EmailLinkDialogState extends State<_EmailLinkDialog> {
   final _emailCtrl = TextEditingController();
   bool _loading = false;
   String? _error;
-  // Paso 2: PIN
+
+  // PIN step
   bool _pinStep = false;
+  bool _verifyMode = false; // true = verificar PIN existente, false = crear nuevo
   final List<String> _pin = [];
 
   @override
@@ -37,13 +40,24 @@ class _EmailLinkDialogState extends State<_EmailLinkDialog> {
       setState(() => _error = 'Ingresa un correo válido');
       return;
     }
-    setState(() { _pinStep = true; _error = null; });
+    setState(() { _loading = true; _error = null; });
+
+    // Verificar si ya existe un PIN en Supabase para este correo
+    final userId = SupabaseService.emailToUserId(email);
+    final existingPin = await SupabaseService.getPinForUser(userId);
+
+    if (!mounted) return;
+    setState(() {
+      _loading = false;
+      _pinStep = true;
+      _verifyMode = existingPin != null;
+    });
   }
 
   void _onPinDigit(String d) {
     if (_pin.length >= 4) return;
     setState(() => _pin.add(d));
-    if (_pin.length == 4) _confirmPin();
+    if (_pin.length == 4) _handlePin();
   }
 
   void _onPinDelete() {
@@ -51,10 +65,30 @@ class _EmailLinkDialogState extends State<_EmailLinkDialog> {
     setState(() => _pin.removeLast());
   }
 
-  Future<void> _confirmPin() async {
+  Future<void> _handlePin() async {
     setState(() => _loading = true);
-    await ReadingProgressService.linkEmail(
-        _emailCtrl.text.trim(), _pin.join());
+    final email = _emailCtrl.text.trim();
+    final enteredPin = _pin.join();
+
+    if (_verifyMode) {
+      // Verificar PIN contra Supabase
+      final userId = SupabaseService.emailToUserId(email);
+      final cloudPin = await SupabaseService.getPinForUser(userId);
+      if (cloudPin != enteredPin) {
+        setState(() {
+          _loading = false;
+          _pin.clear();
+          _error = 'PIN incorrecto. Intenta de nuevo.';
+        });
+        return;
+      }
+      // PIN correcto — vincular localmente y sincronizar progreso
+      await ReadingProgressService.linkEmail(email, enteredPin);
+    } else {
+      // Crear nuevo PIN
+      await ReadingProgressService.linkEmail(email, enteredPin);
+    }
+
     if (mounted) Navigator.of(context).pop(true);
   }
 
@@ -103,14 +137,17 @@ class _EmailLinkDialogState extends State<_EmailLinkDialog> {
       const SizedBox(height: 20),
       Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
         TextButton(
-          onPressed: () => Navigator.of(context).pop(),
+          onPressed: _loading ? null : () => Navigator.of(context).pop(),
           child: Text('Ahora no',
               style: TextStyle(color: AppTheme.outline.withOpacity(0.7))),
         ),
         FilledButton(
-          onPressed: _goToPin,
+          onPressed: _loading ? null : _goToPin,
           style: FilledButton.styleFrom(backgroundColor: AppTheme.secondary),
-          child: const Text('Continuar'),
+          child: _loading
+              ? const SizedBox(width: 18, height: 18,
+                  child: CircularProgressIndicator(strokeWidth: 2, color: Colors.white))
+              : const Text('Continuar'),
         ),
       ]),
     ]);
@@ -118,16 +155,22 @@ class _EmailLinkDialogState extends State<_EmailLinkDialog> {
 
   Widget _buildPinStep() {
     return Column(mainAxisSize: MainAxisSize.min, children: [
-      const Icon(Icons.lock_outline, color: AppTheme.secondary, size: 32),
+      Icon(_verifyMode ? Icons.lock_rounded : Icons.lock_open_rounded,
+          color: AppTheme.secondary, size: 32),
       const SizedBox(height: 12),
-      Text('Crea tu PIN de 4 dígitos',
-          style: GoogleFonts.newsreader(fontSize: 18, fontWeight: FontWeight.w600)),
+      Text(
+        _verifyMode ? 'Ingresa tu PIN' : 'Crea tu PIN de 4 dígitos',
+        style: GoogleFonts.newsreader(fontSize: 18, fontWeight: FontWeight.w600),
+      ),
       const SizedBox(height: 6),
-      Text('Lo necesitarás para recuperar tu cuenta en otro dispositivo.',
-          style: GoogleFonts.newsreader(fontSize: 13, color: AppTheme.outline, height: 1.5),
-          textAlign: TextAlign.center),
+      Text(
+        _verifyMode
+            ? 'Esta cuenta ya tiene un PIN. Ingrésalo para acceder.'
+            : 'Este PIN protege tu cuenta. Lo necesitarás en otro dispositivo.',
+        style: GoogleFonts.newsreader(fontSize: 13, color: AppTheme.outline, height: 1.5),
+        textAlign: TextAlign.center,
+      ),
       const SizedBox(height: 24),
-      // Indicadores de dígitos
       Row(mainAxisAlignment: MainAxisAlignment.center, children: List.generate(4, (i) {
         final filled = i < _pin.length;
         return Container(
@@ -137,14 +180,16 @@ class _EmailLinkDialogState extends State<_EmailLinkDialog> {
             shape: BoxShape.circle,
             color: filled ? AppTheme.secondary : Colors.transparent,
             border: Border.all(
-                color: filled
-                    ? AppTheme.secondary
-                    : AppTheme.outlineVariant.withOpacity(0.5),
+                color: filled ? AppTheme.secondary : AppTheme.outlineVariant.withOpacity(0.5),
                 width: 1.5),
           ),
         );
       })),
-      const SizedBox(height: 24),
+      if (_error != null) ...[
+        const SizedBox(height: 8),
+        Text(_error!, style: const TextStyle(color: Colors.red, fontSize: 12)),
+      ],
+      const SizedBox(height: 20),
       if (_loading)
         const CircularProgressIndicator(color: AppTheme.secondary)
       else

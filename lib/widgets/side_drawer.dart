@@ -39,14 +39,18 @@ class _SideDrawerState extends State<SideDrawer> {
   }
 
   void _openBookPicker(BibleBook book) async {
-    // Cerrar el drawer primero
-    Navigator.of(context).pop();
-    // Pequeño delay para que el drawer cierre antes de abrir el modal
-    await Future.delayed(const Duration(milliseconds: 200));
+    // Capture navigator before closing drawer
+    final nav = Navigator.of(context, rootNavigator: true);
+    final scaffoldContext = context;
+    Navigator.of(context).pop(); // close drawer
+
+    await Future.delayed(const Duration(milliseconds: 250));
     if (!mounted) return;
-    final result = await showChapterVersePicker(context, book);
-    if (result == null || !mounted) return;
-    Navigator.of(context).pushReplacement(
+
+    final result = await showChapterVersePicker(scaffoldContext, book);
+    if (result == null) return;
+
+    nav.pushReplacement(
       MaterialPageRoute(
         builder: (_) => ReadingScreen(
           bookId: result['bookId'],

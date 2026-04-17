@@ -11,11 +11,13 @@ import 'theme/app_theme.dart';
 import 'providers/reading_settings_provider.dart';
 import 'services/bible_service.dart';
 import 'services/update_service.dart';
+import 'services/notification_service.dart';
 import 'widgets/update_banner.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await SupabaseService.initialize();
+  await NotificationService.initialize();
   final settings = ReadingSettingsProvider();
   await settings.load();
   runApp(SacredTextApp(settings: settings));

@@ -42,13 +42,16 @@ class ReadingProgressService {
     return prefs.getString(_emailKey);
   }
 
-  /// Vincula un correo: migra el progreso anónimo y guarda el email.
+  /// Vincula un correo: migra el progreso anónimo y guarda el email + PIN en nube.
   static Future<void> linkEmail(String email, String pin) async {
     final prefs = await SharedPreferences.getInstance();
     final anonId = await getAnonId();
     final local = await getReadChapters();
     final emailUserId = SupabaseService.emailToUserId(email);
-    await SupabaseService.migrateToEmail(anonId, emailUserId, local);
+    // Fusionar con remoto y guardar PIN en Supabase
+    final remote = await SupabaseService.downloadProgress(emailUserId) ?? {};
+    final merged = {...local, ...remote};
+    await SupabaseService.uploadProgress(emailUserId, merged, pin: pin);
     await prefs.setString(_emailKey, email.trim().toLowerCase());
     await prefs.setString(_pinKey, pin);
   }
@@ -113,6 +116,12 @@ class ReadingProgressService {
     if (set.contains(id)) return false;
     set.add(id);
     await prefs.setStringList(_key, set.toList());
+    // Registrar fecha de hoy para la racha
+    final today = DateTime.now();
+    final dateKey = '${today.year}-${today.month}-${today.day}';
+    final dates = prefs.getStringList('read_dates')?.toSet() ?? {};
+    dates.add(dateKey);
+    await prefs.setStringList('read_dates', dates.toList());
     _syncOrQueue(set);
     return true;
   }

@@ -22,12 +22,15 @@ class SupabaseService {
 
   static bool get isLinked => false; // sin auth real, se controla desde ReadingProgressService
 
-  /// Sube el progreso a Supabase.
-  static Future<void> uploadProgress(String userId, Set<String> readChapters) async {
+  /// Sube el progreso a Supabase (incluye PIN si se proporciona).
+  static Future<void> uploadProgress(String userId, Set<String> readChapters,
+      {String? pin}) async {
     try {
+      final data = <String, dynamic>{'chapters': readChapters.toList()};
+      if (pin != null) data['pin'] = pin;
       await _client.from('reading_progress').upsert({
         'user_id': userId,
-        'data': {'chapters': readChapters.toList()},
+        'data': data,
         'updated_at': DateTime.now().toIso8601String(),
       });
     } catch (e) {
@@ -48,6 +51,22 @@ class SupabaseService {
       return list.toSet();
     } catch (e) {
       debugPrint('[Supabase] downloadProgress error: $e');
+      return null;
+    }
+  }
+
+  /// Obtiene el PIN guardado en la nube para un userId.
+  static Future<String?> getPinForUser(String userId) async {
+    try {
+      final row = await _client
+          .from('reading_progress')
+          .select('data')
+          .eq('user_id', userId)
+          .maybeSingle();
+      if (row == null) return null;
+      return row['data']['pin'] as String?;
+    } catch (e) {
+      debugPrint('[Supabase] getPinForUser error: $e');
       return null;
     }
   }

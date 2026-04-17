@@ -1,12 +1,15 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../theme/app_theme.dart';
 import '../services/reading_progress_service.dart';
 import '../services/bible_service.dart';
 import '../services/user_profile_service.dart';
+import '../services/notification_service.dart';
 import '../widgets/side_drawer.dart';
 import '../widgets/top_app_bar.dart';
+import '../widgets/app_toast.dart';
 import 'reading_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -84,17 +87,30 @@ class _HomeScreenState extends State<HomeScreen>
   Future<void> _load() async {
     final total = await ReadingProgressService.getTotalRead();
     final streak = await _calcStreak();
+    final savedAlarm = await NotificationService.getSavedAlarm();
     if (!mounted) return;
-    setState(() { _totalRead = total; _streak = streak; _loading = false; });
+    setState(() {
+      _totalRead = total;
+      _streak = streak;
+      _alarmTime = savedAlarm;
+      _loading = false;
+    });
     _progressCtrl.forward();
   }
 
   Future<int> _calcStreak() async {
-    // Streak simple: días consecutivos con al menos 1 capítulo leído
-    // Usamos la fecha de hoy y contamos hacia atrás en SharedPreferences
-    // Por ahora retornamos un valor basado en total leído como proxy
-    final total = await ReadingProgressService.getTotalRead();
-    return (total / 3).floor().clamp(0, 365);
+    final prefs = await SharedPreferences.getInstance();
+    final dates = prefs.getStringList('read_dates')?.toSet() ?? {};
+    if (dates.isEmpty) return 0;
+    int streak = 0;
+    var day = DateTime.now();
+    while (true) {
+      final key = '${day.year}-${day.month}-${day.day}';
+      if (!dates.contains(key)) break;
+      streak++;
+      day = day.subtract(const Duration(days: 1));
+    }
+    return streak;
   }
 
   void _pickAlarm() async {
@@ -110,12 +126,17 @@ class _HomeScreenState extends State<HomeScreen>
       ),
     );
     if (picked != null && mounted) {
+      final ok = await NotificationService.scheduleDailyReminder(picked);
       setState(() => _alarmTime = picked);
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        content: Text('Recordatorio configurado a las ${picked.format(context)} 🔔'),
-        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-        behavior: SnackBarBehavior.floating,
-      ));
+      if (mounted) {
+        showAppToast(
+          context,
+          ok
+              ? 'Recordatorio a las ${picked.format(context)} 🔔'
+              : 'No se pudo configurar el recordatorio',
+          icon: ok ? Icons.alarm_on_rounded : Icons.alarm_off_rounded,
+        );
+      }
     }
   }
 
