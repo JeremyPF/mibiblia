@@ -75,10 +75,11 @@ class _AIChatSheetState extends State<_AIChatSheet> {
     _scrollToBottom();
 
     try {
-      final history = _messages
-          .where((m) => m.role != 'assistant' || _messages.indexOf(m) > 0)
-          .map((m) => {'role': m.role, 'content': m.text})
-          .toList();
+      // Solo enviar mensajes user/assistant previos (no el inicial de bienvenida)
+      final history = <Map<String, String>>[];
+      for (int i = 1; i < _messages.length - 1; i++) {
+        history.add({'role': _messages[i].role, 'content': _messages[i].text});
+      }
 
       final reply = await GroqService.ask(
         verseRef: widget.verseRef,

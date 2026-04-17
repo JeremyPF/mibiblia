@@ -45,13 +45,19 @@ class ReadingProgressService {
   /// Vincula un correo: migra el progreso anónimo y guarda el email + PIN en nube.
   static Future<void> linkEmail(String email, String pin) async {
     final prefs = await SharedPreferences.getInstance();
-    final anonId = await getAnonId();
     final local = await getReadChapters();
+    final localDates = prefs.getStringList('read_dates')?.toSet() ?? {};
     final emailUserId = SupabaseService.emailToUserId(email);
-    // Fusionar con remoto y guardar PIN en Supabase
-    final remote = await SupabaseService.downloadProgress(emailUserId) ?? {};
-    final merged = {...local, ...remote};
-    await SupabaseService.uploadProgress(emailUserId, merged, pin: pin);
+    // Fusionar con remoto
+    final remoteRaw = await SupabaseService.downloadProgressRaw(emailUserId);
+    final remoteChapters = (remoteRaw?['chapters'] as List?)?.cast<String>().toSet() ?? {};
+    final remoteDates = (remoteRaw?['read_dates'] as List?)?.cast<String>().toSet() ?? {};
+    final mergedChapters = {...local, ...remoteChapters};
+    final mergedDates = {...localDates, ...remoteDates};
+    await SupabaseService.uploadProgressFull(emailUserId, mergedChapters, mergedDates, pin: pin);
+    // Actualizar local con el merged
+    await prefs.setStringList(_key, mergedChapters.toList());
+    await prefs.setStringList('read_dates', mergedDates.toList());
     await prefs.setString(_emailKey, email.trim().toLowerCase());
     await prefs.setString(_pinKey, pin);
   }
@@ -76,19 +82,39 @@ class ReadingProgressService {
 
   static Future<void> syncFromCloud() async {
     final uid = await getUserId();
-    final remote = await SupabaseService.downloadProgress(uid);
-    if (remote == null || remote.isEmpty) return;
-    final prefs = await SharedPreferences.getInstance();
-    final local = prefs.getStringList(_key)?.toSet() ?? {};
-    final merged = {...local, ...remote};
-    await prefs.setStringList(_key, merged.toList());
+    if (uid.startsWith('anon_')) return; // no sincronizar si no hay email vinculado
+    try {
+      final row = await SupabaseService.downloadProgressRaw(uid);
+      if (row == null) return;
+      final prefs = await SharedPreferences.getInstance();
+
+      // Restaurar capítulos
+      final chapters = (row['chapters'] as List?)?.cast<String>().toSet() ?? {};
+      if (chapters.isNotEmpty) {
+        final local = prefs.getStringList(_key)?.toSet() ?? {};
+        final merged = {...local, ...chapters};
+        await prefs.setStringList(_key, merged.toList());
+      }
+
+      // Restaurar fechas de racha
+      final dates = (row['read_dates'] as List?)?.cast<String>().toSet() ?? {};
+      if (dates.isNotEmpty) {
+        final localDates = prefs.getStringList('read_dates')?.toSet() ?? {};
+        final mergedDates = {...localDates, ...dates};
+        await prefs.setStringList('read_dates', mergedDates.toList());
+      }
+    } catch (e) {
+      debugPrint('[Sync] syncFromCloud error: $e');
+    }
   }
 
   static void _syncOrQueue(Set<String> chapters) async {
     try {
       final uid = await getUserId();
-      await SupabaseService.uploadProgress(uid, chapters);
+      if (uid.startsWith('anon_')) return; // no subir si no hay email vinculado
       final prefs = await SharedPreferences.getInstance();
+      final dates = prefs.getStringList('read_dates')?.toSet() ?? {};
+      await SupabaseService.uploadProgressFull(uid, chapters, dates);
       await prefs.setBool(_pendingSyncKey, false);
     } catch (_) {
       final prefs = await SharedPreferences.getInstance();
@@ -99,10 +125,12 @@ class ReadingProgressService {
   static Future<void> flushPendingSync() async {
     final prefs = await SharedPreferences.getInstance();
     if (prefs.getBool(_pendingSyncKey) != true) return;
-    final set = prefs.getStringList(_key)?.toSet() ?? {};
-    if (set.isEmpty) return;
     final uid = await getUserId();
-    await SupabaseService.uploadProgress(uid, set);
+    if (uid.startsWith('anon_')) return;
+    final set = prefs.getStringList(_key)?.toSet() ?? {};
+    final dates = prefs.getStringList('read_dates')?.toSet() ?? {};
+    if (set.isEmpty) return;
+    await SupabaseService.uploadProgressFull(uid, set, dates);
     await prefs.setBool(_pendingSyncKey, false);
   }
 
