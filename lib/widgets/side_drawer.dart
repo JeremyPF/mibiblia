@@ -52,6 +52,7 @@ class _SideDrawerState extends State<SideDrawer> {
           bookId: result['bookId'],
           bookName: result['bookName'],
           chapterNumber: result['chapter'],
+          initialVerse: result['verse'] ?? 1,
         ),
       ),
     );

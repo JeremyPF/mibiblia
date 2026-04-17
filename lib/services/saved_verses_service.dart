@@ -54,14 +54,20 @@ class SavedVersesService {
   }
 
   // Highlights
+  static List<Highlight>? _cache;
+
   static Future<List<Highlight>> getAll() async {
+    if (_cache != null) return _cache!;
     final p = await SharedPreferences.getInstance();
     final raw = p.getString(_highlightsKey);
-    if (raw == null) return [];
-    return (jsonDecode(raw) as List).map((e) => Highlight.fromJson(e)).toList();
+    _cache = raw == null ? [] : (jsonDecode(raw) as List).map((e) => Highlight.fromJson(e)).toList();
+    return _cache!;
   }
 
+  static void _invalidateCache() => _cache = null;
+
   static Future<void> _saveAll(List<Highlight> list) async {
+    _invalidateCache();
     final p = await SharedPreferences.getInstance();
     await p.setString(_highlightsKey, jsonEncode(list.map((h) => h.toJson()).toList()));
   }
@@ -101,15 +107,21 @@ class SavedVersesService {
 
 class NotesService {
   static const _notesKey = 'user_notes';
+  // In-memory cache to avoid repeated SharedPreferences reads per verse
+  static List<Note>? _cache;
 
   static Future<List<Note>> getAll() async {
+    if (_cache != null) return _cache!;
     final p = await SharedPreferences.getInstance();
     final raw = p.getString(_notesKey);
-    if (raw == null) return [];
-    return (jsonDecode(raw) as List).map((e) => Note.fromJson(e)).toList();
+    _cache = raw == null ? [] : (jsonDecode(raw) as List).map((e) => Note.fromJson(e)).toList();
+    return _cache!;
   }
 
+  static void _invalidate() => _cache = null;
+
   static Future<void> _saveAll(List<Note> list) async {
+    _invalidate();
     final p = await SharedPreferences.getInstance();
     await p.setString(_notesKey, jsonEncode(list.map((n) => n.toJson()).toList()));
   }

@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:crypto/crypto.dart';
+import 'package:flutter/foundation.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class SupabaseService {
@@ -29,7 +30,9 @@ class SupabaseService {
         'data': {'chapters': readChapters.toList()},
         'updated_at': DateTime.now().toIso8601String(),
       });
-    } catch (_) {}
+    } catch (e) {
+      debugPrint('[Supabase] uploadProgress error: $e');
+    }
   }
 
   /// Descarga el progreso desde Supabase.
@@ -43,7 +46,8 @@ class SupabaseService {
       if (row == null) return null;
       final list = (row['data']['chapters'] as List).cast<String>();
       return list.toSet();
-    } catch (_) {
+    } catch (e) {
+      debugPrint('[Supabase] downloadProgress error: $e');
       return null;
     }
   }
@@ -51,12 +55,15 @@ class SupabaseService {
   /// Migra el progreso anónimo al userId del correo y lo fusiona con lo remoto.
   static Future<void> migrateToEmail(
       String anonId, String emailUserId, Set<String> localChapters) async {
-    final remote = await downloadProgress(emailUserId) ?? {};
-    final merged = {...localChapters, ...remote};
-    await uploadProgress(emailUserId, merged);
-    // Limpiar registro anónimo
     try {
-      await _client.from('reading_progress').delete().eq('user_id', anonId);
-    } catch (_) {}
+      final remote = await downloadProgress(emailUserId) ?? {};
+      final merged = {...localChapters, ...remote};
+      await uploadProgress(emailUserId, merged);
+      if (anonId.isNotEmpty) {
+        await _client.from('reading_progress').delete().eq('user_id', anonId);
+      }
+    } catch (e) {
+      debugPrint('[Supabase] migrateToEmail error: $e');
+    }
   }
 }

@@ -16,6 +16,7 @@ class ReadingScreen extends StatefulWidget {
   final int bookId;
   final String bookName;
   final int chapterNumber;
+  final int initialVerse;
   final VoidCallback? onSearchTap;
 
   const ReadingScreen({
@@ -23,6 +24,7 @@ class ReadingScreen extends StatefulWidget {
     required this.bookId,
     required this.bookName,
     required this.chapterNumber,
+    this.initialVerse = 1,
     this.onSearchTap,
   });
 
@@ -33,24 +35,25 @@ class ReadingScreen extends StatefulWidget {
 class _ReadingScreenState extends State<ReadingScreen>
     with SingleTickerProviderStateMixin {
   final ScrollController _scrollController = ScrollController();
-  double _scrollProgress = 0.0;
-  double _appBarOpacity = 0.0;
-  bool _showSubtitle = false;
 
-  // Capítulo actual (puede cambiar al navegar)
+  // ValueNotifiers — no causan rebuild del árbol completo
+  final _scrollProgress  = ValueNotifier<double>(0.0);
+  final _appBarOpacity   = ValueNotifier<double>(0.0);
+  final _showSubtitle    = ValueNotifier<bool>(false);
+  final _showReadBadge   = ValueNotifier<bool>(false);
+
   late int _currentChapter;
-  // Lista de capítulos cargados para scroll continuo
   final List<Chapter> _loadedChapters = [];
   final List<int> _loadedChapterNumbers = [];
   bool _isLoading = true;
-  bool _chapterMarkedRead = false;
-  // Set de capítulos ya marcados como leídos en esta sesión
-  final Set<int> _readInSession = {};
-  // Mostrar check badge pequeño a la derecha
-  bool _showReadBadge = false;
+  // Set de capítulos ya marcados como leídos (soporta scroll infinito)
+  final Set<int> _markedRead = {};
 
   int? _selectedVerseNumber;
   String? _selectedVerseText;
+
+  // Keys para hacer scroll a versículos específicos
+  final Map<String, GlobalKey> _verseKeys = {};
   static const Map<int, Map<int, String>> _chapterTitles = {
     20: {
       1: 'El comienzo de la sabiduría', 2: 'Los beneficios de la sabiduría',
@@ -88,6 +91,10 @@ class _ReadingScreenState extends State<ReadingScreen>
     _scrollController.removeListener(_onScroll);
     _scrollController.dispose();
     _navDebounce?.cancel();
+    _scrollProgress.dispose();
+    _appBarOpacity.dispose();
+    _showSubtitle.dispose();
+    _showReadBadge.dispose();
     super.dispose();
   }
 
@@ -108,20 +115,19 @@ class _ReadingScreenState extends State<ReadingScreen>
     final current = pos.pixels;
     final maxScroll = pos.maxScrollExtent;
 
-    setState(() {
-      _scrollProgress = maxScroll > 0 ? (current / maxScroll).clamp(0.0, 1.0) : 0.0;
-      _appBarOpacity = (current / 120).clamp(0.0, 1.0);
-      _showSubtitle = current > 200;
-    });
+    // ValueNotifiers — sin setState, sin rebuild
+    _scrollProgress.value = maxScroll > 0 ? (current / maxScroll).clamp(0.0, 1.0) : 0.0;
+    _appBarOpacity.value  = (current / 120).clamp(0.0, 1.0);
+    _showSubtitle.value   = current > 200;
 
-    // Marcar capítulo leído al 95%
-    if (!_chapterMarkedRead && maxScroll > 100 && current >= maxScroll * 0.95) {
-      _markCurrentChapterRead();
+    // Marcar capítulo actual como leído al 95%
+    if (!_markedRead.contains(_currentChapter) && maxScroll > 100 && current >= maxScroll * 0.95) {
+      _markChapterRead(_currentChapter);
     }
 
     if (_loadingChapter || _loadingNextChapter) return;
 
-    // Cargar siguiente capítulo al llegar al 90% del scroll
+    // Cargar siguiente capítulo al llegar al 90%
     if (_hasNextChapter && maxScroll > 0 && current >= maxScroll * 0.9) {
       final nextCap = _loadedChapterNumbers.last + 1;
       if (!_loadedChapterNumbers.contains(nextCap)) {
@@ -134,15 +140,15 @@ class _ReadingScreenState extends State<ReadingScreen>
   bool _showCompleteIndicator = false;
   bool _indicatorReady = false;
 
-  Future<void> _markCurrentChapterRead() async {
-    if (_chapterMarkedRead) return;
-    _chapterMarkedRead = true;
-    await ReadingProgressService.markChapterRead(widget.bookId, _currentChapter);
+  Future<void> _markChapterRead(int chapterNum) async {
+    if (_markedRead.contains(chapterNum)) return;
+    _markedRead.add(chapterNum);
+    await ReadingProgressService.markChapterRead(widget.bookId, chapterNum);
     if (!mounted) return;
-    // Check pequeño a la derecha — aparece y desaparece en 2s
-    setState(() => _showReadBadge = true);
+    // Check badge pequeño a la derecha — aparece y desaparece en 2s
+    _showReadBadge.value = true;
     Future.delayed(const Duration(seconds: 2), () {
-      if (mounted) setState(() => _showReadBadge = false);
+      _showReadBadge.value = false;
     });
   }
 
@@ -154,8 +160,20 @@ class _ReadingScreenState extends State<ReadingScreen>
       _loadedChapters.add(chapter);
       _loadedChapterNumbers.add(chapterNum);
     }
-    setState(() { _isLoading = false; _chapterMarkedRead = false; });
+    setState(() { _isLoading = false; });
     UserProfileService.saveLastPosition(widget.bookId, widget.bookName, chapterNum);
+    // Scroll al versículo inicial si se especificó
+    if (widget.initialVerse > 1) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        final key = _verseKeys['${chapterNum}_${widget.initialVerse}'];
+        if (key?.currentContext != null) {
+          Scrollable.ensureVisible(key!.currentContext!,
+              duration: const Duration(milliseconds: 400),
+              curve: Curves.easeOut,
+              alignment: 0.1);
+        }
+      });
+    }
   }
 
   Future<void> _appendNextChapter(int chapterNum) async {
@@ -168,7 +186,6 @@ class _ReadingScreenState extends State<ReadingScreen>
         _loadedChapters.add(chapter);
         _loadedChapterNumbers.add(chapterNum);
         _currentChapter = chapterNum;
-        _chapterMarkedRead = false;
       });
       UserProfileService.saveLastPosition(widget.bookId, widget.bookName, chapterNum);
     }
@@ -205,13 +222,18 @@ class _ReadingScreenState extends State<ReadingScreen>
       drawer: const SideDrawer(),
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(56),
-        child: TopAppBar(
-          opacity: _appBarOpacity.clamp(0.6, 1.0),
-          bookName: widget.bookName,
-          chapterNumber: _currentChapter,
-          showSubtitle: _showSubtitle,
-          onSearchTap: widget.onSearchTap ?? () => Navigator.of(context).push(
-            MaterialPageRoute(builder: (_) => const SearchScreen()),
+        child: ValueListenableBuilder3(
+          first: _appBarOpacity,
+          second: _showSubtitle,
+          third: ValueNotifier(_currentChapter), // chapter changes trigger rebuild
+          builder: (_, opacity, subtitle, chapter, __) => TopAppBar(
+            opacity: opacity.clamp(0.6, 1.0),
+            bookName: widget.bookName,
+            chapterNumber: _currentChapter,
+            showSubtitle: subtitle,
+            onSearchTap: widget.onSearchTap ?? () => Navigator.of(context).push(
+              MaterialPageRoute(builder: (_) => const SearchScreen()),
+            ),
           ),
         ),
       ),
@@ -252,27 +274,33 @@ class _ReadingScreenState extends State<ReadingScreen>
                 // Indicador de progreso lateral
                 Positioned(
                   right: 0, top: 0, bottom: 0,
-                  child: _ReadingProgressIndicator(progress: _scrollProgress),
+                  child: ValueListenableBuilder<double>(
+                    valueListenable: _scrollProgress,
+                    builder: (_, v, __) => _ReadingProgressIndicator(progress: v),
+                  ),
                 ),
-                // Check badge pequeño a la derecha — aparece y desaparece
-                AnimatedPositioned(
-                  duration: const Duration(milliseconds: 300),
-                  curve: Curves.easeOut,
-                  right: _showReadBadge ? 12 : -40,
-                  bottom: 80,
-                  child: AnimatedOpacity(
-                    opacity: _showReadBadge ? 1.0 : 0.0,
+                // Check badge pequeño a la derecha
+                ValueListenableBuilder<bool>(
+                  valueListenable: _showReadBadge,
+                  builder: (_, show, __) => AnimatedPositioned(
                     duration: const Duration(milliseconds: 300),
-                    child: Container(
-                      width: 28, height: 28,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: AppTheme.secondary.withOpacity(0.15),
-                        border: Border.all(
-                            color: AppTheme.secondary.withOpacity(0.4), width: 1),
+                    curve: Curves.easeOut,
+                    right: show ? 12 : -40,
+                    bottom: 80,
+                    child: AnimatedOpacity(
+                      opacity: show ? 1.0 : 0.0,
+                      duration: const Duration(milliseconds: 300),
+                      child: Container(
+                        width: 28, height: 28,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: AppTheme.secondary.withOpacity(0.15),
+                          border: Border.all(
+                              color: AppTheme.secondary.withOpacity(0.4), width: 1),
+                        ),
+                        child: Icon(Icons.check_rounded,
+                            size: 14, color: AppTheme.secondary),
                       ),
-                      child: Icon(Icons.check_rounded,
-                          size: 14, color: AppTheme.secondary),
                     ),
                   ),
                 ),
@@ -324,17 +352,22 @@ class _ReadingScreenState extends State<ReadingScreen>
         Container(width: 48, height: 1,
             color: AppTheme.outlineVariant.withOpacity(0.3)),
         const SizedBox(height: 80),
-        ...chapter.verses.map((verse) => Padding(
-              padding: const EdgeInsets.only(bottom: 40.0),
-              child: VerseWidget(
-                number: verse.number,
-                text: verse.text,
-                isHighlighted: false,
-                bookName: widget.bookName,
-                chapterNumber: chapterNum,
-                onVerseLongPress: _handleVerseLongPress,
-              ),
-            )),
+        ...chapter.verses.map((verse) {
+          final key = _verseKeys.putIfAbsent(
+              '${chapterNum}_${verse.number}', () => GlobalKey());
+          return Padding(
+            key: key,
+            padding: const EdgeInsets.only(bottom: 40.0),
+            child: VerseWidget(
+              number: verse.number,
+              text: verse.text,
+              isHighlighted: false,
+              bookName: widget.bookName,
+              chapterNumber: chapterNum,
+              onVerseLongPress: _handleVerseLongPress,
+            ),
+          );
+        }),
         const SizedBox(height: 40),
         Center(
           child: Column(children: [
@@ -392,6 +425,40 @@ class _ReadingProgressIndicator extends StatelessWidget {
           ),
         ]);
       }),
+    );
+  }
+}
+
+
+/// Helper: listens to 3 ValueNotifiers without rebuilding the whole tree.
+class ValueListenableBuilder3<A, B, C> extends StatelessWidget {
+  final ValueNotifier<A> first;
+  final ValueNotifier<B> second;
+  final ValueNotifier<C> third;
+  final Widget Function(BuildContext, A, B, C, Widget?) builder;
+  final Widget? child;
+
+  const ValueListenableBuilder3({
+    super.key,
+    required this.first,
+    required this.second,
+    required this.third,
+    required this.builder,
+    this.child,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ValueListenableBuilder<A>(
+      valueListenable: first,
+      builder: (ctx, a, _) => ValueListenableBuilder<B>(
+        valueListenable: second,
+        builder: (ctx2, b, _) => ValueListenableBuilder<C>(
+          valueListenable: third,
+          builder: (ctx3, c, ch) => builder(ctx3, a, b, c, ch),
+          child: child,
+        ),
+      ),
     );
   }
 }
