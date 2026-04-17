@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:share_plus/share_plus.dart';
 import '../services/groq_service.dart';
 import '../theme/app_theme.dart';
+import 'app_toast.dart';
 
 Future<void> showAIChatSheet(
     BuildContext context, String verseRef, String verseText) {
@@ -270,11 +273,32 @@ class _AIChatSheetState extends State<_AIChatSheet> {
 
   Widget _buildBubble(_Msg msg) {
     final isUser = msg.role == 'user';
+    final bubble = Container(
+      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+      decoration: BoxDecoration(
+        color: isUser
+            ? AppTheme.secondary
+            : Theme.of(context).colorScheme.surfaceContainerLow,
+        borderRadius: BorderRadius.only(
+          topLeft: const Radius.circular(16),
+          topRight: const Radius.circular(16),
+          bottomLeft: Radius.circular(isUser ? 16 : 4),
+          bottomRight: Radius.circular(isUser ? 4 : 16),
+        ),
+      ),
+      child: Text(
+        msg.text,
+        style: GoogleFonts.newsreader(
+          fontSize: 14, height: 1.55,
+          color: isUser ? Colors.white : Theme.of(context).colorScheme.onSurface,
+        ),
+      ),
+    );
+
     return Padding(
       padding: const EdgeInsets.only(bottom: 12),
       child: Row(
-        mainAxisAlignment:
-            isUser ? MainAxisAlignment.end : MainAxisAlignment.start,
+        mainAxisAlignment: isUser ? MainAxisAlignment.end : MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           if (!isUser) ...[
@@ -290,36 +314,53 @@ class _AIChatSheetState extends State<_AIChatSheet> {
             const SizedBox(width: 8),
           ],
           Flexible(
-            child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
-              decoration: BoxDecoration(
-                color: isUser
-                    ? AppTheme.secondary
-                    : Theme.of(context).colorScheme.surfaceContainerLow,
-                borderRadius: BorderRadius.only(
-                  topLeft: const Radius.circular(16),
-                  topRight: const Radius.circular(16),
-                  bottomLeft: Radius.circular(isUser ? 16 : 4),
-                  bottomRight: Radius.circular(isUser ? 4 : 16),
-                ),
-              ),
-              child: Text(
-                msg.text,
-                style: GoogleFonts.newsreader(
-                  fontSize: 14,
-                  height: 1.55,
-                  color: isUser
-                      ? Colors.white
-                      : Theme.of(context).colorScheme.onSurface,
-                ),
-              ),
-            ),
+            child: !isUser
+                ? GestureDetector(
+                    onLongPress: () => _showBubbleActions(msg.text),
+                    child: bubble,
+                  )
+                : bubble,
           ),
         ],
       ),
     );
   }
 
+  void _showBubbleActions(String text) {
+    showModalBottomSheet(
+      context: context,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(top: Radius.circular(16))),
+      builder: (_) => SafeArea(
+        child: Column(mainAxisSize: MainAxisSize.min, children: [
+          const SizedBox(height: 8),
+          Container(width: 36, height: 4,
+              decoration: BoxDecoration(
+                  color: AppTheme.outlineVariant.withOpacity(0.4),
+                  borderRadius: BorderRadius.circular(2))),
+          ListTile(
+            leading: const Icon(Icons.content_copy, color: AppTheme.secondary),
+            title: Text('Copiar', style: GoogleFonts.newsreader(fontSize: 15)),
+            onTap: () {
+              Navigator.pop(context);
+              Clipboard.setData(ClipboardData(text: text));
+              showAppToast(context, 'Copiado', icon: Icons.content_copy);
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.share, color: AppTheme.secondary),
+            title: Text('Compartir', style: GoogleFonts.newsreader(fontSize: 15)),
+            onTap: () {
+              Navigator.pop(context);
+              Share.share(text);
+            },
+          ),
+          const SizedBox(height: 8),
+        ]),
+      ),
+    );
+  }
   Widget _buildTyping() {
     return Padding(
       padding: const EdgeInsets.only(bottom: 12),

@@ -53,8 +53,9 @@ class UpdateService extends ChangeNotifier {
       final data = json.decode(response.body) as Map<String, dynamic>;
       final tagName = data['tag_name'] as String? ?? '';
 
-      // Tag format: "build-N"
-      final buildMatch = RegExp(r'build-(\d+)').firstMatch(tagName);
+      // Tag format: "v1.0.N" — extract N as build number
+      final buildMatch = RegExp(r'v\d+\.\d+\.(\d+)').firstMatch(tagName)
+          ?? RegExp(r'build-(\d+)').firstMatch(tagName);
       if (buildMatch == null) return;
       final remoteBuild = int.parse(buildMatch.group(1)!);
 
@@ -88,7 +89,8 @@ class UpdateService extends ChangeNotifier {
     notifyListeners();
 
     try {
-      final dir = await getTemporaryDirectory();
+      // Use external files dir — more reliable for FileProvider
+      final dir = await getExternalStorageDirectory() ?? await getTemporaryDirectory();
       final apkFile = File('${dir.path}/mibiblia-update.apk');
 
       final request = http.Request('GET', Uri.parse(_availableUpdate!.apkUrl));
@@ -123,9 +125,16 @@ class UpdateService extends ChangeNotifier {
     if (!Platform.isAndroid) return;
 
     const authority = 'com.personal.mi_biblia.fileprovider';
+    // Determine which FileProvider path name to use based on actual path
+    final fileName = _apkPath!.split('/').last;
+    final isExternal = _apkPath!.contains('/Android/data/');
+    final providerPath = isExternal
+        ? 'content://$authority/external_files/$fileName'
+        : 'content://$authority/cache/$fileName';
+
     final intent = AndroidIntent(
       action: 'android.intent.action.VIEW',
-      data: 'content://$authority/cache/${_apkPath!.split('/').last}',
+      data: providerPath,
       type: 'application/vnd.android.package-archive',
       flags: [
         Flag.FLAG_ACTIVITY_NEW_TASK,
@@ -133,13 +142,6 @@ class UpdateService extends ChangeNotifier {
       ],
     );
     await intent.launch();
-
-    // Limpiar el APK del cache — el instalador ya lo tiene en memoria
-    try {
-      final file = File(_apkPath!);
-      if (await file.exists()) await file.delete();
-    } catch (_) {}
-    _apkPath = null;
   }
 
   void dismiss() {

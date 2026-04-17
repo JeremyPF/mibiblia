@@ -7,6 +7,7 @@ import '../screens/search_screen.dart';
 import '../screens/progress_screen.dart';
 import '../screens/saved_verses_screen.dart';
 import '../screens/notes_screen.dart';
+import '../screens/modo_ia_screen.dart';
 import 'settings_modal.dart';
 import 'chapter_verse_picker.dart';
 
@@ -71,10 +72,40 @@ class _SideDrawerState extends State<SideDrawer> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: const EdgeInsets.fromLTRB(24, 32, 24, 16),
-              child: Text('MiBiblia',
-                  style: Theme.of(context).textTheme.headlineLarge?.copyWith(
-                      fontSize: 24, fontStyle: FontStyle.italic)),
+              padding: const EdgeInsets.fromLTRB(24, 32, 16, 16),
+              child: Row(children: [
+                Expanded(
+                  child: Text('MiBiblia',
+                      style: Theme.of(context).textTheme.headlineLarge?.copyWith(
+                          fontSize: 24, fontStyle: FontStyle.italic)),
+                ),
+                // Modo IA button
+                GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).pop();
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (_) => const ModoIAScreen()));
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                    decoration: BoxDecoration(
+                      color: AppTheme.secondary.withOpacity(0.1),
+                      borderRadius: BorderRadius.circular(16),
+                      border: Border.all(color: AppTheme.secondary.withOpacity(0.3)),
+                    ),
+                    child: Row(mainAxisSize: MainAxisSize.min, children: [
+                      const Icon(Icons.auto_awesome_rounded,
+                          size: 13, color: AppTheme.secondary),
+                      const SizedBox(width: 5),
+                      Text('Modo IA',
+                          style: TextStyle(
+                              fontSize: 11,
+                              color: AppTheme.secondary,
+                              fontWeight: FontWeight.w600)),
+                    ]),
+                  ),
+                ),
+              ]),
             ),
             // Filtro AT / NT
             Padding(
