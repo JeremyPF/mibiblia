@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../theme/app_theme.dart';
 import '../main.dart';
 import '../services/saved_verses_service.dart';
+import '../screens/notes_screen.dart';
 
 class VerseWidget extends StatefulWidget {
   final int number;
@@ -118,34 +119,85 @@ class _VerseWidgetState extends State<VerseWidget>
                 ),
                 if (widget.bookName != null)
                   FutureBuilder<List>(
-                    future: NotesService.getForVerse(
-                        widget.bookName!, widget.chapterNumber!, widget.number),
-                    builder: (_, snap) {
-                      final notes = snap.data ?? [];
-                      if (notes.isEmpty) return const SizedBox.shrink();
-                      final preview = notes[0].noteText as String;
+                    future: Future.wait([
+                      NotesService.getForVerse(
+                          widget.bookName!, widget.chapterNumber!, widget.number),
+                      SavedVersesService.getForVerse(
+                          widget.bookName!, widget.chapterNumber!, widget.number)
+                          .then((h) => h != null ? [h] : []),
+                    ]),
+                    builder: (ctx, snap) {
+                      if (!snap.hasData) return const SizedBox.shrink();
+                      final notes = snap.data![0];
+                      final saved = snap.data![1];
+                      if (notes.isEmpty && saved.isEmpty) return const SizedBox.shrink();
                       return Padding(
-                        padding: const EdgeInsets.only(top: 4, left: 18),
-                        child: Row(mainAxisSize: MainAxisSize.min, children: [
-                          Icon(Icons.edit_note,
-                              size: 11,
-                              color: AppTheme.secondary.withOpacity(0.7)),
-                          const SizedBox(width: 3),
-                          Text(
-                            notes.length == 1
-                                ? preview.length > 35
-                                    ? '${preview.substring(0, 35)}…'
-                                    : preview
-                                : '${notes.length} anotaciones',
-                            style: Theme.of(context)
-                                .textTheme
-                                .labelSmall
-                                ?.copyWith(
-                                  fontSize: 10,
-                                  color: AppTheme.secondary.withOpacity(0.7),
-                                  fontStyle: FontStyle.italic,
+                        padding: const EdgeInsets.only(top: 6, left: 18),
+                        child: Wrap(spacing: 8, runSpacing: 4, children: [
+                          if (notes.isNotEmpty)
+                            GestureDetector(
+                              onTap: () {
+                                NoteEditorModal.show(ctx, note: notes[0]);
+                              },
+                              child: Container(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 8, vertical: 3),
+                                decoration: BoxDecoration(
+                                  color: AppTheme.secondary.withOpacity(0.08),
+                                  borderRadius: BorderRadius.circular(12),
+                                  border: Border.all(
+                                      color: AppTheme.secondary.withOpacity(0.25)),
                                 ),
-                          ),
+                                child: Row(mainAxisSize: MainAxisSize.min, children: [
+                                  Icon(Icons.edit_note_rounded,
+                                      size: 11,
+                                      color: AppTheme.secondary.withOpacity(0.8)),
+                                  const SizedBox(width: 4),
+                                  Text(
+                                    notes.length == 1
+                                        ? (notes[0].noteText as String).length > 28
+                                            ? '${(notes[0].noteText as String).substring(0, 28)}…'
+                                            : notes[0].noteText as String
+                                        : '${notes.length} notas',
+                                    style: Theme.of(ctx).textTheme.labelSmall
+                                        ?.copyWith(
+                                          fontSize: 10,
+                                          color: AppTheme.secondary.withOpacity(0.8),
+                                          fontStyle: FontStyle.italic,
+                                        ),
+                                  ),
+                                ]),
+                              ),
+                            ),
+                          if (saved.isNotEmpty)
+                            Container(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 8, vertical: 3),
+                              decoration: BoxDecoration(
+                                color: Color((saved[0] as dynamic).color)
+                                    .withOpacity(0.12),
+                                borderRadius: BorderRadius.circular(12),
+                                border: Border.all(
+                                    color: Color((saved[0] as dynamic).color)
+                                        .withOpacity(0.35)),
+                              ),
+                              child: Row(mainAxisSize: MainAxisSize.min, children: [
+                                Icon(Icons.bookmark_rounded,
+                                    size: 10,
+                                    color: Color((saved[0] as dynamic).color)
+                                        .withOpacity(0.8)),
+                                const SizedBox(width: 4),
+                                Text(
+                                  (saved[0] as dynamic).category as String,
+                                  style: Theme.of(ctx).textTheme.labelSmall
+                                      ?.copyWith(
+                                        fontSize: 10,
+                                        color: Color((saved[0] as dynamic).color)
+                                            .withOpacity(0.8),
+                                      ),
+                                ),
+                              ]),
+                            ),
                         ]),
                       );
                     },

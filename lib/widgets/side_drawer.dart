@@ -8,6 +8,7 @@ import '../screens/progress_screen.dart';
 import '../screens/saved_verses_screen.dart';
 import '../screens/notes_screen.dart';
 import 'settings_modal.dart';
+import 'chapter_verse_picker.dart';
 
 class SideDrawer extends StatefulWidget {
   const SideDrawer({super.key});
@@ -18,6 +19,8 @@ class SideDrawer extends StatefulWidget {
 
 class _SideDrawerState extends State<SideDrawer> {
   List<BibleBook> _books = [];
+  // null = todos, 'OT' = AT, 'NT' = NT
+  String? _filter;
 
   @override
   void initState() {
@@ -30,17 +33,25 @@ class _SideDrawerState extends State<SideDrawer> {
     if (mounted) setState(() => _books = books);
   }
 
-  void _openBook(BibleBook book) {
+  List<BibleBook> get _filtered {
+    if (_filter == null) return _books;
+    return _books.where((b) => b.testament == _filter).toList();
+  }
+
+  void _openBookPicker(BibleBook book) async {
+    // Cerrar el drawer primero
     Navigator.of(context).pop();
+    // Pequeño delay para que el drawer cierre antes de abrir el modal
+    await Future.delayed(const Duration(milliseconds: 200));
+    if (!mounted) return;
+    final result = await showChapterVersePicker(context, book);
+    if (result == null || !mounted) return;
     Navigator.of(context).pushReplacement(
       MaterialPageRoute(
-        builder: (ctx) => ReadingScreen(
-          bookId: book.id,
-          bookName: book.name,
-          chapterNumber: 1,
-          onSearchTap: () => Navigator.of(ctx).push(
-            MaterialPageRoute(builder: (_) => const SearchScreen()),
-          ),
+        builder: (_) => ReadingScreen(
+          bookId: result['bookId'],
+          bookName: result['bookName'],
+          chapterNumber: result['chapter'],
         ),
       ),
     );
@@ -54,113 +65,86 @@ class _SideDrawerState extends State<SideDrawer> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Header
             Padding(
-              padding: const EdgeInsets.fromLTRB(24, 32, 24, 24),
-              child: Text(
-                'MiBiblia',
-                style: Theme.of(context).textTheme.headlineLarge?.copyWith(
-                      fontSize: 24,
-                      fontStyle: FontStyle.italic,
-                    ),
-              ),
+              padding: const EdgeInsets.fromLTRB(24, 32, 24, 16),
+              child: Text('MiBiblia',
+                  style: Theme.of(context).textTheme.headlineLarge?.copyWith(
+                      fontSize: 24, fontStyle: FontStyle.italic)),
             ),
-            Divider(
-              color: AppTheme.outlineVariant.withOpacity(0.2),
-              height: 1,
+            // Filtro AT / NT
+            Padding(
+              padding: const EdgeInsets.fromLTRB(16, 0, 16, 8),
+              child: Row(children: [
+                _FilterTab('Todos', _filter == null,
+                    () => setState(() => _filter = null)),
+                const SizedBox(width: 8),
+                _FilterTab('A.T.', _filter == 'OT',
+                    () => setState(() => _filter = 'OT')),
+                const SizedBox(width: 8),
+                _FilterTab('N.T.', _filter == 'NT',
+                    () => setState(() => _filter = 'NT')),
+              ]),
             ),
-            const SizedBox(height: 8),
-            // Lista de libros
+            Divider(color: AppTheme.outlineVariant.withOpacity(0.2), height: 1),
+            const SizedBox(height: 4),
             Expanded(
               child: _books.isEmpty
                   ? const Center(child: CircularProgressIndicator())
                   : ListView.builder(
                       padding: const EdgeInsets.symmetric(
                           horizontal: 12, vertical: 4),
-                      itemCount: _books.length,
-                      itemBuilder: (context, index) {
-                        final book = _books[index];
-                        return _BookTile(
-                          book: book,
-                          onTap: () => _openBook(book),
+                      itemCount: _filtered.length,
+                      itemBuilder: (context, i) {
+                        final book = _filtered[i];
+                        return ListTile(
+                          dense: true,
+                          title: Text(book.name,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyLarge
+                                  ?.copyWith(fontSize: 16)),
+                          subtitle: Text(
+                            book.testament == 'OT'
+                                ? 'Antiguo Testamento'
+                                : 'Nuevo Testamento',
+                            style: Theme.of(context)
+                                .textTheme
+                                .labelSmall
+                                ?.copyWith(
+                                    color: AppTheme.outline,
+                                    letterSpacing: 1.0),
+                          ),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8)),
+                          onTap: () => _openBookPicker(book),
                         );
                       },
                     ),
             ),
-            // Botón settings
-            Divider(
-              color: AppTheme.outlineVariant.withOpacity(0.2),
-              height: 1,
-            ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(12, 0, 12, 4),
-              child: ListTile(
-                leading: const Icon(Icons.bookmark_border,
-                    color: AppTheme.secondary),
-                title: Text('Guardados',
-                    style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                          fontSize: 16, color: AppTheme.secondary)),
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8)),
-                onTap: () {
-                  Navigator.of(context).pop();
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: (_) => const SavedVersesScreen()));
-                },
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(12, 0, 12, 4),
-              child: ListTile(
-                leading: const Icon(Icons.edit_note,
-                    color: AppTheme.secondary),
-                title: Text('Anotaciones',
-                    style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                          fontSize: 16, color: AppTheme.secondary)),
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8)),
-                onTap: () {
-                  Navigator.of(context).pop();
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: (_) => const NotesScreen()));
-                },
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(12, 0, 12, 4),
-              child: ListTile(
-                leading: const Icon(Icons.bar_chart_outlined,
-                    color: AppTheme.secondary),
-                title: Text(
-                  'Progreso',
-                  style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                        fontSize: 16,
-                        color: AppTheme.secondary,
-                      ),
-                ),
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8)),
-                onTap: () {
-                  Navigator.of(context).pop();
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                        builder: (_) => const ProgressScreen()),
-                  );
-                },
-              ),
-            ),
+            Divider(color: AppTheme.outlineVariant.withOpacity(0.2), height: 1),
+            _DrawerAction(Icons.bookmark_border, 'Guardados', () {
+              Navigator.of(context).pop();
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (_) => const SavedVersesScreen()));
+            }),
+            _DrawerAction(Icons.edit_note, 'Anotaciones', () {
+              Navigator.of(context).pop();
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (_) => const NotesScreen()));
+            }),
+            _DrawerAction(Icons.bar_chart_outlined, 'Progreso', () {
+              Navigator.of(context).pop();
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (_) => const ProgressScreen()));
+            }),
             Padding(
               padding: const EdgeInsets.fromLTRB(12, 0, 12, 12),
               child: ListTile(
                 leading: const Icon(Icons.settings_outlined,
                     color: AppTheme.secondary),
-                title: Text(
-                  'Ajustes',
-                  style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                        fontSize: 16,
-                        color: AppTheme.secondary,
-                      ),
-                ),
+                title: Text('Ajustes',
+                    style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                        fontSize: 16, color: AppTheme.secondary)),
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8)),
                 onTap: () {
@@ -176,30 +160,60 @@ class _SideDrawerState extends State<SideDrawer> {
   }
 }
 
-class _BookTile extends StatelessWidget {
-  final BibleBook book;
+class _FilterTab extends StatelessWidget {
+  final String label;
+  final bool selected;
   final VoidCallback onTap;
-
-  const _BookTile({required this.book, required this.onTap});
+  const _FilterTab(this.label, this.selected, this.onTap);
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      dense: true,
-      title: Text(
-        book.name,
-        style: Theme.of(context).textTheme.bodyLarge?.copyWith(fontSize: 16),
-      ),
-      subtitle: Text(
-        book.testament == 'OT' ? 'Antiguo Testamento' : 'Nuevo Testamento',
-        style: Theme.of(context).textTheme.labelSmall?.copyWith(
-              color: AppTheme.outline,
-              letterSpacing: 1.0,
-            ),
-      ),
-      shape:
-          RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+    return GestureDetector(
       onTap: onTap,
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 150),
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 5),
+        decoration: BoxDecoration(
+          color: selected
+              ? AppTheme.secondary.withOpacity(0.12)
+              : Colors.transparent,
+          borderRadius: BorderRadius.circular(16),
+          border: Border.all(
+              color: selected
+                  ? AppTheme.secondary
+                  : AppTheme.outlineVariant.withOpacity(0.3)),
+        ),
+        child: Text(label,
+            style: TextStyle(
+                fontSize: 12,
+                color: selected
+                    ? AppTheme.secondary
+                    : AppTheme.outline.withOpacity(0.6),
+                fontWeight:
+                    selected ? FontWeight.w600 : FontWeight.w400)),
+      ),
+    );
+  }
+}
+
+class _DrawerAction extends StatelessWidget {
+  final IconData icon;
+  final String label;
+  final VoidCallback onTap;
+  const _DrawerAction(this.icon, this.label, this.onTap);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(12, 0, 12, 0),
+      child: ListTile(
+        leading: Icon(icon, color: AppTheme.secondary),
+        title: Text(label,
+            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                fontSize: 16, color: AppTheme.secondary)),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+        onTap: onTap,
+      ),
     );
   }
 }

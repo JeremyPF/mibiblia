@@ -297,7 +297,8 @@ class _SaveVerseSheetState extends State<_SaveVerseSheet> {
                                   color: sel ? color : color.withOpacity(0.7),
                                   fontWeight: sel
                                       ? FontWeight.w600
-                                      : FontWeight.w400)),
+                                      : FontWeight.w400),
+                              textAlign: TextAlign.center),
                         ]),
                       ),
                     );

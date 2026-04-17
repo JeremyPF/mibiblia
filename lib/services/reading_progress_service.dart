@@ -5,6 +5,7 @@ class ReadingProgressService {
   static const _key          = 'read_chapters';
   static const _anonIdKey    = 'anon_user_id';
   static const _emailKey     = 'linked_email';
+  static const _pinKey       = 'account_pin';
   static const _pendingSyncKey = 'pending_sync';
 
   static String _id(int bookId, int chapter) => '$bookId:$chapter';
@@ -42,13 +43,30 @@ class ReadingProgressService {
   }
 
   /// Vincula un correo: migra el progreso anónimo y guarda el email.
-  static Future<void> linkEmail(String email) async {
+  static Future<void> linkEmail(String email, String pin) async {
     final prefs = await SharedPreferences.getInstance();
     final anonId = await getAnonId();
     final local = await getReadChapters();
     final emailUserId = SupabaseService.emailToUserId(email);
     await SupabaseService.migrateToEmail(anonId, emailUserId, local);
     await prefs.setString(_emailKey, email.trim().toLowerCase());
+    await prefs.setString(_pinKey, pin);
+  }
+
+  static Future<String?> getPin() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getString(_pinKey);
+  }
+
+  static Future<bool> verifyPin(String pin) async {
+    return (await getPin()) == pin;
+  }
+
+  /// Desvincula el correo y borra el PIN.
+  static Future<void> unlinkEmail() async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.remove(_emailKey);
+    await prefs.remove(_pinKey);
   }
 
   // ── Sync ──────────────────────────────────────────────────────────────────

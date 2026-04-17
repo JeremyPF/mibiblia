@@ -202,8 +202,6 @@ class _NoteEditorModalState extends State<NoteEditorModal> {
   late bool _darkBg;
   late Color _textColor;
   bool _showFormat = false;
-  String? _activeSlider;
-  double? _sliderValue;
 
   static const _fonts = ReadingSettingsProvider.elegantFonts;
   static const _colors = [
@@ -259,16 +257,17 @@ class _NoteEditorModalState extends State<NoteEditorModal> {
     return Stack(children: [
       Align(
         alignment: Alignment.bottomCenter,
-        child: AnimatedOpacity(
-          opacity: _activeSlider != null ? 0.0 : 1.0,
-          duration: const Duration(milliseconds: 180),
+        child: Padding(
+          // Sube el modal cuando aparece el teclado
+          padding: EdgeInsets.only(
+              bottom: MediaQuery.of(context).viewInsets.bottom),
           child: Container(
-            margin: const EdgeInsets.all(16),
+            margin: const EdgeInsets.fromLTRB(16, 16, 16, 0),
             constraints: BoxConstraints(
                 maxHeight: MediaQuery.of(context).size.height * 0.88),
             decoration: BoxDecoration(
               color: bg.withOpacity(0.97),
-              borderRadius: BorderRadius.circular(16),
+              borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
               boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.2),
                   blurRadius: 24, offset: const Offset(0, -4))],
             ),
@@ -421,27 +420,6 @@ class _NoteEditorModalState extends State<NoteEditorModal> {
           ),
         ),
       ),
-      // Preview del slider
-      if (_activeSlider != null)
-        AnimatedOpacity(
-          opacity: _activeSlider != null ? 1.0 : 0.0,
-          duration: const Duration(milliseconds: 150),
-          child: Center(
-            child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 20),
-              decoration: BoxDecoration(
-                color: Theme.of(context).scaffoldBackgroundColor.withOpacity(0.9),
-                borderRadius: BorderRadius.circular(12),
-                border: Border.all(color: AppTheme.secondary.withOpacity(0.3)),
-              ),
-              child: Text(
-                '${_activeSlider!}  ${_sliderValue?.toStringAsFixed(1)}',
-                style: GoogleFonts.newsreader(
-                    fontSize: 28, color: AppTheme.secondary),
-              ),
-            ),
-          ),
-        ),
     ]);
   }
 
@@ -456,15 +434,12 @@ class _NoteEditorModalState extends State<NoteEditorModal> {
           min: min, max: max,
           activeColor: AppTheme.secondary,
           inactiveColor: AppTheme.outlineVariant.withOpacity(0.3),
-          onChangeStart: (_) => setState(() => _activeSlider = label),
           onChanged: onChanged,
-          onChangeEnd: (_) {
-            Future.delayed(const Duration(milliseconds: 500), () {
-              if (mounted) setState(() => _activeSlider = null);
-            });
-          },
         ),
       ),
+      SizedBox(width: 32,
+          child: Text(value.toStringAsFixed(1),
+              style: _labelStyle(context))),
     ]);
   }
 

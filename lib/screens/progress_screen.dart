@@ -5,6 +5,7 @@ import '../services/reading_progress_service.dart';
 import '../services/bible_service.dart';
 import '../data/bible_data.dart';
 import '../models/bible_book.dart';
+import '../widgets/email_link_dialog.dart';
 
 class ProgressScreen extends StatefulWidget {
   const ProgressScreen({super.key});
@@ -87,6 +88,9 @@ class _ProgressScreenState extends State<ProgressScreen>
                   const SizedBox(height: 40),
                   // Tabla de capítulos leídos
                   _buildChapterTable(),
+                  const SizedBox(height: 40),
+                  // Cuenta vinculada
+                  _buildAccountSection(),
                 ],
               ),
             ),
@@ -246,6 +250,126 @@ class _ProgressScreenState extends State<ProgressScreen>
         const SizedBox(height: 16),
         ..._availableBooks.map((book) => _BookChapterGrid(book: book)),
       ],
+    );
+  }
+
+  Widget _buildAccountSection() {
+    return FutureBuilder<bool>(
+      future: ReadingProgressService.isEmailLinked(),
+      builder: (context, snap) {
+        final linked = snap.data ?? false;
+        return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          Text('CUENTA',
+              style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                  color: AppTheme.secondary, letterSpacing: 2.5)),
+          const SizedBox(height: 16),
+          if (!linked)
+            _AccountCard(
+              icon: Icons.mail_outline,
+              title: 'Sin cuenta vinculada',
+              subtitle: 'Vincula un correo para guardar tu progreso en la nube.',
+              action: 'Vincular',
+              onAction: () async {
+                await showEmailLinkDialog(context);
+                setState(() {});
+              },
+            )
+          else
+            FutureBuilder<String?>(
+              future: ReadingProgressService.getLinkedEmail(),
+              builder: (ctx, emailSnap) {
+                final email = emailSnap.data ?? '';
+                return _AccountCard(
+                  icon: Icons.check_circle_outline,
+                  iconColor: AppTheme.secondary,
+                  title: 'CUENTA VINCULADA',
+                  subtitle: email,
+                  action: 'Desvincular',
+                  actionDestructive: true,
+                  onAction: () async {
+                    final confirm = await showDialog<bool>(
+                      context: context,
+                      builder: (_) => AlertDialog(
+                        title: const Text('¿Desvincular cuenta?'),
+                        content: const Text(
+                            'Tu progreso seguirá guardado localmente.'),
+                        actions: [
+                          TextButton(
+                              onPressed: () => Navigator.pop(context, false),
+                              child: const Text('Cancelar')),
+                          TextButton(
+                              onPressed: () => Navigator.pop(context, true),
+                              child: const Text('Desvincular',
+                                  style: TextStyle(color: Colors.red))),
+                        ],
+                      ),
+                    );
+                    if (confirm == true) {
+                      await ReadingProgressService.unlinkEmail();
+                      if (mounted) setState(() {});
+                    }
+                  },
+                );
+              },
+            ),
+        ]);
+      },
+    );
+  }
+}
+
+class _AccountCard extends StatelessWidget {
+  final IconData icon;
+  final Color? iconColor;
+  final String title;
+  final String subtitle;
+  final String action;
+  final bool actionDestructive;
+  final VoidCallback onAction;
+
+  const _AccountCard({
+    required this.icon,
+    this.iconColor,
+    required this.title,
+    required this.subtitle,
+    required this.action,
+    this.actionDestructive = false,
+    required this.onAction,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: AppTheme.outlineVariant.withOpacity(0.06),
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: AppTheme.outlineVariant.withOpacity(0.15)),
+      ),
+      child: Row(children: [
+        Icon(icon, color: iconColor ?? AppTheme.outline.withOpacity(0.5), size: 22),
+        const SizedBox(width: 14),
+        Expanded(
+          child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+            Text(title,
+                style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                    color: iconColor ?? AppTheme.outline,
+                    letterSpacing: 1.2,
+                    fontWeight: FontWeight.w600)),
+            const SizedBox(height: 2),
+            Text(subtitle,
+                style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                    color: AppTheme.outline.withOpacity(0.7))),
+          ]),
+        ),
+        TextButton(
+          onPressed: onAction,
+          child: Text(action,
+              style: TextStyle(
+                  color: actionDestructive ? Colors.red : AppTheme.secondary,
+                  fontSize: 13)),
+        ),
+      ]),
     );
   }
 }

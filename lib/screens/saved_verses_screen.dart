@@ -163,7 +163,8 @@ class _FilterChip extends StatelessWidget {
                 fontSize: 13,
                 color: selected ? color : color.withOpacity(0.6),
                 fontWeight:
-                    selected ? FontWeight.w600 : FontWeight.w400)),
+                    selected ? FontWeight.w600 : FontWeight.w400),
+            textAlign: TextAlign.center),
       ),
     );
   }

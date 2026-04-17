@@ -39,18 +39,18 @@ class _ReadingScreenState extends State<ReadingScreen>
 
   // Capítulo actual (puede cambiar al navegar)
   late int _currentChapter;
-  Chapter? _chapter;
+  // Lista de capítulos cargados para scroll continuo
+  final List<Chapter> _loadedChapters = [];
+  final List<int> _loadedChapterNumbers = [];
   bool _isLoading = true;
   bool _chapterMarkedRead = false;
-
-  // Animación de transición entre capítulos
-  late AnimationController _pageCtrl;
-  late Animation<double> _pageFade;
-  bool _navigatingForward = true;
+  // Set de capítulos ya marcados como leídos en esta sesión
+  final Set<int> _readInSession = {};
+  // Mostrar check badge pequeño a la derecha
+  bool _showReadBadge = false;
 
   int? _selectedVerseNumber;
   String? _selectedVerseText;
-
   static const Map<int, Map<int, String>> _chapterTitles = {
     20: {
       1: 'El comienzo de la sabiduría', 2: 'Los beneficios de la sabiduría',
@@ -79,10 +79,7 @@ class _ReadingScreenState extends State<ReadingScreen>
   void initState() {
     super.initState();
     _currentChapter = widget.chapterNumber;
-    _pageCtrl = AnimationController(
-        vsync: this, duration: const Duration(milliseconds: 450));
-    _pageFade = CurvedAnimation(parent: _pageCtrl, curve: Curves.easeInOut);
-    _loadChapter();
+    _loadChapter(_currentChapter);
     _scrollController.addListener(_onScroll);
   }
 
@@ -90,7 +87,6 @@ class _ReadingScreenState extends State<ReadingScreen>
   void dispose() {
     _scrollController.removeListener(_onScroll);
     _scrollController.dispose();
-    _pageCtrl.dispose();
     _navDebounce?.cancel();
     super.dispose();
   }
@@ -108,9 +104,10 @@ class _ReadingScreenState extends State<ReadingScreen>
 
   bool get _hasPrevChapter => _currentChapter > 1;
 
-  // Navegación por scroll al final/inicio
+  // Navegación por scroll al final
   Timer? _navDebounce;
-  bool _loadingChapter = false; // evita que jumpTo(0) dispare nav al cap anterior
+  bool _loadingChapter = false;
+  bool _loadingNextChapter = false;
 
   void _onScroll() {
     final pos = _scrollController.position;
@@ -128,73 +125,72 @@ class _ReadingScreenState extends State<ReadingScreen>
       _markCurrentChapterRead();
     }
 
-    if (_loadingChapter) return; // ignorar eventos de scroll durante carga
+    if (_loadingChapter || _loadingNextChapter) return;
 
-    // Siguiente cap: llegar al fondo + indicador listo → 1.5s
-    if (_indicatorReady && _hasNextChapter && maxScroll > 0 && current >= maxScroll - 1) {
-      _navDebounce?.cancel();
-      _navDebounce = Timer(const Duration(milliseconds: 1500), _goToNextChapter);
-    }
-    // Cap anterior: scroll al tope (solo si el usuario ya había bajado antes)
-    else if (_hasPrevChapter && current <= 0 && _scrollProgress > 0) {
-      _navDebounce?.cancel();
-      _navDebounce = Timer(const Duration(milliseconds: 1500), _goToPrevChapter);
-    } else {
-      _navDebounce?.cancel();
+    // Cargar siguiente capítulo al llegar al 90% del scroll
+    if (_hasNextChapter && maxScroll > 0 && current >= maxScroll * 0.9) {
+      final nextCap = _loadedChapterNumbers.last + 1;
+      if (!_loadedChapterNumbers.contains(nextCap)) {
+        _appendNextChapter(nextCap);
+      }
     }
   }
 
   // Estado del indicador de capítulo completado
   bool _showCompleteIndicator = false;
-  bool _indicatorReady = false; // true = ya mostró el check, listo para flecha
+  bool _indicatorReady = false;
 
   Future<void> _markCurrentChapterRead() async {
     if (_chapterMarkedRead) return;
     _chapterMarkedRead = true;
     await ReadingProgressService.markChapterRead(widget.bookId, _currentChapter);
     if (!mounted) return;
-    setState(() => _showCompleteIndicator = true);
-    // Después de 1.2s transiciona de check a flecha
-    Future.delayed(const Duration(milliseconds: 1200), () {
-      if (mounted) setState(() => _indicatorReady = true);
+    // Check pequeño a la derecha — aparece y desaparece en 2s
+    setState(() => _showReadBadge = true);
+    Future.delayed(const Duration(seconds: 2), () {
+      if (mounted) setState(() => _showReadBadge = false);
     });
   }
 
-  Future<void> _loadChapter({bool forward = true}) async {
-    _navigatingForward = forward;
-    _pageCtrl.reset();
-    setState(() {
-      _isLoading = true;
-      _chapterMarkedRead = false;
-      _showCompleteIndicator = false;
-      _indicatorReady = false;
-    });
-    final chapter = await BibleService.loadChapter(widget.bookId, _currentChapter);
+  Future<void> _loadChapter(int chapterNum) async {
+    setState(() => _isLoading = true);
+    final chapter = await BibleService.loadChapter(widget.bookId, chapterNum);
     if (!mounted) return;
-    setState(() { _chapter = chapter; _isLoading = false; });
-    // Guardar posición actual
-    UserProfileService.saveLastPosition(widget.bookId, widget.bookName, _currentChapter);
-    _loadingChapter = true;
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (_scrollController.hasClients) _scrollController.jumpTo(0);
-      Future.delayed(const Duration(milliseconds: 300), () {
-        if (mounted) _loadingChapter = false;
+    if (chapter != null) {
+      _loadedChapters.add(chapter);
+      _loadedChapterNumbers.add(chapterNum);
+    }
+    setState(() { _isLoading = false; _chapterMarkedRead = false; });
+    UserProfileService.saveLastPosition(widget.bookId, widget.bookName, chapterNum);
+  }
+
+  Future<void> _appendNextChapter(int chapterNum) async {
+    if (_loadingNextChapter) return;
+    _loadingNextChapter = true;
+    final chapter = await BibleService.loadChapter(widget.bookId, chapterNum);
+    if (!mounted) { _loadingNextChapter = false; return; }
+    if (chapter != null) {
+      setState(() {
+        _loadedChapters.add(chapter);
+        _loadedChapterNumbers.add(chapterNum);
+        _currentChapter = chapterNum;
+        _chapterMarkedRead = false;
       });
-    });
-    _pageCtrl.forward();
+      UserProfileService.saveLastPosition(widget.bookId, widget.bookName, chapterNum);
+    }
+    _loadingNextChapter = false;
   }
 
-  void _goToNextChapter() {
-    if (!_hasNextChapter) return;
-    setState(() => _currentChapter++);
-    _loadChapter(forward: true);
+  bool get _hasNextChapter {
+    final lastLoaded = _loadedChapterNumbers.isEmpty ? _currentChapter : _loadedChapterNumbers.last;
+    return BibleService.isBookAvailable(widget.bookId) &&
+        lastLoaded < _totalChaptersInBook;
   }
 
-  void _goToPrevChapter() {
-    if (!_hasPrevChapter) return;
-    setState(() => _currentChapter--);
-    _loadChapter(forward: false);
-  }
+  bool get _hasPrevChapter => _currentChapter > 1;
+
+  void _goToNextChapter() {}  // no longer used
+  void _goToPrevChapter() {}  // no longer used
 
   void _handleVerseLongPress(int verseNumber, String verseText) {
     setState(() {
@@ -229,151 +225,150 @@ class _ReadingScreenState extends State<ReadingScreen>
       ),
       body: _isLoading
           ? const Center(child: CircularProgressIndicator())
-          : _chapter == null
-              ? _buildErrorView()
-              : Stack(
-                  children: [
-                    // Contenido con animación de transición entre capítulos
-                    FadeTransition(
-                      opacity: _pageFade,
-                      child: SlideTransition(
-                        position: Tween<Offset>(
-                          begin: Offset(_navigatingForward ? 0.04 : -0.04, 0),
-                          end: Offset.zero,
-                        ).animate(CurvedAnimation(
-                            parent: _pageCtrl, curve: Curves.easeOut)),
-                        child: SingleChildScrollView(
-                            controller: _scrollController,
-                            physics: const BouncingScrollPhysics(),
-                            child: Center(
-                              child: Padding(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 24.0),
-                                child: ConstrainedBox(
-                                  constraints:
-                                      const BoxConstraints(maxWidth: 800),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      const SizedBox(height: 100),
-                                      _buildHeader(),
-                                      const SizedBox(height: 80),
-                                      _buildScriptureContent(),
-                                      const SizedBox(height: 64),
-                                      _buildChapterNav(),
-                                      const SizedBox(height: 80),
-                                    ],
-                                  ),
-                                ),
+          : Stack(
+              children: [
+                // Scroll continuo de todos los capítulos cargados
+                SingleChildScrollView(
+                  controller: _scrollController,
+                  physics: const BouncingScrollPhysics(),
+                  child: Center(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                      child: ConstrainedBox(
+                        constraints: const BoxConstraints(maxWidth: 800),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const SizedBox(height: 100),
+                            for (int i = 0; i < _loadedChapters.length; i++) ...[
+                              _buildChapterBlock(_loadedChapterNumbers[i], _loadedChapters[i]),
+                              if (i < _loadedChapters.length - 1)
+                                _buildChapterDivider(),
+                            ],
+                            if (_loadingNextChapter)
+                              const Padding(
+                                padding: EdgeInsets.symmetric(vertical: 32),
+                                child: Center(child: CircularProgressIndicator()),
                               ),
-                            ),
+                            const SizedBox(height: 80),
+                          ],
                         ),
                       ),
                     ),
-                    // Indicador de progreso lateral
-                    Positioned(
-                      right: 0, top: 0, bottom: 0,
-                      child: _ReadingProgressIndicator(
-                          progress: _scrollProgress),
-                    ),
-                    // Indicador de capítulo completado
-                    if (_showCompleteIndicator)
-                      Positioned(
-                        bottom: 32,
-                        left: 0, right: 0,
-                        child: Center(
-                          child: _ChapterCompleteIndicator(
-                            ready: _indicatorReady,
-                            hasNext: _hasNextChapter,
-                          ),
-                        ),
-                      ),
-                    // VerseActionBar — bottom
-                    Positioned(
-                      bottom: 0, left: 0, right: 0,
-                      child: AnimatedSlide(
-                        offset: hasSelection
-                            ? Offset.zero
-                            : const Offset(0, 1),
-                        duration: const Duration(milliseconds: 300),
-                        curve: Curves.easeOutCubic,
-                        child: AnimatedOpacity(
-                          opacity: hasSelection ? 1.0 : 0.0,
-                          duration: const Duration(milliseconds: 250),
-                          child: hasSelection
-                              ? VerseActionBar(
-                                  bookName: widget.bookName,
-                                  chapterNumber: _currentChapter,
-                                  verseNumber: _selectedVerseNumber!,
-                                  verseText: _selectedVerseText!,
-                                  onClose: () => setState(() {
-                                    _selectedVerseNumber = null;
-                                    _selectedVerseText = null;
-                                  }),
-                                  onRefresh: () => setState(() {}),
-                                )
-                              : const SizedBox.shrink(),
-                        ),
-                      ),
-                    ),
-                  ],
+                  ),
                 ),
+                // Indicador de progreso lateral
+                Positioned(
+                  right: 0, top: 0, bottom: 0,
+                  child: _ReadingProgressIndicator(progress: _scrollProgress),
+                ),
+                // Check badge pequeño a la derecha — aparece y desaparece
+                AnimatedPositioned(
+                  duration: const Duration(milliseconds: 300),
+                  curve: Curves.easeOut,
+                  right: _showReadBadge ? 12 : -40,
+                  bottom: 80,
+                  child: AnimatedOpacity(
+                    opacity: _showReadBadge ? 1.0 : 0.0,
+                    duration: const Duration(milliseconds: 300),
+                    child: Container(
+                      width: 28, height: 28,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: AppTheme.secondary.withOpacity(0.15),
+                        border: Border.all(
+                            color: AppTheme.secondary.withOpacity(0.4), width: 1),
+                      ),
+                      child: Icon(Icons.check_rounded,
+                          size: 14, color: AppTheme.secondary),
+                    ),
+                  ),
+                ),
+                // VerseActionBar — bottom, solo visible con selección
+                if (hasSelection)
+                  Positioned(
+                    bottom: 0, left: 0, right: 0,
+                    child: AnimatedSlide(
+                      offset: Offset.zero,
+                      duration: const Duration(milliseconds: 300),
+                      curve: Curves.easeOutCubic,
+                      child: VerseActionBar(
+                        bookName: widget.bookName,
+                        chapterNumber: _currentChapter,
+                        verseNumber: _selectedVerseNumber!,
+                        verseText: _selectedVerseText!,
+                        onClose: () => setState(() {
+                          _selectedVerseNumber = null;
+                          _selectedVerseText = null;
+                        }),
+                        onRefresh: () => setState(() {}),
+                      ),
+                    ),
+                  ),
+              ],
+            ),
     );
   }
 
-  Widget _buildErrorView() {
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          const Icon(Icons.error_outline, size: 64, color: AppTheme.secondary),
-          const SizedBox(height: 24),
-          Text('No se pudo cargar el capítulo',
-              style: Theme.of(context).textTheme.headlineLarge,
-              textAlign: TextAlign.center),
-          const SizedBox(height: 32),
-          ElevatedButton(
-            onPressed: () => Navigator.pop(context),
-            style: ElevatedButton.styleFrom(
-                backgroundColor: AppTheme.secondary,
-                foregroundColor: AppTheme.onSecondary),
-            child: const Text('Volver'),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildHeader() {
-    final title = _chapterTitles[widget.bookId]?[_currentChapter];
+  Widget _buildChapterBlock(int chapterNum, Chapter chapter) {
+    final title = _chapterTitles[widget.bookId]?[chapterNum];
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(widget.bookName.toUpperCase(),
-            style: Theme.of(context)
-                .textTheme
-                .labelSmall
+            style: Theme.of(context).textTheme.labelSmall
                 ?.copyWith(color: AppTheme.secondary)),
         const SizedBox(height: 16),
-        Text(_currentChapter.toString(),
+        Text(chapterNum.toString(),
             style: Theme.of(context).textTheme.displayLarge),
         if (title != null) ...[
           const SizedBox(height: 12),
           Text(title,
               style: Theme.of(context).textTheme.headlineLarge?.copyWith(
-                    fontSize: 18,
-                    fontStyle: FontStyle.italic,
-                    color: AppTheme.outline,
-                    fontWeight: FontWeight.w300,
-                  )),
+                    fontSize: 18, fontStyle: FontStyle.italic,
+                    color: AppTheme.outline, fontWeight: FontWeight.w300)),
         ],
         const SizedBox(height: 32),
-        Container(
-            width: 48,
-            height: 1,
+        Container(width: 48, height: 1,
             color: AppTheme.outlineVariant.withOpacity(0.3)),
+        const SizedBox(height: 80),
+        ...chapter.verses.map((verse) => Padding(
+              padding: const EdgeInsets.only(bottom: 40.0),
+              child: VerseWidget(
+                number: verse.number,
+                text: verse.text,
+                isHighlighted: false,
+                bookName: widget.bookName,
+                chapterNumber: chapterNum,
+                onVerseLongPress: _handleVerseLongPress,
+              ),
+            )),
+        const SizedBox(height: 40),
+        Center(
+          child: Column(children: [
+            Container(width: 96, height: 1,
+                color: AppTheme.secondary.withOpacity(0.2)),
+            const SizedBox(height: 24),
+            Text('Amén',
+                style: Theme.of(context).textTheme.headlineLarge?.copyWith(
+                      fontStyle: FontStyle.italic,
+                      color: AppTheme.onSurface.withOpacity(0.4),
+                      fontSize: 14)),
+          ]),
+        ),
       ],
+    );
+  }
+
+  Widget _buildChapterDivider() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 48),
+      child: Row(children: [
+        Expanded(child: Divider(
+            color: AppTheme.outlineVariant.withOpacity(0.15))),
+      ]),
+    );
+  },
     );
   }
 
@@ -383,118 +378,6 @@ class _ReadingScreenState extends State<ReadingScreen>
     }
     return Column(
       children: _chapter!.verses
-          .map((verse) => Padding(
-                padding: const EdgeInsets.only(bottom: 40.0),
-                child: VerseWidget(
-                  number: verse.number,
-                  text: verse.text,
-                  isHighlighted: false,
-                  bookName: widget.bookName,
-                  chapterNumber: _currentChapter,
-                  onVerseLongPress: _handleVerseLongPress,
-                ),
-              ))
-          .toList(),
-    );
-  }
-
-  /// Solo el separador "Amén" — la navegación es por scroll/overscroll
-  Widget _buildChapterNav() {
-    return Center(
-      child: Column(
-        children: [
-          Container(
-              width: 96,
-              height: 1,
-              color: AppTheme.secondary.withOpacity(0.2)),
-          const SizedBox(height: 24),
-          Text('Amén',
-              style: Theme.of(context).textTheme.headlineLarge?.copyWith(
-                    fontStyle: FontStyle.italic,
-                    color: AppTheme.onSurface.withOpacity(0.4),
-                    fontSize: 14,
-                  )),
-        ],
-      ),
-    );
-  }
-}
-
-/// Indicador animado: check → flecha de siguiente capítulo
-class _ChapterCompleteIndicator extends StatefulWidget {
-  final bool ready;
-  final bool hasNext;
-
-  const _ChapterCompleteIndicator({
-    required this.ready,
-    required this.hasNext,
-  });
-
-  @override
-  State<_ChapterCompleteIndicator> createState() =>
-      _ChapterCompleteIndicatorState();
-}
-
-class _ChapterCompleteIndicatorState extends State<_ChapterCompleteIndicator>
-    with SingleTickerProviderStateMixin {
-  late AnimationController _ctrl;
-  late Animation<double> _scale;
-
-  @override
-  void initState() {
-    super.initState();
-    _ctrl = AnimationController(
-        vsync: this, duration: const Duration(milliseconds: 400));
-    _scale = CurvedAnimation(parent: _ctrl, curve: Curves.elasticOut);
-    _ctrl.forward();
-  }
-
-  @override
-  void didUpdateWidget(_ChapterCompleteIndicator old) {
-    super.didUpdateWidget(old);
-    if (widget.ready != old.ready) {
-      // Pequeño rebote al transicionar de check a flecha
-      _ctrl.forward(from: 0.6);
-    }
-  }
-
-  @override
-  void dispose() {
-    _ctrl.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final icon = widget.ready && widget.hasNext
-        ? Icons.keyboard_arrow_down_rounded
-        : Icons.check_rounded;
-    final color = AppTheme.secondary;
-
-    return ScaleTransition(
-      scale: _scale,
-      child: Container(
-        width: 48,
-        height: 48,
-        decoration: BoxDecoration(
-          shape: BoxShape.circle,
-          color: color.withOpacity(0.12),
-          border: Border.all(color: color.withOpacity(0.35), width: 1.5),
-        ),
-        child: AnimatedSwitcher(
-          duration: const Duration(milliseconds: 300),
-          transitionBuilder: (child, anim) =>
-              ScaleTransition(scale: anim, child: child),
-          child: Icon(
-            icon,
-            key: ValueKey(icon),
-            color: color,
-            size: 24,
-          ),
-        ),
-      ),
-    );
-  }
 }
 
 class _ReadingProgressIndicator extends StatelessWidget {
