@@ -173,8 +173,8 @@ class BibleService {
   static String _getBookFileName(int bookId) {
     switch (bookId) {
       case 20: return 'proverbios';
-      case 40: return 'mateo';
-      case 43: return 'juan';
+      case 40: return 'mateo_msg';
+      case 43: return 'juan_msg';
       default: return 'unknown';
     }
   }

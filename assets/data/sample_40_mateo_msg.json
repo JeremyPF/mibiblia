@@ -1,0 +1,4384 @@
+{
+  "bookId": 40,
+  "bookName": "Mateo",
+  "testament": "NT",
+  "version": "MSG-ES",
+  "chapters": [
+    {
+      "chapterNumber": 1,
+      "verses": [
+        {
+          "number": 1,
+          "text": "Este es el árbol genealógico de Jesús el Mesías, descendiente de David, descendiente de Abraham."
+        },
+        {
+          "number": 2,
+          "text": "Abraham fue el padre de Isaac, Isaac fue el padre de Jacob, Jacob fue el padre de Judá y sus hermanos."
+        },
+        {
+          "number": 3,
+          "text": "Judá fue el padre de Fares y Zara (su mamá fue Tamar), Fares fue el padre de Esrom, Esrom fue el padre de Aram."
+        },
+        {
+          "number": 4,
+          "text": "Aram fue el padre de Aminadab, Aminadab fue el padre de Naasón, Naasón fue el padre de Salmón."
+        },
+        {
+          "number": 5,
+          "text": "Salmón fue el padre de Booz (su mamá fue Rahab), Booz fue el padre de Obed (su mamá fue Rut), Obed fue el padre de Isaí."
+        },
+        {
+          "number": 6,
+          "text": "Isaí fue el padre del rey David. David fue el padre de Salomón (su mamá había sido la esposa de Urías)."
+        },
+        {
+          "number": 7,
+          "text": "Salomón fue el padre de Roboam, Roboam fue el padre de Abías, Abías fue el padre de Asa."
+        },
+        {
+          "number": 8,
+          "text": "Asa fue el padre de Josafat, Josafat fue el padre de Joram, Joram fue el padre de Uzías."
+        },
+        {
+          "number": 9,
+          "text": "Uzías fue el padre de Jotam, Jotam fue el padre de Acaz, Acaz fue el padre de Ezequías."
+        },
+        {
+          "number": 10,
+          "text": "Ezequías fue el padre de Manasés, Manasés fue el padre de Amón, Amón fue el padre de Josías."
+        },
+        {
+          "number": 11,
+          "text": "Josías fue el padre de Jeconías y sus hermanos, en la época en que los llevaron deportados a Babilonia."
+        },
+        {
+          "number": 12,
+          "text": "Después del destierro a Babilonia: Jeconías fue el padre de Salatiel, Salatiel fue el padre de Zorobabel."
+        },
+        {
+          "number": 13,
+          "text": "Zorobabel fue el padre de Abiud, Abiud fue el padre de Eliaquim, Eliaquim fue el padre de Azor."
+        },
+        {
+          "number": 14,
+          "text": "Azor fue el padre de Sadoc, Sadoc fue el padre de Aquim, Aquim fue el padre de Eliud."
+        },
+        {
+          "number": 15,
+          "text": "Eliud fue el padre de Eleazar, Eleazar fue el padre de Matán, Matán fue el padre de Jacob."
+        },
+        {
+          "number": 16,
+          "text": "Jacob fue el padre de José, el esposo de María, y de María nació Jesús, al que llaman el Mesías."
+        },
+        {
+          "number": 17,
+          "text": "En total, desde Abraham hasta David son catorce generaciones; desde David hasta el destierro en Babilonia, otras catorce; y desde el destierro hasta el Mesías, catorce más."
+        },
+        {
+          "number": 18,
+          "text": "El nacimiento de Jesús el Mesías fue así: su mamá María estaba comprometida con José, pero antes de que se casaran, quedó embarazada por obra del Espíritu Santo."
+        },
+        {
+          "number": 19,
+          "text": "José, su prometido, era un buen tipo y no quería exponerla a la vergüenza pública, así que pensó en romper el compromiso en secreto."
+        },
+        {
+          "number": 20,
+          "text": "Mientras lo estaba pensando, se le apareció un ángel del Señor en sueños y le dijo: José, hijo de David, no tengas miedo de casarte con María. Lo que lleva en el vientre es del Espíritu Santo."
+        },
+        {
+          "number": 21,
+          "text": "Va a tener un hijo, y tú le pondrás por nombre Jesús, porque él salvará a su pueblo de sus pecados. (Jesús significa 'Dios salva'.)"
+        },
+        {
+          "number": 22,
+          "text": "Todo esto pasó para que se cumpliera lo que el Señor había dicho por medio del profeta:"
+        },
+        {
+          "number": 23,
+          "text": "La virgen quedará embarazada y dará a luz un hijo, y lo llamarán Emanuel, que significa 'Dios con nosotros'."
+        },
+        {
+          "number": 24,
+          "text": "Cuando José se despertó, hizo lo que el ángel le había dicho: se casó con María."
+        },
+        {
+          "number": 25,
+          "text": "Pero no tuvo relaciones con ella hasta que nació el niño, y le puso por nombre Jesús."
+        }
+      ]
+    },
+    {
+      "chapterNumber": 2,
+      "verses": [
+        {
+          "number": 1,
+          "text": "Jesús nació en Belén de Judea, cuando Herodes era rey. Por esas fechas llegaron a Jerusalén unos sabios del oriente."
+        },
+        {
+          "number": 2,
+          "text": "¿Dónde está el que nació para ser rey de los judíos? preguntaron. Vimos su estrella en el oriente y venimos a adorarlo."
+        },
+        {
+          "number": 3,
+          "text": "Cuando el rey Herodes oyó esto, se puso nervioso, y toda Jerusalén con él."
+        },
+        {
+          "number": 4,
+          "text": "Reunió a todos los jefes de los sacerdotes y a los maestros de la ley, y les preguntó dónde iba a nacer el Mesías."
+        },
+        {
+          "number": 5,
+          "text": "En Belén de Judea, le respondieron, porque así lo escribió el profeta:"
+        },
+        {
+          "number": 6,
+          "text": "Y tú, Belén, en tierra de Judá, no eres la menos importante entre los pueblos principales de Judá, porque de ti saldrá un gobernante que pastoreará a mi pueblo Israel."
+        },
+        {
+          "number": 7,
+          "text": "Entonces Herodes llamó a los sabios en secreto y averiguó con exactitud cuándo había aparecido la estrella."
+        },
+        {
+          "number": 8,
+          "text": "Luego los mandó a Belén y les dijo: Vayan y busquen bien al niño, y cuando lo encuentren, avísenme para ir yo también a adorarlo. (Mentira, quería eliminarlo.)"
+        },
+        {
+          "number": 9,
+          "text": "Los sabios escucharon al rey y se fueron. La estrella que habían visto en el oriente iba delante de ellos hasta que se detuvo sobre el lugar donde estaba el niño."
+        },
+        {
+          "number": 10,
+          "text": "Cuando vieron la estrella, se llenaron de una alegría enorme."
+        },
+        {
+          "number": 11,
+          "text": "Entraron a la casa, vieron al niño con su mamá María, se arrodillaron y lo adoraron. Luego abrieron sus cofres y le ofrecieron regalos: oro, incienso y mirra."
+        },
+        {
+          "number": 12,
+          "text": "Pero Dios les avisó en sueños que no volvieran donde Herodes, así que regresaron a su tierra por otro camino."
+        },
+        {
+          "number": 13,
+          "text": "Después de que se fueron, el ángel del Señor se le apareció a José en sueños y le dijo: Levántate, agarra al niño y a su mamá, y huye a Egipto. Quédate allá hasta que yo te avise, porque Herodes va a buscar al niño para matarlo."
+        },
+        {
+          "number": 14,
+          "text": "José se levantó esa misma noche, tomó al niño y a su mamá, y se fue a Egipto."
+        },
+        {
+          "number": 15,
+          "text": "Se quedaron allá hasta que murió Herodes. Así se cumplió lo que el Señor había dicho por el profeta: De Egipto llamé a mi hijo."
+        },
+        {
+          "number": 16,
+          "text": "Cuando Herodes se dio cuenta de que los sabios lo habían engañado, se puso furioso y mandó matar a todos los niños de dos años para abajo en Belén y sus alrededores, según el tiempo que había calculado con los sabios."
+        },
+        {
+          "number": 17,
+          "text": "Así se cumplió lo que dijo el profeta Jeremías:"
+        },
+        {
+          "number": 18,
+          "text": "Se oyó un grito en Ramá, llanto y lamento muy grande. Raquel llorando por sus hijos, sin querer ser consolada porque ya no existen."
+        },
+        {
+          "number": 19,
+          "text": "Después de que murió Herodes, el ángel del Señor se le apareció en sueños a José en Egipto"
+        },
+        {
+          "number": 20,
+          "text": "y le dijo: Levántate, toma al niño y a su mamá, y regresa a Israel, porque ya murieron los que querían matar al niño."
+        },
+        {
+          "number": 21,
+          "text": "José se levantó, tomó al niño y a su mamá, y regresó a Israel."
+        },
+        {
+          "number": 22,
+          "text": "Pero cuando supo que Arquelao reinaba en Judea en lugar de su padre Herodes, tuvo miedo de ir allá. Avisado por Dios en sueños, se fue a la región de Galilea."
+        },
+        {
+          "number": 23,
+          "text": "Y fue a vivir a un pueblo llamado Nazaret. Así se cumplió lo que dijeron los profetas: Lo llamarán nazareno."
+        }
+      ]
+    },
+    {
+      "chapterNumber": 3,
+      "verses": [
+        {
+          "number": 1,
+          "text": "Por esos días apareció Juan el Bautista predicando en el desierto de Judea."
+        },
+        {
+          "number": 2,
+          "text": "Decía: Cambien su manera de vivir, porque el reino de los cielos está cerca."
+        },
+        {
+          "number": 3,
+          "text": "Juan era el que había anunciado el profeta Isaías cuando dijo: Una voz grita en el desierto: Preparen el camino del Señor, abran una carretera derecha para él."
+        },
+        {
+          "number": 4,
+          "text": "Juan usaba ropa de pelo de camello con un cinturón de cuero, y comía langostas y miel silvestre. (Vivía de lo que el desierto le daba.)"
+        },
+        {
+          "number": 5,
+          "text": "La gente de Jerusalén, de toda Judea y de toda la región del Jordán salía a verlo."
+        },
+        {
+          "number": 6,
+          "text": "Confesaban sus pecados y él los bautizaba en el río Jordán."
+        },
+        {
+          "number": 7,
+          "text": "Pero cuando vio que muchos fariseos y saduceos venían a bautizarse, les dijo: ¡Camada de víboras! ¿Quién les avisó que huyeran del castigo que viene?"
+        },
+        {
+          "number": 8,
+          "text": "Demuestren con hechos que de verdad cambiaron."
+        },
+        {
+          "number": 9,
+          "text": "Y no se les ocurra decir: Tenemos a Abraham como padre. Les digo que Dios puede hacer hijos de Abraham hasta de estas piedras."
+        },
+        {
+          "number": 10,
+          "text": "El hacha ya está lista para cortar los árboles de raíz. Todo árbol que no da buen fruto será cortado y echado al fuego."
+        },
+        {
+          "number": 11,
+          "text": "Yo los bautizo con agua para que cambien su vida, pero el que viene después de mí es más poderoso que yo, y yo ni siquiera soy digno de cargarle los zapatos. Él los bautizará con el Espíritu Santo y con fuego."
+        },
+        {
+          "number": 12,
+          "text": "Tiene el aventador en la mano para limpiar su era: recogerá el trigo en su granero, pero la paja la quemará con fuego que no se apaga."
+        },
+        {
+          "number": 13,
+          "text": "Entonces Jesús llegó desde Galilea al Jordán para que Juan lo bautizara."
+        },
+        {
+          "number": 14,
+          "text": "Pero Juan quería impedírselo y le decía: Yo soy el que necesita ser bautizado por ti, ¿y tú vienes a mí?"
+        },
+        {
+          "number": 15,
+          "text": "Jesús le respondió: Déjame por ahora, porque así conviene que cumplamos todo lo que Dios pide. Y Juan aceptó."
+        },
+        {
+          "number": 16,
+          "text": "Cuando Jesús fue bautizado, salió del agua enseguida. En ese momento se abrió el cielo y vio al Espíritu de Dios bajar como una paloma y posarse sobre él."
+        },
+        {
+          "number": 17,
+          "text": "Y una voz del cielo dijo: Este es mi Hijo amado, en quien me siento muy orgulloso."
+        }
+      ]
+    },
+    {
+      "chapterNumber": 4,
+      "verses": [
+        {
+          "number": 1,
+          "text": "Luego el Espíritu llevó a Jesús al desierto para que el diablo lo tentara."
+        },
+        {
+          "number": 2,
+          "text": "Jesús ayunó cuarenta días y cuarenta noches, y al final tenía mucha hambre."
+        },
+        {
+          "number": 3,
+          "text": "El tentador se le acercó y le dijo: Si de verdad eres el Hijo de Dios, dile a estas piedras que se conviertan en pan."
+        },
+        {
+          "number": 4,
+          "text": "Jesús le respondió: No solo de pan vive el hombre. (Hay cosas más importantes que el estómago.) Sino de toda palabra que sale de la boca de Dios."
+        },
+        {
+          "number": 5,
+          "text": "Entonces el diablo lo llevó a la ciudad santa, lo puso en la parte más alta del templo"
+        },
+        {
+          "number": 6,
+          "text": "y le dijo: Si de verdad eres el Hijo de Dios, tírate, porque está escrito que sus ángeles te cuidarán y te agarrarán antes de que toques el suelo."
+        },
+        {
+          "number": 7,
+          "text": "Jesús le dijo: También está escrito: No pongas a prueba al Señor tu Dios."
+        },
+        {
+          "number": 8,
+          "text": "El diablo lo llevó entonces a un cerro muy alto y le mostró todos los reinos del mundo con todo su esplendor."
+        },
+        {
+          "number": 9,
+          "text": "Todo esto te daré, le dijo, si te arrodillas y me adoras."
+        },
+        {
+          "number": 10,
+          "text": "Jesús le respondió: ¡Fuera de aquí, Satanás! Porque está escrito: Adorarás al Señor tu Dios y solo a él servirás."
+        },
+        {
+          "number": 11,
+          "text": "Entonces el diablo lo dejó, y unos ángeles vinieron a atenderlo."
+        },
+        {
+          "number": 12,
+          "text": "Cuando Jesús supo que habían metido a Juan en la cárcel, se fue a Galilea."
+        },
+        {
+          "number": 13,
+          "text": "Dejó Nazaret y fue a vivir a Capernaúm, que está a la orilla del lago, en la región de Zabulón y Neftalí."
+        },
+        {
+          "number": 14,
+          "text": "Así se cumplió lo que dijo el profeta Isaías:"
+        },
+        {
+          "number": 15,
+          "text": "Tierra de Zabulón y tierra de Neftalí, camino del mar, al otro lado del Jordán, Galilea de los gentiles."
+        },
+        {
+          "number": 16,
+          "text": "El pueblo que vivía en la oscuridad vio una gran luz; a los que vivían en tierra de sombra de muerte, les amaneció una luz."
+        },
+        {
+          "number": 17,
+          "text": "Desde entonces Jesús comenzó a predicar: Cambien su manera de vivir, porque el reino de los cielos está cerca."
+        },
+        {
+          "number": 18,
+          "text": "Caminando junto al lago de Galilea, vio a dos hermanos: Simón, al que llaman Pedro, y su hermano Andrés. Estaban echando la red al lago porque eran pescadores."
+        },
+        {
+          "number": 19,
+          "text": "Jesús les dijo: Síganme, y los haré pescadores de personas."
+        },
+        {
+          "number": 20,
+          "text": "Ellos dejaron las redes enseguida y lo siguieron."
+        },
+        {
+          "number": 21,
+          "text": "Un poco más adelante vio a otros dos hermanos: Jacobo y Juan, hijos de Zebedeo. Estaban en la barca con su padre arreglando las redes. Jesús los llamó"
+        },
+        {
+          "number": 22,
+          "text": "y ellos dejaron la barca y a su padre enseguida, y lo siguieron."
+        },
+        {
+          "number": 23,
+          "text": "Jesús recorría toda Galilea enseñando en las sinagogas, anunciando la buena noticia del reino, y sanando toda enfermedad y dolencia entre la gente."
+        },
+        {
+          "number": 24,
+          "text": "Su fama se extendió por toda Siria, y le traían a todos los que estaban mal: enfermos con todo tipo de dolencias, los que sufrían mucho, los endemoniados, los epilépticos y los paralíticos, y él los sanaba a todos."
+        },
+        {
+          "number": 25,
+          "text": "Lo seguían multitudes de Galilea, Decápolis, Jerusalén, Judea y del otro lado del Jordán."
+        }
+      ]
+    },
+    {
+      "chapterNumber": 5,
+      "verses": [
+        {
+          "number": 1,
+          "text": "Cuando Jesús vio a las multitudes, subió al cerro y se sentó. Sus discípulos se acercaron a él"
+        },
+        {
+          "number": 2,
+          "text": "y él comenzó a enseñarles."
+        },
+        {
+          "number": 3,
+          "text": "Dichosos los que saben que necesitan a Dios, porque el reino de los cielos es suyo. (Los que no se creen autosuficientes son los que de verdad tienen todo.)"
+        },
+        {
+          "number": 4,
+          "text": "Dichosos los que lloran, porque serán consolados."
+        },
+        {
+          "number": 5,
+          "text": "Dichosos los humildes, porque heredarán la tierra."
+        },
+        {
+          "number": 6,
+          "text": "Dichosos los que tienen hambre y sed de hacer lo correcto, porque quedarán satisfechos."
+        },
+        {
+          "number": 7,
+          "text": "Dichosos los compasivos, porque recibirán compasión."
+        },
+        {
+          "number": 8,
+          "text": "Dichosos los de corazón limpio, porque verán a Dios."
+        },
+        {
+          "number": 9,
+          "text": "Dichosos los que trabajan por la paz, porque serán llamados hijos de Dios."
+        },
+        {
+          "number": 10,
+          "text": "Dichosos los que son perseguidos por hacer lo correcto, porque el reino de los cielos es suyo."
+        },
+        {
+          "number": 11,
+          "text": "Dichosos ustedes cuando la gente los insulte, los persiga y diga toda clase de mentiras contra ustedes por causa mía."
+        },
+        {
+          "number": 12,
+          "text": "Alégrense y estén contentos, porque su recompensa en el cielo es enorme. Así mismo persiguieron a los profetas que vivieron antes que ustedes."
+        },
+        {
+          "number": 13,
+          "text": "Ustedes son la sal de la tierra. Pero si la sal pierde su sabor, ¿con qué se le devuelve? Ya no sirve para nada, solo para tirarla y que la pise la gente."
+        },
+        {
+          "number": 14,
+          "text": "Ustedes son la luz del mundo. Una ciudad en lo alto de un cerro no se puede esconder."
+        },
+        {
+          "number": 15,
+          "text": "Nadie enciende una lámpara para meterla debajo de un cajón. La ponen en alto para que alumbre a todos los que están en la casa."
+        },
+        {
+          "number": 16,
+          "text": "Así que dejen que su luz brille delante de todos, para que vean las cosas buenas que hacen y le den gloria a su Padre que está en el cielo."
+        },
+        {
+          "number": 17,
+          "text": "No crean que vine a eliminar la ley o los profetas. No vine a eliminarlos sino a darles su pleno cumplimiento."
+        },
+        {
+          "number": 18,
+          "text": "Les digo la verdad: mientras existan el cielo y la tierra, ni la letra más pequeña ni el punto más chico de la ley desaparecerá hasta que todo se cumpla."
+        },
+        {
+          "number": 19,
+          "text": "El que desobedezca uno solo de estos mandamientos, por pequeño que sea, y enseñe a otros a hacer lo mismo, será el más pequeño en el reino de los cielos. Pero el que los obedezca y los enseñe será grande en el reino de los cielos."
+        },
+        {
+          "number": 20,
+          "text": "Les digo que si su manera de vivir no es mucho mejor que la de los maestros de la ley y los fariseos, de ninguna manera van a entrar al reino de los cielos."
+        },
+        {
+          "number": 21,
+          "text": "Ustedes han oído que se les dijo a sus antepasados: No mates, y el que mate tendrá que responder ante el juez."
+        },
+        {
+          "number": 22,
+          "text": "Pero yo les digo que cualquiera que se enoje con su hermano tendrá que responder ante el juez. El que lo insulte tendrá que responder ante el tribunal. Y el que lo maldiga tendrá que responder ante el fuego del infierno."
+        },
+        {
+          "number": 23,
+          "text": "Por eso, si estás presentando tu ofrenda en el altar y de repente te acuerdas de que tu hermano tiene algo contra ti,"
+        },
+        {
+          "number": 24,
+          "text": "deja tu ofrenda allí mismo y ve primero a hacer las paces con tu hermano. Después vuelve y presenta tu ofrenda."
+        },
+        {
+          "number": 25,
+          "text": "Arréglate rápido con tu adversario mientras todavía van de camino, no sea que te entregue al juez, el juez al guardia, y te metan a la cárcel."
+        },
+        {
+          "number": 26,
+          "text": "Te digo que no saldrás de allí hasta que hayas pagado hasta el último centavo."
+        },
+        {
+          "number": 27,
+          "text": "Ustedes han oído que se dijo: No cometas adulterio."
+        },
+        {
+          "number": 28,
+          "text": "Pero yo les digo que cualquiera que mira a una mujer con deseo ya cometió adulterio con ella en su corazón."
+        },
+        {
+          "number": 29,
+          "text": "Si tu ojo derecho te hace pecar, sácatelo y tíralo. Más te vale perder una parte del cuerpo que ir completo al infierno."
+        },
+        {
+          "number": 30,
+          "text": "Y si tu mano derecha te hace pecar, córtatela y tírala. Más te vale perder una parte del cuerpo que ir completo al infierno."
+        },
+        {
+          "number": 31,
+          "text": "También se dijo: El que se divorcie de su esposa debe darle un certificado de divorcio."
+        },
+        {
+          "number": 32,
+          "text": "Pero yo les digo que el que se divorcie de su esposa, a menos que sea por infidelidad, la está empujando al adulterio. Y el que se case con la divorciada también comete adulterio."
+        },
+        {
+          "number": 33,
+          "text": "También han oído que se les dijo a sus antepasados: No jures en falso, y cumple los juramentos que le hiciste al Señor."
+        },
+        {
+          "number": 34,
+          "text": "Pero yo les digo que no juren para nada: ni por el cielo, porque es el trono de Dios;"
+        },
+        {
+          "number": 35,
+          "text": "ni por la tierra, porque es el estrado de sus pies; ni por Jerusalén, porque es la ciudad del gran Rey."
+        },
+        {
+          "number": 36,
+          "text": "Ni jures por tu cabeza, porque no puedes hacer ni un solo cabello blanco o negro."
+        },
+        {
+          "number": 37,
+          "text": "Que su sí sea sí, y su no sea no. Lo que va más allá de eso viene del malo."
+        },
+        {
+          "number": 38,
+          "text": "Ustedes han oído que se dijo: Ojo por ojo y diente por diente."
+        },
+        {
+          "number": 39,
+          "text": "Pero yo les digo que no resistan al que les hace mal. Si alguien te da una bofetada en la mejilla derecha, ponle también la otra."
+        },
+        {
+          "number": 40,
+          "text": "Si alguien te quiere demandar para quitarte la camisa, déjale también el abrigo."
+        },
+        {
+          "number": 41,
+          "text": "Si alguien te obliga a caminar un kilómetro con él, camina dos."
+        },
+        {
+          "number": 42,
+          "text": "Dale al que te pida, y no le des la espalda al que quiera pedirte prestado."
+        },
+        {
+          "number": 43,
+          "text": "Ustedes han oído que se dijo: Ama a tu prójimo y odia a tu enemigo."
+        },
+        {
+          "number": 44,
+          "text": "Pero yo les digo: Amen a sus enemigos y oren por los que los persiguen."
+        },
+        {
+          "number": 45,
+          "text": "Así serán hijos de su Padre que está en el cielo, que hace salir su sol sobre buenos y malos, y manda la lluvia sobre justos e injustos."
+        },
+        {
+          "number": 46,
+          "text": "Si solo aman a los que los aman, ¿qué mérito tienen? ¿Acaso no hacen lo mismo hasta los cobradores de impuestos?"
+        },
+        {
+          "number": 47,
+          "text": "Y si solo saludan a sus amigos, ¿qué tiene eso de especial? ¿No hacen lo mismo hasta los que no conocen a Dios?"
+        },
+        {
+          "number": 48,
+          "text": "Sean perfectos, como su Padre celestial es perfecto. (No perfectos en el sentido de sin errores, sino completos, maduros, enteros.)"
+        }
+      ]
+    },
+    {
+      "chapterNumber": 6,
+      "verses": [
+        {
+          "number": 1,
+          "text": "Tengan cuidado de no hacer sus buenas obras delante de la gente para que los vean. Si lo hacen así, no recibirán ninguna recompensa de su Padre que está en el cielo."
+        },
+        {
+          "number": 2,
+          "text": "Cuando des a los necesitados, no lo anuncies con trompetas como hacen los hipócritas en las sinagogas y en las calles para que la gente los admire. Les digo que ya recibieron toda su recompensa."
+        },
+        {
+          "number": 3,
+          "text": "Cuando tú des a los necesitados, que tu mano izquierda no sepa lo que hace tu mano derecha."
+        },
+        {
+          "number": 4,
+          "text": "Así tu ayuda será en secreto, y tu Padre que ve lo que se hace en secreto te recompensará."
+        },
+        {
+          "number": 5,
+          "text": "Y cuando oren, no sean como los hipócritas, que les encanta orar de pie en las sinagogas y en las esquinas de las calles para que la gente los vea. Les digo que ya recibieron toda su recompensa."
+        },
+        {
+          "number": 6,
+          "text": "Pero tú, cuando ores, entra a tu cuarto, cierra la puerta y ora a tu Padre que está en secreto. Y tu Padre que ve lo que se hace en secreto te recompensará."
+        },
+        {
+          "number": 7,
+          "text": "Y cuando oren, no repitan las mismas palabras una y otra vez como hacen los que no conocen a Dios, que creen que por hablar mucho serán escuchados."
+        },
+        {
+          "number": 8,
+          "text": "No sean como ellos, porque su Padre ya sabe lo que necesitan antes de que se lo pidan."
+        },
+        {
+          "number": 9,
+          "text": "Oren así: Padre nuestro que estás en el cielo, que tu nombre sea honrado,"
+        },
+        {
+          "number": 10,
+          "text": "que tu reino venga, que se haga tu voluntad aquí en la tierra como se hace en el cielo."
+        },
+        {
+          "number": 11,
+          "text": "Danos hoy el pan que necesitamos."
+        },
+        {
+          "number": 12,
+          "text": "Perdónanos las deudas que tenemos contigo, así como nosotros perdonamos a los que nos deben a nosotros."
+        },
+        {
+          "number": 13,
+          "text": "No nos dejes caer en tentación, sino líbranos del malo. Porque tuyo es el reino, el poder y la gloria para siempre. Amén."
+        },
+        {
+          "number": 14,
+          "text": "Porque si perdonan a otros cuando les hacen algo malo, su Padre celestial también los perdonará a ustedes."
+        },
+        {
+          "number": 15,
+          "text": "Pero si no perdonan a otros, su Padre tampoco los perdonará a ustedes."
+        },
+        {
+          "number": 16,
+          "text": "Cuando ayunen, no pongan cara larga como los hipócritas, que se desfiguran la cara para que la gente vea que están ayunando. Les digo que ya recibieron toda su recompensa."
+        },
+        {
+          "number": 17,
+          "text": "Pero tú, cuando ayunes, lávate la cara y péinate,"
+        },
+        {
+          "number": 18,
+          "text": "para que no sea la gente sino tu Padre, que está en lo secreto, quien vea que estás ayunando. Y tu Padre que ve lo que se hace en secreto te recompensará."
+        },
+        {
+          "number": 19,
+          "text": "No acumulen riquezas aquí en la tierra, donde la polilla y el óxido las destruyen, y donde los ladrones entran a robar."
+        },
+        {
+          "number": 20,
+          "text": "Acumulen riquezas en el cielo, donde ni la polilla ni el óxido las destruyen, y donde los ladrones no entran a robar."
+        },
+        {
+          "number": 21,
+          "text": "Porque donde esté tu tesoro, allí estará también tu corazón."
+        },
+        {
+          "number": 22,
+          "text": "El ojo es la lámpara del cuerpo. Si tu ojo está sano, todo tu cuerpo estará lleno de luz."
+        },
+        {
+          "number": 23,
+          "text": "Pero si tu ojo está malo, todo tu cuerpo estará en oscuridad. Y si la luz que hay en ti es oscuridad, ¡qué oscuridad tan grande!"
+        },
+        {
+          "number": 24,
+          "text": "Nadie puede servir a dos patrones a la vez. O va a odiar a uno y querer al otro, o va a ser fiel a uno y despreciar al otro. No pueden servir a Dios y al dinero al mismo tiempo."
+        },
+        {
+          "number": 25,
+          "text": "Por eso les digo: no se preocupen por su vida, qué van a comer o qué van a beber; ni por su cuerpo, qué van a ponerse. ¿No vale la vida más que la comida, y el cuerpo más que la ropa?"
+        },
+        {
+          "number": 26,
+          "text": "Miren los pájaros del cielo: no siembran ni cosechan ni guardan en graneros, y sin embargo su Padre celestial los alimenta. ¿No valen ustedes mucho más que ellos?"
+        },
+        {
+          "number": 27,
+          "text": "¿Y quién de ustedes puede añadir una sola hora a su vida por mucho que se preocupe?"
+        },
+        {
+          "number": 28,
+          "text": "¿Y por qué se preocupan por la ropa? Fíjense cómo crecen los lirios del campo: no trabajan ni hilan."
+        },
+        {
+          "number": 29,
+          "text": "Sin embargo, les digo que ni el rey Salomón con toda su riqueza se vistió tan bien como uno de ellos."
+        },
+        {
+          "number": 30,
+          "text": "Si Dios viste así a la hierba del campo, que hoy existe y mañana se echa al fuego, ¿no hará mucho más por ustedes? ¡Qué poca fe tienen!"
+        },
+        {
+          "number": 31,
+          "text": "Así que no se preocupen diciendo: ¿Qué vamos a comer? ¿Qué vamos a beber? ¿Con qué nos vamos a vestir?"
+        },
+        {
+          "number": 32,
+          "text": "Los que no conocen a Dios andan detrás de todas esas cosas, pero su Padre celestial sabe que ustedes las necesitan."
+        },
+        {
+          "number": 33,
+          "text": "Busquen primero el reino de Dios y su manera de vivir, y todas estas cosas les serán añadidas."
+        },
+        {
+          "number": 34,
+          "text": "Así que no se preocupen por el mañana, porque el mañana traerá sus propias preocupaciones. Cada día tiene suficiente con sus propios problemas."
+        }
+      ]
+    },
+    {
+      "chapterNumber": 7,
+      "verses": [
+        {
+          "number": 1,
+          "text": "No juzguen a los demás, para que no los juzguen a ustedes."
+        },
+        {
+          "number": 2,
+          "text": "Porque con el mismo criterio con que juzguen a otros, serán juzgados ustedes, y con la misma medida con que midan a otros, se les medirá a ustedes."
+        },
+        {
+          "number": 3,
+          "text": "¿Por qué te fijas en la astilla que tiene tu hermano en el ojo, y no te das cuenta de la viga que tienes en el tuyo?"
+        },
+        {
+          "number": 4,
+          "text": "¿Cómo puedes decirle a tu hermano: Déjame sacarte esa astilla del ojo, cuando tú tienes una viga en el tuyo?"
+        },
+        {
+          "number": 5,
+          "text": "¡Hipócrita! Sácate primero la viga de tu propio ojo, y entonces verás bien para sacarle la astilla al otro."
+        },
+        {
+          "number": 6,
+          "text": "No les den a los perros lo que es sagrado, ni echen sus perlas a los cerdos. Si lo hacen, las pisotearán y luego se volverán contra ustedes para atacarlos."
+        },
+        {
+          "number": 7,
+          "text": "Pidan y se les dará; busquen y encontrarán; llamen y se les abrirá la puerta."
+        },
+        {
+          "number": 8,
+          "text": "Porque todo el que pide recibe; el que busca encuentra; y al que llama, se le abre."
+        },
+        {
+          "number": 9,
+          "text": "¿Quién de ustedes, si su hijo le pide pan, le da una piedra?"
+        },
+        {
+          "number": 10,
+          "text": "¿O si le pide un pescado, le da una serpiente?"
+        },
+        {
+          "number": 11,
+          "text": "Pues si ustedes, que son malos, saben dar cosas buenas a sus hijos, ¡cuánto más su Padre que está en el cielo dará cosas buenas a los que se las pidan!"
+        },
+        {
+          "number": 12,
+          "text": "Traten a los demás como quieren que los traten a ustedes. En esto se resume toda la ley y los profetas."
+        },
+        {
+          "number": 13,
+          "text": "Entren por la puerta angosta. Porque la puerta ancha y el camino fácil llevan a la destrucción, y mucha gente va por ahí."
+        },
+        {
+          "number": 14,
+          "text": "Pero la puerta angosta y el camino difícil llevan a la vida, y poca gente los encuentra."
+        },
+        {
+          "number": 15,
+          "text": "Cuídense de los falsos profetas. Se acercan con cara de oveja pero por dentro son lobos feroces."
+        },
+        {
+          "number": 16,
+          "text": "Por sus frutos los conocerán. ¿Acaso se recogen uvas de los espinos, o higos de los cardos?"
+        },
+        {
+          "number": 17,
+          "text": "Todo árbol bueno da fruto bueno, pero el árbol malo da fruto malo."
+        },
+        {
+          "number": 18,
+          "text": "Un árbol bueno no puede dar fruto malo, ni un árbol malo puede dar fruto bueno."
+        },
+        {
+          "number": 19,
+          "text": "Todo árbol que no da buen fruto es cortado y echado al fuego."
+        },
+        {
+          "number": 20,
+          "text": "Así que por sus frutos los conocerán."
+        },
+        {
+          "number": 21,
+          "text": "No todo el que me dice: Señor, Señor, va a entrar al reino de los cielos, sino el que hace la voluntad de mi Padre que está en el cielo."
+        },
+        {
+          "number": 22,
+          "text": "Muchos me dirán en aquel día: Señor, Señor, ¿no profetizamos en tu nombre, y en tu nombre echamos demonios, y en tu nombre hicimos muchos milagros?"
+        },
+        {
+          "number": 23,
+          "text": "Y entonces les diré claramente: Nunca los conocí. Aléjense de mí, los que hacen el mal."
+        },
+        {
+          "number": 24,
+          "text": "Por eso, el que escucha estas palabras mías y las pone en práctica es como un hombre inteligente que construyó su casa sobre la roca."
+        },
+        {
+          "number": 25,
+          "text": "Cayó la lluvia, crecieron los ríos, soplaron los vientos y azotaron esa casa, pero no se cayó porque estaba cimentada sobre la roca."
+        },
+        {
+          "number": 26,
+          "text": "Pero el que escucha estas palabras mías y no las pone en práctica es como un tonto que construyó su casa sobre la arena."
+        },
+        {
+          "number": 27,
+          "text": "Cayó la lluvia, crecieron los ríos, soplaron los vientos y azotaron esa casa, y se cayó. ¡Y qué porrazo tan grande!"
+        },
+        {
+          "number": 28,
+          "text": "Cuando Jesús terminó de hablar, la gente estaba asombrada de su enseñanza,"
+        },
+        {
+          "number": 29,
+          "text": "porque les enseñaba como alguien con autoridad propia, no como sus maestros de la ley. (Hablaba como quien sabe de qué habla, no como quien repite lo que otros dijeron.)"
+        }
+      ]
+    },
+    {
+      "chapterNumber": 8,
+      "verses": [
+        {
+          "number": 1,
+          "text": "Cuando JesÃºs bajÃ³ del cerro, un montÃ³n de gente lo siguiÃ³."
+        },
+        {
+          "number": 2,
+          "text": "Un leproso se le acercÃ³, se arrodillÃ³ y le dijo: SeÃ±or, si quieres, puedes limpiarme."
+        },
+        {
+          "number": 3,
+          "text": "JesÃºs extendiÃ³ la mano, lo tocÃ³ y dijo: Quiero. Queda limpio. Y al instante la lepra desapareciÃ³."
+        },
+        {
+          "number": 4,
+          "text": "JesÃºs le dijo: No le cuentes a nadie. Anda, presÃ©ntate al sacerdote y lleva la ofrenda que mandÃ³ MoisÃ©s. Eso les servirÃ¡ de prueba a ellos. (Era el procedimiento oficial para que un ex-leproso fuera readmitido en la comunidad.)"
+        },
+        {
+          "number": 5,
+          "text": "Cuando JesÃºs entrÃ³ a CapernaÃºm, un centuriÃ³n romano se le acercÃ³ a pedirle ayuda."
+        },
+        {
+          "number": 6,
+          "text": "Le dijo: SeÃ±or, mi sirviente estÃ¡ en casa paralizado, sufriendo muchÃ­simo."
+        },
+        {
+          "number": 7,
+          "text": "JesÃºs le dijo: Voy y lo sano."
+        },
+        {
+          "number": 8,
+          "text": "El centuriÃ³n respondiÃ³: SeÃ±or, no soy digno de que entres a mi casa. Con que digas una sola palabra, mi sirviente quedarÃ¡ sano."
+        },
+        {
+          "number": 9,
+          "text": "Porque yo tambiÃ©n estoy bajo Ã³rdenes y tengo soldados a mi cargo. Le digo a uno: Ve, y va. Al otro: Ven, y viene. A mi sirviente: Haz esto, y lo hace."
+        },
+        {
+          "number": 10,
+          "text": "JesÃºs quedÃ³ impresionado y le dijo a la gente que lo seguÃ­a: Les juro que en todo Israel no he encontrado una fe asÃ­."
+        },
+        {
+          "number": 11,
+          "text": "Y les digo que vendrÃ¡n muchos de oriente y occidente y se sentarÃ¡n a la mesa con Abraham, Isaac y Jacob en el reino de los cielos."
+        },
+        {
+          "number": 12,
+          "text": "Pero los que se creÃ­an que tenÃ­an el lugar asegurado van a quedar afuera, en la oscuridad, llorando y rechinando los dientes."
+        },
+        {
+          "number": 13,
+          "text": "JesÃºs le dijo al centuriÃ³n: Vete, y que te pase lo que creÃ­ste. (La fe del centuriÃ³n hizo el trabajo.) Y el sirviente quedÃ³ sano en ese mismo momento."
+        },
+        {
+          "number": 14,
+          "text": "JesÃºs llegÃ³ a casa de Pedro y vio a la suegra de Pedro en cama con fiebre."
+        },
+        {
+          "number": 15,
+          "text": "Le tocÃ³ la mano y la fiebre se fue. Ella se levantÃ³ y se puso a atenderlos."
+        },
+        {
+          "number": 16,
+          "text": "Al caer la noche le trajeron muchos endemoniados. JesÃºs echÃ³ fuera a los espÃ­ritus con una sola palabra y sanÃ³ a todos los enfermos."
+        },
+        {
+          "number": 17,
+          "text": "AsÃ­ se cumpliÃ³ lo que dijo el profeta IsaÃ­as: Ã‰l cargÃ³ con nuestras enfermedades y se echÃ³ encima nuestros dolores."
+        },
+        {
+          "number": 18,
+          "text": "Cuando JesÃºs vio la multitud que lo rodeaba, dio la orden de cruzar al otro lado del lago."
+        },
+        {
+          "number": 19,
+          "text": "Un maestro de la ley se le acercÃ³ y le dijo: Maestro, te seguirÃ© a donde vayas."
+        },
+        {
+          "number": 20,
+          "text": "JesÃºs le respondiÃ³: Los zorros tienen madrigueras y los pÃ¡jaros tienen nidos, pero el Hijo del Hombre no tiene ni dÃ³nde recostar la cabeza."
+        },
+        {
+          "number": 21,
+          "text": "Otro de sus discÃ­pulos le dijo: SeÃ±or, dÃ©jame ir primero a enterrar a mi padre."
+        },
+        {
+          "number": 22,
+          "text": "JesÃºs le dijo: SÃ­gueme, y deja que los muertos entierren a sus muertos."
+        },
+        {
+          "number": 23,
+          "text": "JesÃºs subiÃ³ a la barca y sus discÃ­pulos lo siguieron."
+        },
+        {
+          "number": 24,
+          "text": "De repente se armÃ³ una tormenta tremenda en el lago, con olas que cubrÃ­an la barca. JesÃºs estaba dormido."
+        },
+        {
+          "number": 25,
+          "text": "Los discÃ­pulos lo despertaron gritando: Â¡SeÃ±or, sÃ¡lvanos, que nos hundimos!"
+        },
+        {
+          "number": 26,
+          "text": "JesÃºs les dijo: Â¿Por quÃ© tienen tanto miedo? Â¡QuÃ© poca fe! Entonces se levantÃ³, les ordenÃ³ al viento y al mar que se calmaran, y todo quedÃ³ en calma total."
+        },
+        {
+          "number": 27,
+          "text": "Los hombres quedaron boquiabiertos y decÃ­an: Â¿QuiÃ©n es este, que hasta el viento y el mar le obedecen?"
+        },
+        {
+          "number": 28,
+          "text": "Cuando llegaron al otro lado, a la regiÃ³n de los gadarenos, dos endemoniados salieron de entre las tumbas a su encuentro. Eran tan violentos que nadie podÃ­a pasar por ese camino."
+        },
+        {
+          "number": 29,
+          "text": "Se pusieron a gritar: Â¿QuÃ© tienes que ver con nosotros, Hijo de Dios? Â¿Viniste a atormentarnos antes de tiempo?"
+        },
+        {
+          "number": 30,
+          "text": "A cierta distancia habÃ­a una gran manada de cerdos pastando."
+        },
+        {
+          "number": 31,
+          "text": "Los demonios le rogaron: Si nos echas, mÃ¡ndanos a esa manada de cerdos."
+        },
+        {
+          "number": 32,
+          "text": "JesÃºs les dijo: Vayan. Ellos salieron y entraron en los cerdos, y toda la manada se lanzÃ³ por el barranco al lago y se ahogÃ³."
+        },
+        {
+          "number": 33,
+          "text": "Los que cuidaban los cerdos salieron corriendo al pueblo y contaron todo, incluso lo de los endemoniados."
+        },
+        {
+          "number": 34,
+          "text": "Entonces todo el pueblo saliÃ³ a encontrarse con JesÃºs, y cuando lo vieron le rogaron que se fuera de su territorio."
+        }
+      ]
+    },
+    {
+      "chapterNumber": 9,
+      "verses": [
+        {
+          "number": 1,
+          "text": "JesÃºs subiÃ³ a la barca, cruzÃ³ el lago y llegÃ³ a su propio pueblo."
+        },
+        {
+          "number": 2,
+          "text": "Unos hombres le trajeron a un paralÃ­tico en una camilla. Cuando JesÃºs vio la fe de ellos, le dijo al paralÃ­tico: Ãnimo, hijo, tus pecados quedan perdonados."
+        },
+        {
+          "number": 3,
+          "text": "Algunos maestros de la ley pensaron para sus adentros: Este hombre estÃ¡ blasfemando."
+        },
+        {
+          "number": 4,
+          "text": "JesÃºs, que sabÃ­a lo que estaban pensando, les dijo: Â¿Por quÃ© piensan cosas malas?"
+        },
+        {
+          "number": 5,
+          "text": "Â¿QuÃ© es mÃ¡s fÃ¡cil, decir: Tus pecados son perdonados, o decir: LevÃ¡ntate y camina?"
+        },
+        {
+          "number": 6,
+          "text": "Pues para que sepan que el Hijo del Hombre tiene autoridad en la tierra para perdonar pecados... (Se dirigiÃ³ al paralÃ­tico:) LevÃ¡ntate, agarra tu camilla y vete a tu casa."
+        },
+        {
+          "number": 7,
+          "text": "El hombre se levantÃ³ y se fue a su casa."
+        },
+        {
+          "number": 8,
+          "text": "La gente que vio esto quedÃ³ asombrada y alabÃ³ a Dios por haber dado tal autoridad a los hombres."
+        },
+        {
+          "number": 9,
+          "text": "Siguiendo su camino, JesÃºs vio a un hombre llamado Mateo sentado en la oficina de cobro de impuestos. Le dijo: SÃ­gueme. Mateo se levantÃ³ y lo siguiÃ³."
+        },
+        {
+          "number": 10,
+          "text": "Mientras JesÃºs estaba comiendo en casa de Mateo, llegaron muchos cobradores de impuestos y gente de mala fama y se sentaron a comer con Ã©l y sus discÃ­pulos."
+        },
+        {
+          "number": 11,
+          "text": "Los fariseos vieron esto y les preguntaron a los discÃ­pulos: Â¿Por quÃ© su maestro come con cobradores de impuestos y pecadores?"
+        },
+        {
+          "number": 12,
+          "text": "JesÃºs lo oyÃ³ y dijo: Los sanos no necesitan mÃ©dico, los enfermos sÃ­."
+        },
+        {
+          "number": 13,
+          "text": "Vayan y aprendan quÃ© significa esto: Lo que quiero es misericordia, no sacrificios. Porque no vine a llamar a los que se creen buenos, sino a los que saben que son pecadores."
+        },
+        {
+          "number": 14,
+          "text": "Los discÃ­pulos de Juan se acercaron a JesÃºs y le preguntaron: Â¿Por quÃ© nosotros y los fariseos ayunamos seguido, pero tus discÃ­pulos no ayunan?"
+        },
+        {
+          "number": 15,
+          "text": "JesÃºs les respondiÃ³: Â¿Acaso los invitados a una boda pueden estar tristes mientras el novio estÃ¡ con ellos? LlegarÃ¡ el dÃ­a en que se lleven al novio, y entonces sÃ­ ayunarÃ¡n."
+        },
+        {
+          "number": 16,
+          "text": "Nadie le pone un parche de tela nueva a una ropa vieja, porque el parche nuevo encoge y hace el roto peor."
+        },
+        {
+          "number": 17,
+          "text": "Ni tampoco se echa vino nuevo en odres viejos. Si lo hacen, los odres revientan, se pierde el vino y se arruinan los odres. El vino nuevo va en odres nuevos, y asÃ­ los dos se conservan."
+        },
+        {
+          "number": 18,
+          "text": "Mientras les decÃ­a esto, llegÃ³ un jefe de la sinagoga, se arrodillÃ³ ante Ã©l y le dijo: Mi hija acaba de morir. Pero ven y pon tu mano sobre ella, y vivirÃ¡."
+        },
+        {
+          "number": 19,
+          "text": "JesÃºs se levantÃ³ y lo siguiÃ³ junto con sus discÃ­pulos."
+        },
+        {
+          "number": 20,
+          "text": "En eso, una mujer que llevaba doce aÃ±os con hemorragias se acercÃ³ por detrÃ¡s y tocÃ³ el borde de su manto."
+        },
+        {
+          "number": 21,
+          "text": "Porque pensaba: Con solo tocar su ropa, quedarÃ© sana."
+        },
+        {
+          "number": 22,
+          "text": "JesÃºs se dio vuelta, la vio y le dijo: Ãnimo, hija, tu fe te ha sanado. Y la mujer quedÃ³ sana desde ese momento."
+        },
+        {
+          "number": 23,
+          "text": "Cuando JesÃºs llegÃ³ a la casa del jefe y vio a los mÃºsicos de duelo y a la gente alborotada,"
+        },
+        {
+          "number": 24,
+          "text": "dijo: VÃ¡yanse. La niÃ±a no estÃ¡ muerta, estÃ¡ dormida. Y se burlaron de Ã©l."
+        },
+        {
+          "number": 25,
+          "text": "Cuando echaron a la gente afuera, JesÃºs entrÃ³, tomÃ³ a la niÃ±a de la mano, y ella se levantÃ³."
+        },
+        {
+          "number": 26,
+          "text": "La noticia se regÃ³ por toda esa regiÃ³n."
+        },
+        {
+          "number": 27,
+          "text": "Cuando JesÃºs saliÃ³ de allÃ­, dos ciegos lo siguieron gritando: Â¡Ten compasiÃ³n de nosotros, Hijo de David!"
+        },
+        {
+          "number": 28,
+          "text": "Al entrar a la casa, los ciegos se le acercaron y JesÃºs les preguntÃ³: Â¿Creen que puedo hacer esto? Ellos le dijeron: SÃ­, SeÃ±or."
+        },
+        {
+          "number": 29,
+          "text": "Entonces les tocÃ³ los ojos y dijo: Que les pase segÃºn su fe."
+        },
+        {
+          "number": 30,
+          "text": "Y se les abrieron los ojos. JesÃºs les advirtiÃ³ con firmeza: Que nadie se entere de esto."
+        },
+        {
+          "number": 31,
+          "text": "Pero ellos salieron y lo contaron por toda esa regiÃ³n."
+        },
+        {
+          "number": 32,
+          "text": "Cuando salÃ­an, le trajeron a un mudo que estaba endemoniado."
+        },
+        {
+          "number": 33,
+          "text": "JesÃºs echÃ³ fuera al demonio y el mudo hablÃ³. La gente quedÃ³ asombrada y decÃ­a: Nunca se habÃ­a visto algo asÃ­ en Israel."
+        },
+        {
+          "number": 34,
+          "text": "Pero los fariseos decÃ­an: Echa fuera a los demonios por el poder del prÃ­ncipe de los demonios."
+        },
+        {
+          "number": 35,
+          "text": "JesÃºs recorrÃ­a todos los pueblos y aldeas enseÃ±ando en las sinagogas, anunciando las buenas noticias del reino y sanando toda enfermedad y dolencia."
+        },
+        {
+          "number": 36,
+          "text": "Cuando veÃ­a a las multitudes, le daba lÃ¡stima, porque estaban agotadas y desamparadas, como ovejas sin pastor."
+        },
+        {
+          "number": 37,
+          "text": "Entonces les dijo a sus discÃ­pulos: La cosecha es abundante, pero los trabajadores son pocos."
+        },
+        {
+          "number": 38,
+          "text": "PÃ­danle al dueÃ±o de la cosecha que mande mÃ¡s trabajadores a recogerla."
+        }
+      ]
+    },
+    {
+      "chapterNumber": 10,
+      "verses": [
+        {
+          "number": 1,
+          "text": "JesÃºs llamÃ³ a sus doce discÃ­pulos y les dio autoridad para echar fuera espÃ­ritus malignos y para sanar toda enfermedad y dolencia."
+        },
+        {
+          "number": 2,
+          "text": "Estos son los nombres de los doce apÃ³stoles: primero SimÃ³n, al que llamaban Pedro, y su hermano AndrÃ©s; Santiago y su hermano Juan, hijos de Zebedeo;"
+        },
+        {
+          "number": 3,
+          "text": "Felipe y BartolomÃ©; TomÃ¡s y Mateo el cobrador de impuestos; Santiago hijo de Alfeo, y Tadeo;"
+        },
+        {
+          "number": 4,
+          "text": "SimÃ³n el Zelote y Judas Iscariote, el que lo traicionÃ³."
+        },
+        {
+          "number": 5,
+          "text": "A estos doce los enviÃ³ con estas instrucciones: No vayan a territorio de los gentiles ni entren en ningÃºn pueblo samaritano."
+        },
+        {
+          "number": 6,
+          "text": "Vayan mÃ¡s bien a las ovejas perdidas del pueblo de Israel."
+        },
+        {
+          "number": 7,
+          "text": "Mientras van, anuncien esto: El reino de los cielos estÃ¡ cerca."
+        },
+        {
+          "number": 8,
+          "text": "Sanen enfermos, resuciten muertos, limpien leprosos, echen fuera demonios. Recibieron gratis, den gratis."
+        },
+        {
+          "number": 9,
+          "text": "No lleven oro, ni plata, ni cobre en el cinturÃ³n;"
+        },
+        {
+          "number": 10,
+          "text": "ni bolsa para el camino, ni dos mudas de ropa, ni sandalias de repuesto, ni bastÃ³n. El trabajador merece que lo mantengan."
+        },
+        {
+          "number": 11,
+          "text": "Cuando entren a un pueblo o ciudad, busquen a alguien que sea buena gente y quÃ©dense en su casa hasta que se vayan."
+        },
+        {
+          "number": 12,
+          "text": "Al entrar a la casa, salÃºdenla."
+        },
+        {
+          "number": 13,
+          "text": "Si la casa lo merece, que su paz se quede en ella; si no lo merece, que su paz regrese a ustedes."
+        },
+        {
+          "number": 14,
+          "text": "Si alguien no los recibe ni escucha sus palabras, al salir de esa casa o pueblo sacÃºdanse el polvo de los pies."
+        },
+        {
+          "number": 15,
+          "text": "Les digo que en el dÃ­a del juicio le irÃ¡ mejor a Sodoma y Gomorra que a ese pueblo."
+        },
+        {
+          "number": 16,
+          "text": "Los mando como ovejas en medio de lobos. Sean astutos como serpientes y sencillos como palomas."
+        },
+        {
+          "number": 17,
+          "text": "Tengan cuidado con la gente, porque los van a entregar a los tribunales y los van a azotar en las sinagogas."
+        },
+        {
+          "number": 18,
+          "text": "Por mi causa los llevarÃ¡n ante gobernadores y reyes, para dar testimonio ante ellos y ante los gentiles."
+        },
+        {
+          "number": 19,
+          "text": "Cuando los arresten, no se preocupen por lo que van a decir ni cÃ³mo lo van a decir. En ese momento se les darÃ¡ lo que tienen que decir."
+        },
+        {
+          "number": 20,
+          "text": "Porque no serÃ¡n ustedes los que hablen, sino el EspÃ­ritu de su Padre hablando por ustedes."
+        },
+        {
+          "number": 21,
+          "text": "El hermano entregarÃ¡ a su hermano para que lo maten, y el padre a su hijo. Los hijos se rebelarÃ¡n contra sus padres y los harÃ¡n matar."
+        },
+        {
+          "number": 22,
+          "text": "Todo el mundo los va a odiar por causa de mi nombre. Pero el que aguante hasta el final se salvarÃ¡."
+        },
+        {
+          "number": 23,
+          "text": "Cuando los persigan en un pueblo, huyan al siguiente. Les digo que no terminarÃ¡n de recorrer los pueblos de Israel antes de que venga el Hijo del Hombre."
+        },
+        {
+          "number": 24,
+          "text": "El discÃ­pulo no estÃ¡ por encima de su maestro, ni el sirviente por encima de su patrÃ³n."
+        },
+        {
+          "number": 25,
+          "text": "Con que el discÃ­pulo sea como su maestro y el sirviente como su patrÃ³n es suficiente. Si al dueÃ±o de la casa lo llamaron BeelzebÃº, Â¿cuÃ¡nto mÃ¡s a los de su familia?"
+        },
+        {
+          "number": 26,
+          "text": "AsÃ­ que no les tengan miedo. No hay nada oculto que no vaya a quedar al descubierto, ni nada secreto que no vaya a saberse."
+        },
+        {
+          "number": 27,
+          "text": "Lo que les digo en la oscuridad, dÃ­ganlo a plena luz. Lo que les susurro al oÃ­do, grÃ­tenlo desde las azoteas."
+        },
+        {
+          "number": 28,
+          "text": "No le tengan miedo a los que matan el cuerpo pero no pueden matar el alma. MÃ¡s bien, tÃ©manle al que puede destruir tanto el alma como el cuerpo en el infierno."
+        },
+        {
+          "number": 29,
+          "text": "Â¿No se venden dos gorriones por una monedita? Sin embargo, ni uno de ellos cae al suelo sin que su Padre lo sepa."
+        },
+        {
+          "number": 30,
+          "text": "Y en cuanto a ustedes, hasta los cabellos de su cabeza estÃ¡n todos contados."
+        },
+        {
+          "number": 31,
+          "text": "AsÃ­ que no tengan miedo; ustedes valen mÃ¡s que muchos gorriones."
+        },
+        {
+          "number": 32,
+          "text": "A todo el que me reconozca delante de la gente, yo tambiÃ©n lo reconocerÃ© delante de mi Padre que estÃ¡ en el cielo."
+        },
+        {
+          "number": 33,
+          "text": "Pero al que me niegue delante de la gente, yo tambiÃ©n lo negarÃ© delante de mi Padre que estÃ¡ en el cielo."
+        },
+        {
+          "number": 34,
+          "text": "No crean que vine a traer paz a la tierra. No vine a traer paz sino espada."
+        },
+        {
+          "number": 35,
+          "text": "Vine a enfrentar al hijo contra su padre, a la hija contra su madre, a la nuera contra su suegra."
+        },
+        {
+          "number": 36,
+          "text": "Los enemigos de uno serÃ¡n los de su propia familia."
+        },
+        {
+          "number": 37,
+          "text": "El que quiere a su padre o a su madre mÃ¡s que a mÃ­ no es digno de mÃ­. El que quiere a su hijo o a su hija mÃ¡s que a mÃ­ no es digno de mÃ­."
+        },
+        {
+          "number": 38,
+          "text": "Y el que no toma su cruz y me sigue no es digno de mÃ­."
+        },
+        {
+          "number": 39,
+          "text": "El que trate de salvar su vida la perderÃ¡, y el que pierda su vida por mÃ­ la encontrarÃ¡."
+        },
+        {
+          "number": 40,
+          "text": "El que los recibe a ustedes me recibe a mÃ­, y el que me recibe a mÃ­ recibe al que me enviÃ³."
+        },
+        {
+          "number": 41,
+          "text": "El que recibe a un profeta por ser profeta recibirÃ¡ la recompensa de profeta. El que recibe a un justo por ser justo recibirÃ¡ la recompensa de justo."
+        },
+        {
+          "number": 42,
+          "text": "Y el que le dÃ© aunque sea un vaso de agua fresca a uno de estos pequeÃ±os por ser discÃ­pulo mÃ­o, les digo que no perderÃ¡ su recompensa."
+        }
+      ]
+    },
+    {
+      "chapterNumber": 11,
+      "verses": [
+        {
+          "number": 1,
+          "text": "Cuando JesÃºs terminÃ³ de darles instrucciones a sus doce discÃ­pulos, se fue de allÃ­ a enseÃ±ar y predicar en los pueblos de la regiÃ³n."
+        },
+        {
+          "number": 2,
+          "text": "Juan estaba en la cÃ¡rcel y se enterÃ³ de lo que Cristo estaba haciendo. Entonces mandÃ³ a sus discÃ­pulos a preguntarle:"
+        },
+        {
+          "number": 3,
+          "text": "Â¿Eres tÃº el que habÃ­a de venir, o esperamos a otro?"
+        },
+        {
+          "number": 4,
+          "text": "JesÃºs les respondiÃ³: Vayan y cuÃ©ntenle a Juan lo que estÃ¡n viendo y oyendo:"
+        },
+        {
+          "number": 5,
+          "text": "Los ciegos ven, los cojos caminan, los leprosos quedan limpios, los sordos oyen, los muertos resucitan y a los pobres se les anuncia la buena noticia."
+        },
+        {
+          "number": 6,
+          "text": "Y dichoso el que no tropiece por mi causa."
+        },
+        {
+          "number": 7,
+          "text": "Mientras los discÃ­pulos de Juan se iban, JesÃºs empezÃ³ a hablarle a la gente sobre Juan: Â¿QuÃ© fueron a ver al desierto? Â¿Una caÃ±a sacudida por el viento?"
+        },
+        {
+          "number": 8,
+          "text": "Â¿QuÃ© fueron a ver? Â¿A un hombre vestido con ropa fina? Los que usan ropa fina viven en los palacios."
+        },
+        {
+          "number": 9,
+          "text": "Entonces, Â¿quÃ© fueron a ver? Â¿A un profeta? SÃ­, les digo, y mÃ¡s que profeta."
+        },
+        {
+          "number": 10,
+          "text": "Este es de quien estÃ¡ escrito: Yo mando a mi mensajero delante de ti, para que te prepare el camino."
+        },
+        {
+          "number": 11,
+          "text": "Les digo que entre los nacidos de mujer no ha aparecido nadie mÃ¡s grande que Juan el Bautista. Sin embargo, el mÃ¡s pequeÃ±o en el reino de los cielos es mÃ¡s grande que Ã©l."
+        },
+        {
+          "number": 12,
+          "text": "Desde los dÃ­as de Juan el Bautista hasta ahora, el reino de los cielos ha venido avanzando con fuerza, y los que se esfuerzan lo alcanzan. (El reino no es para los que se quedan sentados esperando.)"
+        },
+        {
+          "number": 13,
+          "text": "Porque todos los profetas y la ley profetizaron hasta Juan."
+        },
+        {
+          "number": 14,
+          "text": "Y si quieren aceptarlo, Juan es el ElÃ­as que habÃ­a de venir."
+        },
+        {
+          "number": 15,
+          "text": "El que tenga oÃ­dos, que oiga."
+        },
+        {
+          "number": 16,
+          "text": "Â¿Con quÃ© voy a comparar a esta generaciÃ³n? Son como niÃ±os sentados en la plaza que les gritan a los otros:"
+        },
+        {
+          "number": 17,
+          "text": "Les tocamos flauta y no bailaron; cantamos canciones tristes y no lloraron."
+        },
+        {
+          "number": 18,
+          "text": "Porque vino Juan, que no comÃ­a ni bebÃ­a, y dicen: Tiene un demonio."
+        },
+        {
+          "number": 19,
+          "text": "Vino el Hijo del Hombre, que come y bebe, y dicen: Miren, un glotÃ³n y borracho, amigo de cobradores de impuestos y pecadores. Pero la sabidurÃ­a queda demostrada por sus resultados."
+        },
+        {
+          "number": 20,
+          "text": "Entonces JesÃºs empezÃ³ a reprochar a los pueblos donde habÃ­a hecho la mayorÃ­a de sus milagros, porque no se habÃ­an arrepentido."
+        },
+        {
+          "number": 21,
+          "text": "Â¡Ay de ti, CorazÃ­n! Â¡Ay de ti, Betsaida! Si los milagros que se hicieron en ustedes se hubieran hecho en Tiro y SidÃ³n, hace tiempo que se habrÃ­an arrepentido con ropa de luto y ceniza."
+        },
+        {
+          "number": 22,
+          "text": "Pero les digo que en el dÃ­a del juicio le irÃ¡ mejor a Tiro y SidÃ³n que a ustedes."
+        },
+        {
+          "number": 23,
+          "text": "Y tÃº, CapernaÃºm, Â¿acaso crees que vas a ser levantada hasta el cielo? SerÃ¡s hundida hasta el fondo. Si los milagros que se hicieron en ti se hubieran hecho en Sodoma, habrÃ­a quedado en pie hasta hoy."
+        },
+        {
+          "number": 24,
+          "text": "Pero les digo que en el dÃ­a del juicio le irÃ¡ mejor a la regiÃ³n de Sodoma que a ti."
+        },
+        {
+          "number": 25,
+          "text": "En ese momento JesÃºs dijo: Te alabo, Padre, SeÃ±or del cielo y de la tierra, porque escondiste estas cosas a los sabios e inteligentes y se las revelaste a los que son como niÃ±os."
+        },
+        {
+          "number": 26,
+          "text": "SÃ­, Padre, porque asÃ­ te pareciÃ³ bien."
+        },
+        {
+          "number": 27,
+          "text": "Mi Padre me ha entregado todo. Nadie conoce al Hijo sino el Padre, y nadie conoce al Padre sino el Hijo y aquel a quien el Hijo quiera revelÃ¡rselo."
+        },
+        {
+          "number": 28,
+          "text": "Vengan a mÃ­ todos los que estÃ¡n cansados y agobiados, y yo los harÃ© descansar."
+        },
+        {
+          "number": 29,
+          "text": "Carguen con mi yugo y aprendan de mÃ­, que soy manso y humilde de corazÃ³n, y encontrarÃ¡n descanso para sus almas."
+        },
+        {
+          "number": 30,
+          "text": "Porque mi yugo es fÃ¡cil y mi carga es liviana."
+        }
+      ]
+    },
+    {
+      "chapterNumber": 12,
+      "verses": [
+        {
+          "number": 1,
+          "text": "Por ese tiempo, JesÃºs pasaba por los sembrados un dÃ­a de reposo. Sus discÃ­pulos tenÃ­an hambre y empezaron a arrancar espigas y a comerlas."
+        },
+        {
+          "number": 2,
+          "text": "Los fariseos lo vieron y le dijeron: Mira, tus discÃ­pulos estÃ¡n haciendo lo que no estÃ¡ permitido en el dÃ­a de reposo."
+        },
+        {
+          "number": 3,
+          "text": "JesÃºs les respondiÃ³: Â¿No han leÃ­do lo que hizo David cuando Ã©l y sus compaÃ±eros tuvieron hambre?"
+        },
+        {
+          "number": 4,
+          "text": "EntrÃ³ en la casa de Dios y comieron el pan consagrado, lo que no les estaba permitido ni a Ã©l ni a sus compaÃ±eros, sino solo a los sacerdotes."
+        },
+        {
+          "number": 5,
+          "text": "Â¿O no han leÃ­do en la ley que los sacerdotes en el templo trabajan en el dÃ­a de reposo sin cometer falta?"
+        },
+        {
+          "number": 6,
+          "text": "Pues les digo que aquÃ­ hay algo mÃ¡s grande que el templo."
+        },
+        {
+          "number": 7,
+          "text": "Si hubieran entendido lo que significa: Lo que quiero es misericordia y no sacrificios, no habrÃ­an condenado a los que no tienen culpa."
+        },
+        {
+          "number": 8,
+          "text": "Porque el Hijo del Hombre es SeÃ±or del dÃ­a de reposo."
+        },
+        {
+          "number": 9,
+          "text": "Saliendo de allÃ­, entrÃ³ en la sinagoga de ellos."
+        },
+        {
+          "number": 10,
+          "text": "HabÃ­a allÃ­ un hombre con la mano paralizada. Buscando un pretexto para acusar a JesÃºs, le preguntaron: Â¿EstÃ¡ permitido sanar en el dÃ­a de reposo?"
+        },
+        {
+          "number": 11,
+          "text": "Ã‰l les dijo: Si alguno de ustedes tiene una oveja y se le cae en un hoyo en el dÃ­a de reposo, Â¿no la agarra y la saca?"
+        },
+        {
+          "number": 12,
+          "text": "Â¡CuÃ¡nto mÃ¡s vale un hombre que una oveja! Por eso sÃ­ estÃ¡ permitido hacer el bien en el dÃ­a de reposo."
+        },
+        {
+          "number": 13,
+          "text": "Entonces le dijo al hombre: Extiende la mano. La extendiÃ³ y quedÃ³ sana, igual que la otra."
+        },
+        {
+          "number": 14,
+          "text": "Pero los fariseos salieron y empezaron a conspirar para ver cÃ³mo matarlo."
+        },
+        {
+          "number": 15,
+          "text": "JesÃºs, que se enterÃ³, se fue de allÃ­. Mucha gente lo siguiÃ³ y Ã©l sanÃ³ a todos los enfermos,"
+        },
+        {
+          "number": 16,
+          "text": "pero les advirtiÃ³ que no dijeran quiÃ©n era Ã©l."
+        },
+        {
+          "number": 17,
+          "text": "AsÃ­ se cumpliÃ³ lo que dijo el profeta IsaÃ­as:"
+        },
+        {
+          "number": 18,
+          "text": "Este es mi siervo, a quien he escogido, mi amado, en quien me deleito. PondrÃ© mi EspÃ­ritu sobre Ã©l, y proclamarÃ¡ justicia a las naciones."
+        },
+        {
+          "number": 19,
+          "text": "No pelearÃ¡ ni gritarÃ¡; nadie oirÃ¡ su voz en las calles."
+        },
+        {
+          "number": 20,
+          "text": "No quebrarÃ¡ la caÃ±a doblada ni apagarÃ¡ la mecha que apenas humea, hasta que haga triunfar la justicia."
+        },
+        {
+          "number": 21,
+          "text": "Y en su nombre pondrÃ¡n su esperanza las naciones."
+        },
+        {
+          "number": 22,
+          "text": "Le trajeron entonces un endemoniado que estaba ciego y mudo, y JesÃºs lo sanÃ³, de modo que pudo hablar y ver."
+        },
+        {
+          "number": 23,
+          "text": "Toda la gente quedÃ³ asombrada y decÃ­a: Â¿No serÃ¡ este el Hijo de David?"
+        },
+        {
+          "number": 24,
+          "text": "Pero los fariseos, al oÃ­rlo, dijeron: Este echa fuera a los demonios por el poder de BeelzebÃº, el prÃ­ncipe de los demonios."
+        },
+        {
+          "number": 25,
+          "text": "JesÃºs conocÃ­a sus pensamientos y les dijo: Todo reino dividido contra sÃ­ mismo queda destruido, y toda ciudad o familia dividida contra sÃ­ misma no puede mantenerse en pie."
+        },
+        {
+          "number": 26,
+          "text": "Si SatanÃ¡s echa fuera a SatanÃ¡s, estÃ¡ dividido contra sÃ­ mismo. Â¿CÃ³mo puede entonces mantenerse en pie su reino?"
+        },
+        {
+          "number": 27,
+          "text": "Y si yo echo fuera a los demonios por el poder de BeelzebÃº, Â¿por el poder de quiÃ©n los echan fuera los seguidores de ustedes? Ellos mismos los van a juzgar."
+        },
+        {
+          "number": 28,
+          "text": "Pero si yo echo fuera a los demonios por el EspÃ­ritu de Dios, entonces el reino de Dios ha llegado a ustedes."
+        },
+        {
+          "number": 29,
+          "text": "Â¿CÃ³mo puede alguien entrar en la casa de un hombre fuerte y robarle sus cosas, si primero no lo ata? Solo entonces puede saquear su casa."
+        },
+        {
+          "number": 30,
+          "text": "El que no estÃ¡ conmigo estÃ¡ contra mÃ­, y el que no recoge conmigo desparrama."
+        },
+        {
+          "number": 31,
+          "text": "Por eso les digo que a la gente se le puede perdonar todo pecado y toda blasfemia, pero la blasfemia contra el EspÃ­ritu no se perdonarÃ¡."
+        },
+        {
+          "number": 32,
+          "text": "A cualquiera que diga algo contra el Hijo del Hombre se le puede perdonar, pero al que hable contra el EspÃ­ritu Santo no se le perdonarÃ¡ ni en este mundo ni en el venidero."
+        },
+        {
+          "number": 33,
+          "text": "Si el Ã¡rbol es bueno, su fruto es bueno; si el Ã¡rbol es malo, su fruto es malo. Al Ã¡rbol se le conoce por su fruto."
+        },
+        {
+          "number": 34,
+          "text": "Â¡Raza de vÃ­boras! Â¿CÃ³mo pueden decir algo bueno si son malos? De lo que le sobra al corazÃ³n habla la boca."
+        },
+        {
+          "number": 35,
+          "text": "El hombre bueno saca cosas buenas del buen tesoro que tiene dentro, y el hombre malo saca cosas malas del mal tesoro que tiene dentro."
+        },
+        {
+          "number": 36,
+          "text": "Pero les digo que en el dÃ­a del juicio la gente tendrÃ¡ que dar cuenta de toda palabra inÃºtil que haya dicho."
+        },
+        {
+          "number": 37,
+          "text": "Porque por tus palabras serÃ¡s absuelto, y por tus palabras serÃ¡s condenado."
+        },
+        {
+          "number": 38,
+          "text": "Entonces algunos fariseos y maestros de la ley le dijeron: Maestro, queremos verte hacer alguna seÃ±al milagrosa."
+        },
+        {
+          "number": 39,
+          "text": "JesÃºs les respondiÃ³: Esta generaciÃ³n malvada e infiel pide una seÃ±al milagrosa, pero no se le darÃ¡ mÃ¡s seÃ±al que la del profeta JonÃ¡s."
+        },
+        {
+          "number": 40,
+          "text": "Porque asÃ­ como JonÃ¡s estuvo tres dÃ­as y tres noches en el vientre del gran pez, asÃ­ tambiÃ©n el Hijo del Hombre estarÃ¡ tres dÃ­as y tres noches en las entraÃ±as de la tierra."
+        },
+        {
+          "number": 41,
+          "text": "Los habitantes de NÃ­nive se levantarÃ¡n en el juicio contra esta generaciÃ³n y la condenarÃ¡n, porque ellos se arrepintieron al oÃ­r la predicaciÃ³n de JonÃ¡s. Y aquÃ­ hay algo mÃ¡s grande que JonÃ¡s."
+        },
+        {
+          "number": 42,
+          "text": "La reina del Sur se levantarÃ¡ en el juicio contra esta generaciÃ³n y la condenarÃ¡, porque ella vino desde los confines de la tierra para escuchar la sabidurÃ­a de SalomÃ³n. Y aquÃ­ hay algo mÃ¡s grande que SalomÃ³n."
+        },
+        {
+          "number": 43,
+          "text": "Cuando un espÃ­ritu maligno sale de una persona, anda por lugares Ã¡ridos buscando dÃ³nde descansar, y no encuentra."
+        },
+        {
+          "number": 44,
+          "text": "Entonces dice: Vuelvo a mi casa de donde salÃ­. Y al llegar la encuentra desocupada, barrida y arreglada."
+        },
+        {
+          "number": 45,
+          "text": "Entonces va y trae a otros siete espÃ­ritus peores que Ã©l, y entran a vivir allÃ­. Y el estado final de esa persona resulta peor que el inicial. AsÃ­ le pasarÃ¡ tambiÃ©n a esta generaciÃ³n malvada."
+        },
+        {
+          "number": 46,
+          "text": "Mientras JesÃºs todavÃ­a le hablaba a la gente, su madre y sus hermanos estaban afuera queriendo hablar con Ã©l."
+        },
+        {
+          "number": 47,
+          "text": "Alguien le avisÃ³: Tu madre y tus hermanos estÃ¡n afuera y quieren hablar contigo."
+        },
+        {
+          "number": 48,
+          "text": "JesÃºs le respondiÃ³ al que le avisÃ³: Â¿QuiÃ©n es mi madre y quiÃ©nes son mis hermanos?"
+        },
+        {
+          "number": 49,
+          "text": "SeÃ±alando a sus discÃ­pulos, dijo: AquÃ­ estÃ¡n mi madre y mis hermanos."
+        },
+        {
+          "number": 50,
+          "text": "Porque el que hace la voluntad de mi Padre que estÃ¡ en el cielo, ese es mi hermano, mi hermana y mi madre."
+        }
+      ]
+    },
+    {
+      "chapterNumber": 13,
+      "verses": [
+        {
+          "number": 1,
+          "text": "Ese mismo dÃ­a JesÃºs saliÃ³ de la casa y se sentÃ³ a la orilla del lago."
+        },
+        {
+          "number": 2,
+          "text": "Se juntÃ³ tanta gente alrededor de Ã©l que tuvo que subirse a una barca y sentarse en ella, mientras la gente se quedaba en la orilla."
+        },
+        {
+          "number": 3,
+          "text": "Entonces les enseÃ±Ã³ muchas cosas por medio de parÃ¡bolas. Les dijo: Un sembrador saliÃ³ a sembrar."
+        },
+        {
+          "number": 4,
+          "text": "Mientras sembraba, parte de la semilla cayÃ³ en el camino, y vinieron los pÃ¡jaros y se la comieron."
+        },
+        {
+          "number": 5,
+          "text": "Otra parte cayÃ³ en terreno pedregoso, donde no habÃ­a mucha tierra. BrotÃ³ rÃ¡pido porque la tierra era poca,"
+        },
+        {
+          "number": 6,
+          "text": "pero cuando saliÃ³ el sol se quemÃ³ y, como no tenÃ­a raÃ­z, se secÃ³."
+        },
+        {
+          "number": 7,
+          "text": "Otra parte cayÃ³ entre espinos, que crecieron y la ahogaron."
+        },
+        {
+          "number": 8,
+          "text": "Pero otra parte cayÃ³ en buena tierra y dio fruto: cien, sesenta o treinta veces mÃ¡s de lo que se sembrÃ³."
+        },
+        {
+          "number": 9,
+          "text": "El que tenga oÃ­dos, que oiga."
+        },
+        {
+          "number": 10,
+          "text": "Los discÃ­pulos se acercaron y le preguntaron: Â¿Por quÃ© les hablas en parÃ¡bolas?"
+        },
+        {
+          "number": 11,
+          "text": "Ã‰l les respondiÃ³: A ustedes se les ha dado conocer los secretos del reino de los cielos, pero a ellos no."
+        },
+        {
+          "number": 12,
+          "text": "Al que tiene, se le darÃ¡ mÃ¡s y tendrÃ¡ en abundancia. Al que no tiene, hasta lo poco que tiene se le quitarÃ¡."
+        },
+        {
+          "number": 13,
+          "text": "Por eso les hablo en parÃ¡bolas: aunque miran, no ven; aunque escuchan, no oyen ni entienden."
+        },
+        {
+          "number": 14,
+          "text": "En ellos se cumple la profecÃ­a de IsaÃ­as: Por mÃ¡s que oigan, no entenderÃ¡n; por mÃ¡s que miren, no verÃ¡n."
+        },
+        {
+          "number": 15,
+          "text": "Porque el corazÃ³n de este pueblo se ha vuelto insensible; tienen tapados los oÃ­dos y cerrados los ojos. De lo contrario, verÃ­an con los ojos, oirÃ­an con los oÃ­dos, entenderÃ­an con el corazÃ³n y se convertirÃ­an, y yo los sanarÃ­a."
+        },
+        {
+          "number": 16,
+          "text": "Pero dichosos los ojos de ustedes porque ven, y sus oÃ­dos porque oyen."
+        },
+        {
+          "number": 17,
+          "text": "Les digo que muchos profetas y justos quisieron ver lo que ustedes ven, pero no lo vieron; quisieron oÃ­r lo que ustedes oyen, pero no lo oyeron."
+        },
+        {
+          "number": 18,
+          "text": "Escuchen entonces lo que significa la parÃ¡bola del sembrador:"
+        },
+        {
+          "number": 19,
+          "text": "Cuando alguien oye el mensaje del reino y no lo entiende, viene el maligno y le arrebata lo que se sembrÃ³ en su corazÃ³n. Esta es la semilla que cayÃ³ en el camino."
+        },
+        {
+          "number": 20,
+          "text": "La semilla que cayÃ³ en terreno pedregoso representa al que oye el mensaje y al instante lo recibe con alegrÃ­a,"
+        },
+        {
+          "number": 21,
+          "text": "pero como no tiene raÃ­z, dura poco. Cuando vienen los problemas o la persecuciÃ³n por causa del mensaje, enseguida se cae."
+        },
+        {
+          "number": 22,
+          "text": "La semilla que cayÃ³ entre espinos representa al que oye el mensaje, pero las preocupaciones de esta vida y el engaÃ±o de las riquezas ahogan el mensaje y no da fruto."
+        },
+        {
+          "number": 23,
+          "text": "Pero la semilla que cayÃ³ en buena tierra representa al que oye el mensaje y lo entiende. Este sÃ­ da fruto: cien, sesenta o treinta veces mÃ¡s de lo que se sembrÃ³."
+        },
+        {
+          "number": 24,
+          "text": "JesÃºs les contÃ³ otra parÃ¡bola: El reino de los cielos es como un hombre que sembrÃ³ buena semilla en su campo."
+        },
+        {
+          "number": 25,
+          "text": "Pero mientras todos dormÃ­an, llegÃ³ su enemigo, sembrÃ³ mala hierba entre el trigo y se fue."
+        },
+        {
+          "number": 26,
+          "text": "Cuando brotÃ³ el trigo y se formÃ³ la espiga, tambiÃ©n apareciÃ³ la mala hierba."
+        },
+        {
+          "number": 27,
+          "text": "Los sirvientes fueron al dueÃ±o y le dijeron: SeÃ±or, Â¿no sembraste buena semilla en tu campo? Â¿De dÃ³nde saliÃ³ la mala hierba?"
+        },
+        {
+          "number": 28,
+          "text": "El dueÃ±o les respondiÃ³: Esto lo hizo un enemigo. Los sirvientes le preguntaron: Â¿Quieres que vayamos a arrancarla?"
+        },
+        {
+          "number": 29,
+          "text": "No, les dijo, no sea que al arrancar la mala hierba arranquen tambiÃ©n el trigo."
+        },
+        {
+          "number": 30,
+          "text": "Dejen que crezcan juntos hasta la cosecha. Entonces les dirÃ© a los cosechadores: Primero recojan la mala hierba y Ã¡tenla en manojos para quemarla; despuÃ©s recojan el trigo y guÃ¡rdenlo en mi granero."
+        },
+        {
+          "number": 31,
+          "text": "Les contÃ³ otra parÃ¡bola: El reino de los cielos es como un grano de mostaza que un hombre tomÃ³ y sembrÃ³ en su campo."
+        },
+        {
+          "number": 32,
+          "text": "Es la semilla mÃ¡s pequeÃ±a de todas, pero cuando crece se convierte en el Ã¡rbol mÃ¡s grande del huerto, tanto que los pÃ¡jaros vienen y hacen nidos en sus ramas."
+        },
+        {
+          "number": 33,
+          "text": "Les contÃ³ otra parÃ¡bola mÃ¡s: El reino de los cielos es como la levadura que una mujer tomÃ³ y mezclÃ³ con una gran cantidad de harina, hasta que fermentÃ³ toda la masa."
+        },
+        {
+          "number": 34,
+          "text": "JesÃºs les dijo todo esto a la gente por medio de parÃ¡bolas; no les decÃ­a nada sin usar una parÃ¡bola."
+        },
+        {
+          "number": 35,
+          "text": "AsÃ­ se cumpliÃ³ lo que dijo el profeta: AbrirÃ© mi boca y hablarÃ© en parÃ¡bolas; revelarÃ© cosas que han estado ocultas desde la creaciÃ³n del mundo."
+        },
+        {
+          "number": 36,
+          "text": "Luego JesÃºs dejÃ³ a la gente y entrÃ³ en la casa. Sus discÃ­pulos se le acercaron y le dijeron: ExplÃ­canos la parÃ¡bola de la mala hierba del campo."
+        },
+        {
+          "number": 37,
+          "text": "JesÃºs les respondiÃ³: El que siembra la buena semilla es el Hijo del Hombre."
+        },
+        {
+          "number": 38,
+          "text": "El campo es el mundo. La buena semilla representa a los que son del reino. La mala hierba son los que son del maligno."
+        },
+        {
+          "number": 39,
+          "text": "El enemigo que la sembrÃ³ es el diablo. La cosecha es el fin del mundo, y los cosechadores son los Ã¡ngeles."
+        },
+        {
+          "number": 40,
+          "text": "AsÃ­ como se recoge la mala hierba y se quema en el fuego, asÃ­ pasarÃ¡ al fin del mundo."
+        },
+        {
+          "number": 41,
+          "text": "El Hijo del Hombre mandarÃ¡ a sus Ã¡ngeles, y recogerÃ¡n de su reino todo lo que hace pecar y a todos los que hacen el mal."
+        },
+        {
+          "number": 42,
+          "text": "Los echarÃ¡n en el horno encendido, donde habrÃ¡ llanto y rechinar de dientes."
+        },
+        {
+          "number": 43,
+          "text": "Entonces los justos brillarÃ¡n como el sol en el reino de su Padre. El que tenga oÃ­dos, que oiga."
+        },
+        {
+          "number": 44,
+          "text": "El reino de los cielos es como un tesoro escondido en un campo. Cuando un hombre lo encontrÃ³, lo volviÃ³ a esconder, y de la alegrÃ­a fue y vendiÃ³ todo lo que tenÃ­a y comprÃ³ ese campo."
+        },
+        {
+          "number": 45,
+          "text": "TambiÃ©n el reino de los cielos es como un comerciante que andaba buscando perlas finas."
+        },
+        {
+          "number": 46,
+          "text": "Cuando encontrÃ³ una perla de gran valor, fue y vendiÃ³ todo lo que tenÃ­a y la comprÃ³."
+        },
+        {
+          "number": 47,
+          "text": "TambiÃ©n el reino de los cielos es como una red que se echÃ³ al lago y recogiÃ³ toda clase de peces."
+        },
+        {
+          "number": 48,
+          "text": "Cuando se llenÃ³, los pescadores la sacaron a la orilla, se sentaron y recogieron los peces buenos en canastas, pero tiraron los malos."
+        },
+        {
+          "number": 49,
+          "text": "AsÃ­ pasarÃ¡ al fin del mundo. VendrÃ¡n los Ã¡ngeles y separarÃ¡n a los malos de los justos"
+        },
+        {
+          "number": 50,
+          "text": "y los echarÃ¡n en el horno encendido, donde habrÃ¡ llanto y rechinar de dientes."
+        },
+        {
+          "number": 51,
+          "text": "Â¿Han entendido todo esto? SÃ­, le respondieron."
+        },
+        {
+          "number": 52,
+          "text": "Entonces les dijo: Todo maestro de la ley que ha sido instruido en el reino de los cielos es como el dueÃ±o de una casa que saca de su tesoro cosas nuevas y cosas viejas."
+        },
+        {
+          "number": 53,
+          "text": "Cuando JesÃºs terminÃ³ de contar estas parÃ¡bolas, se fue de allÃ­."
+        },
+        {
+          "number": 54,
+          "text": "LlegÃ³ a su pueblo y empezÃ³ a enseÃ±ar en la sinagoga. La gente quedÃ³ asombrada y decÃ­a: Â¿De dÃ³nde sacÃ³ este tanta sabidurÃ­a y estos poderes milagrosos?"
+        },
+        {
+          "number": 55,
+          "text": "Â¿No es este el hijo del carpintero? Â¿No se llama su madre MarÃ­a, y sus hermanos Jacobo, JosÃ©, SimÃ³n y Judas?"
+        },
+        {
+          "number": 56,
+          "text": "Â¿No estÃ¡n todas sus hermanas aquÃ­ con nosotros? Â¿De dÃ³nde sacÃ³ entonces todo esto?"
+        },
+        {
+          "number": 57,
+          "text": "Y se ofendieron con Ã©l. Pero JesÃºs les dijo: En todas partes se le honra a un profeta, menos en su propio pueblo y en su propia casa."
+        },
+        {
+          "number": 58,
+          "text": "Y no hizo muchos milagros allÃ­ por la falta de fe de ellos."
+        }
+      ]
+    },
+    {
+      "chapterNumber": 14,
+      "verses": [
+        {
+          "number": 1,
+          "text": "En ese tiempo, el rey Herodes oyÃ³ hablar de JesÃºs"
+        },
+        {
+          "number": 2,
+          "text": "y les dijo a sus sirvientes: Este es Juan el Bautista; ha resucitado de entre los muertos. Por eso tiene poder para hacer milagros."
+        },
+        {
+          "number": 3,
+          "text": "Herodes habÃ­a mandado arrestar a Juan, lo habÃ­a encadenado y metido en la cÃ¡rcel por culpa de HerodÃ­as, la mujer de su hermano Felipe."
+        },
+        {
+          "number": 4,
+          "text": "Porque Juan le habÃ­a dicho: No te estÃ¡ permitido tenerla."
+        },
+        {
+          "number": 5,
+          "text": "Herodes querÃ­a matarlo, pero le tenÃ­a miedo a la gente, porque todos consideraban a Juan un profeta."
+        },
+        {
+          "number": 6,
+          "text": "Pero en el cumpleaÃ±os de Herodes, la hija de HerodÃ­as bailÃ³ delante de todos y le gustÃ³ tanto a Herodes"
+        },
+        {
+          "number": 7,
+          "text": "que le prometiÃ³ con juramento darle lo que pidiera."
+        },
+        {
+          "number": 8,
+          "text": "Ella, instigada por su madre, dijo: Dame aquÃ­ en una bandeja la cabeza de Juan el Bautista."
+        },
+        {
+          "number": 9,
+          "text": "Al rey le pesÃ³, pero por el juramento que habÃ­a hecho delante de sus invitados, ordenÃ³ que se la dieran."
+        },
+        {
+          "number": 10,
+          "text": "MandÃ³ decapitar a Juan en la cÃ¡rcel."
+        },
+        {
+          "number": 11,
+          "text": "Trajeron la cabeza en una bandeja y se la dieron a la muchacha, quien se la llevÃ³ a su madre."
+        },
+        {
+          "number": 12,
+          "text": "Los discÃ­pulos de Juan fueron, recogieron el cuerpo y lo enterraron. Luego fueron a contÃ¡rselo a JesÃºs."
+        },
+        {
+          "number": 13,
+          "text": "Cuando JesÃºs se enterÃ³, se fue solo en barca a un lugar apartado. Pero la gente lo supo y lo siguiÃ³ a pie desde los pueblos."
+        },
+        {
+          "number": 14,
+          "text": "Cuando JesÃºs desembarcÃ³ y vio tanta gente, le dio lÃ¡stima y sanÃ³ a los enfermos que habÃ­a entre ellos."
+        },
+        {
+          "number": 15,
+          "text": "Al atardecer, los discÃ­pulos se acercaron y le dijeron: Este lugar estÃ¡ lejos de todo y ya se hace tarde. Despide a la gente para que vayan a los pueblos a comprarse algo de comer."
+        },
+        {
+          "number": 16,
+          "text": "JesÃºs les respondiÃ³: No hace falta que se vayan. Denles ustedes de comer."
+        },
+        {
+          "number": 17,
+          "text": "Ellos le dijeron: AquÃ­ no tenemos mÃ¡s que cinco panes y dos pescados."
+        },
+        {
+          "number": 18,
+          "text": "TrÃ¡iganlos acÃ¡, les dijo."
+        },
+        {
+          "number": 19,
+          "text": "MandÃ³ a la gente que se sentara en el pasto. TomÃ³ los cinco panes y los dos pescados, levantÃ³ los ojos al cielo, dio gracias y partiÃ³ los panes. Se los dio a los discÃ­pulos, y los discÃ­pulos los repartieron entre la gente."
+        },
+        {
+          "number": 20,
+          "text": "Todos comieron hasta quedar satisfechos, y los discÃ­pulos recogieron doce canastas llenas de pedazos que sobraron."
+        },
+        {
+          "number": 21,
+          "text": "Los que comieron fueron unos cinco mil hombres, sin contar mujeres y niÃ±os."
+        },
+        {
+          "number": 22,
+          "text": "En seguida JesÃºs hizo que los discÃ­pulos subieran a la barca y se adelantaran al otro lado mientras Ã©l despedÃ­a a la gente."
+        },
+        {
+          "number": 23,
+          "text": "DespuÃ©s de despedir a la gente, subiÃ³ solo a un cerro a orar. Al anochecer, estaba allÃ­ solo."
+        },
+        {
+          "number": 24,
+          "text": "La barca ya estaba bastante lejos de la orilla, sacudida por las olas porque el viento era contrario."
+        },
+        {
+          "number": 25,
+          "text": "A la madrugada, JesÃºs fue hacia ellos caminando sobre el lago."
+        },
+        {
+          "number": 26,
+          "text": "Cuando los discÃ­pulos lo vieron caminar sobre el agua, se asustaron. Es un fantasma, dijeron, y gritaron de miedo."
+        },
+        {
+          "number": 27,
+          "text": "Pero JesÃºs les dijo enseguida: Tranquilos, soy yo. No tengan miedo."
+        },
+        {
+          "number": 28,
+          "text": "SeÃ±or, si eres tÃº, mÃ¡ndame ir a ti sobre el agua, dijo Pedro."
+        },
+        {
+          "number": 29,
+          "text": "Ven, le dijo JesÃºs. Pedro bajÃ³ de la barca y caminÃ³ sobre el agua hacia JesÃºs."
+        },
+        {
+          "number": 30,
+          "text": "Pero cuando vio el viento fuerte, le entrÃ³ miedo y empezÃ³ a hundirse. GritÃ³: Â¡SeÃ±or, sÃ¡lvame!"
+        },
+        {
+          "number": 31,
+          "text": "Al instante JesÃºs extendiÃ³ la mano y lo agarrÃ³. Hombre de poca fe, le dijo, Â¿por quÃ© dudaste?"
+        },
+        {
+          "number": 32,
+          "text": "Cuando subieron a la barca, el viento se calmÃ³."
+        },
+        {
+          "number": 33,
+          "text": "Los que estaban en la barca lo adoraron y dijeron: Verdaderamente eres el Hijo de Dios."
+        },
+        {
+          "number": 34,
+          "text": "Cruzaron el lago y llegaron a Genesaret."
+        },
+        {
+          "number": 35,
+          "text": "Los habitantes de ese lugar reconocieron a JesÃºs y mandaron aviso por toda la regiÃ³n. Le trajeron todos los enfermos"
+        },
+        {
+          "number": 36,
+          "text": "y le rogaban que les dejara tocar aunque fuera el borde de su manto. Y todos los que lo tocaron quedaron sanos."
+        }
+      ]
+    },
+    {
+      "chapterNumber": 15,
+      "verses": [
+        {
+          "number": 1,
+          "text": "Unos fariseos y maestros de la ley vinieron desde JerusalÃ©n a confrontar a JesÃºs."
+        },
+        {
+          "number": 2,
+          "text": "Le preguntaron: Â¿Por quÃ© tus discÃ­pulos no respetan la tradiciÃ³n de los ancianos? Â¡Comen sin lavarse las manos!"
+        },
+        {
+          "number": 3,
+          "text": "JesÃºs les respondiÃ³: Â¿Y ustedes por quÃ© violan el mandamiento de Dios por seguir sus propias tradiciones?"
+        },
+        {
+          "number": 4,
+          "text": "Dios dijo: Honra a tu padre y a tu madre, y el que maldiga a sus padres que muera."
+        },
+        {
+          "number": 5,
+          "text": "Pero ustedes dicen que si alguien le dice a su padre o madre: Lo que te iba a dar ya lo ofrendÃ© a Dios,"
+        },
+        {
+          "number": 6,
+          "text": "ya no tiene que honrar a sus padres. AsÃ­ anulan la palabra de Dios con sus tradiciones."
+        },
+        {
+          "number": 7,
+          "text": "Â¡HipÃ³critas! IsaÃ­as los describiÃ³ perfecto cuando dijo:"
+        },
+        {
+          "number": 8,
+          "text": "Este pueblo me honra de boca, pero su corazÃ³n estÃ¡ bien lejos de mÃ­."
+        },
+        {
+          "number": 9,
+          "text": "De nada sirve que me adoren, si lo que enseÃ±an son reglas inventadas por hombres."
+        },
+        {
+          "number": 10,
+          "text": "JesÃºs llamÃ³ a la gente y les dijo: Escuchen y entiendan esto bien:"
+        },
+        {
+          "number": 11,
+          "text": "Lo que entra por la boca no contamina a nadie. Lo que contamina es lo que sale de la boca."
+        },
+        {
+          "number": 12,
+          "text": "Entonces los discÃ­pulos se le acercaron y le dijeron: Â¿Sabes que los fariseos se ofendieron con lo que dijiste?"
+        },
+        {
+          "number": 13,
+          "text": "JesÃºs respondiÃ³: Toda planta que mi Padre del cielo no plantÃ³ va a ser arrancada de raÃ­z."
+        },
+        {
+          "number": 14,
+          "text": "DÃ©jenlos. Son ciegos guiando a otros ciegos. Y cuando un ciego guÃ­a a otro ciego, los dos caen al hoyo."
+        },
+        {
+          "number": 15,
+          "text": "Pedro le dijo: ExplÃ­canos esa parÃ¡bola."
+        },
+        {
+          "number": 16,
+          "text": "JesÃºs les dijo: Â¿TodavÃ­a no entienden?"
+        },
+        {
+          "number": 17,
+          "text": "Â¿No se dan cuenta de que todo lo que entra por la boca va al estÃ³mago y despuÃ©s sale al baÃ±o?"
+        },
+        {
+          "number": 18,
+          "text": "Pero lo que sale de la boca viene del corazÃ³n, y eso sÃ­ contamina a la persona."
+        },
+        {
+          "number": 19,
+          "text": "Porque del corazÃ³n salen los malos pensamientos, los asesinatos, los adulterios, la inmoralidad sexual, los robos, los falsos testimonios y las calumnias."
+        },
+        {
+          "number": 20,
+          "text": "Eso es lo que contamina a alguien. Comer sin lavarse las manos no contamina a nadie."
+        },
+        {
+          "number": 21,
+          "text": "JesÃºs saliÃ³ de ahÃ­ y se fue a la regiÃ³n de Tiro y SidÃ³n. (Territorio pagano, fuera de Israel.)"
+        },
+        {
+          "number": 22,
+          "text": "Una mujer cananea de esa zona se le acercÃ³ gritando: Â¡SeÃ±or, Hijo de David, ten compasiÃ³n de mÃ­! Mi hija estÃ¡ terriblemente atormentada por un demonio."
+        },
+        {
+          "number": 23,
+          "text": "JesÃºs no le respondiÃ³ nada. Sus discÃ­pulos se le acercaron y le rogaron: MÃ¡ndala de una vez, que viene gritando detrÃ¡s de nosotros."
+        },
+        {
+          "number": 24,
+          "text": "JesÃºs les dijo: Solo fui enviado a las ovejas perdidas del pueblo de Israel."
+        },
+        {
+          "number": 25,
+          "text": "Pero la mujer se arrodillÃ³ frente a Ã©l y le dijo: Â¡SeÃ±or, ayÃºdame!"
+        },
+        {
+          "number": 26,
+          "text": "JesÃºs le respondiÃ³: No estÃ¡ bien quitarles el pan a los hijos para tirÃ¡rselo a los perros."
+        },
+        {
+          "number": 27,
+          "text": "Ella dijo: Tienes razÃ³n, SeÃ±or. Pero hasta los perros comen las migajas que caen de la mesa de sus dueÃ±os."
+        },
+        {
+          "number": 28,
+          "text": "JesÃºs le dijo: Â¡Mujer, quÃ© fe tan grande tienes! Que se haga lo que pides. Y su hija quedÃ³ sana en ese mismo momento."
+        },
+        {
+          "number": 29,
+          "text": "JesÃºs saliÃ³ de ahÃ­ y fue a la orilla del mar de Galilea. SubiÃ³ a un cerro y se sentÃ³."
+        },
+        {
+          "number": 30,
+          "text": "Vino una multitud enorme trayendo cojos, ciegos, lisiados, mudos y muchos otros enfermos. Los pusieron a los pies de JesÃºs y Ã©l los sanÃ³."
+        },
+        {
+          "number": 31,
+          "text": "La gente quedÃ³ asombrada al ver que los mudos hablaban, los lisiados quedaban sanos, los cojos caminaban y los ciegos veÃ­an. Y todos glorificaban al Dios de Israel."
+        },
+        {
+          "number": 32,
+          "text": "JesÃºs llamÃ³ a sus discÃ­pulos y les dijo: Me da lÃ¡stima esta gente. Llevan tres dÃ­as conmigo y ya no tienen nada que comer. No quiero mandarlos en ayunas porque se pueden desmayar en el camino."
+        },
+        {
+          "number": 33,
+          "text": "Los discÃ­pulos le preguntaron: Â¿De dÃ³nde vamos a sacar suficiente pan aquÃ­ en el desierto para darle de comer a tanta gente?"
+        },
+        {
+          "number": 34,
+          "text": "JesÃºs les preguntÃ³: Â¿CuÃ¡ntos panes tienen? Ellos dijeron: Siete, y unos pocos pescaditos."
+        },
+        {
+          "number": 35,
+          "text": "JesÃºs mandÃ³ a la gente que se sentara en el suelo."
+        },
+        {
+          "number": 36,
+          "text": "TomÃ³ los siete panes y los pescados, dio gracias, los partiÃ³ y se los fue dando a los discÃ­pulos para que los repartieran entre la gente."
+        },
+        {
+          "number": 37,
+          "text": "Todos comieron hasta quedar satisfechos. DespuÃ©s recogieron siete canastas llenas de lo que sobrÃ³."
+        },
+        {
+          "number": 38,
+          "text": "Los que comieron eran cuatro mil hombres, sin contar mujeres y niÃ±os."
+        },
+        {
+          "number": 39,
+          "text": "DespuÃ©s de despedir a la gente, JesÃºs subiÃ³ a una barca y cruzÃ³ a la regiÃ³n de MagadÃ¡n."
+        }
+      ]
+    },
+    {
+      "chapterNumber": 16,
+      "verses": [
+        {
+          "number": 1,
+          "text": "Los fariseos y los saduceos se le acercaron para ponerlo a prueba. Le pidieron que les mostrara una seÃ±al del cielo. (Dos grupos que normalmente se odiaban, pero se unieron contra JesÃºs.)"
+        },
+        {
+          "number": 2,
+          "text": "JesÃºs les respondiÃ³: Cuando anochece y el cielo estÃ¡ rojo, dicen: MaÃ±ana va a hacer buen tiempo."
+        },
+        {
+          "number": 3,
+          "text": "Y por la maÃ±ana, si el cielo estÃ¡ rojo y nublado, dicen: Hoy va a llover. Saben leer el cielo, pero no pueden leer las seÃ±ales de los tiempos."
+        },
+        {
+          "number": 4,
+          "text": "Esta generaciÃ³n malvada e infiel pide seÃ±ales milagrosas, pero no recibirÃ¡ mÃ¡s seÃ±al que la de JonÃ¡s. Y los dejÃ³ y se fue."
+        },
+        {
+          "number": 5,
+          "text": "Al cruzar al otro lado del lago, los discÃ­pulos se dieron cuenta de que se habÃ­an olvidado de traer pan."
+        },
+        {
+          "number": 6,
+          "text": "JesÃºs les dijo: Tengan cuidado con la levadura de los fariseos y los saduceos."
+        },
+        {
+          "number": 7,
+          "text": "Ellos se pusieron a discutir entre sÃ­: Es porque no trajimos pan."
+        },
+        {
+          "number": 8,
+          "text": "JesÃºs se dio cuenta y les dijo: Â¿Por quÃ© estÃ¡n hablando de que no tienen pan? Â¡QuÃ© poca fe tienen!"
+        },
+        {
+          "number": 9,
+          "text": "Â¿TodavÃ­a no entienden? Â¿No recuerdan los cinco panes para cinco mil personas y cuÃ¡ntas canastas recogieron?"
+        },
+        {
+          "number": 10,
+          "text": "Â¿Ni los siete panes para cuatro mil y cuÃ¡ntas canastas recogieron?"
+        },
+        {
+          "number": 11,
+          "text": "Â¿CÃ³mo es que no entienden que no les estaba hablando de pan? Les digo que se cuiden de la levadura de los fariseos y los saduceos."
+        },
+        {
+          "number": 12,
+          "text": "Entonces entendieron que no les hablaba de la levadura del pan, sino de la enseÃ±anza de los fariseos y los saduceos."
+        },
+        {
+          "number": 13,
+          "text": "Cuando JesÃºs llegÃ³ a la regiÃ³n de Cesarea de Filipo, les preguntÃ³ a sus discÃ­pulos: Â¿QuiÃ©n dice la gente que es el Hijo del Hombre?"
+        },
+        {
+          "number": 14,
+          "text": "Ellos respondieron: Unos dicen que Juan el Bautista; otros que ElÃ­as; y otros que JeremÃ­as o alguno de los profetas."
+        },
+        {
+          "number": 15,
+          "text": "JesÃºs les preguntÃ³: Y ustedes, Â¿quiÃ©n dicen que soy yo?"
+        },
+        {
+          "number": 16,
+          "text": "SimÃ³n Pedro respondiÃ³: TÃº eres el Cristo, el Hijo del Dios vivo. (Eso no lo aprendiÃ³ en ningÃºn libro.)"
+        },
+        {
+          "number": 17,
+          "text": "JesÃºs le dijo: Â¡QuÃ© bendecido eres, SimÃ³n, hijo de JonÃ¡s! Eso no te lo revelÃ³ ningÃºn ser humano, sino mi Padre que estÃ¡ en el cielo."
+        },
+        {
+          "number": 18,
+          "text": "Y yo te digo que tÃº eres Pedro, y sobre esta roca voy a construir mi iglesia, y ni las puertas del infierno podrÃ¡n contra ella."
+        },
+        {
+          "number": 19,
+          "text": "Te darÃ© las llaves del reino de los cielos. Lo que ates en la tierra quedarÃ¡ atado en el cielo, y lo que desates en la tierra quedarÃ¡ desatado en el cielo."
+        },
+        {
+          "number": 20,
+          "text": "Luego les ordenÃ³ a sus discÃ­pulos que no le dijeran a nadie que Ã©l era el Cristo."
+        },
+        {
+          "number": 21,
+          "text": "Desde ese momento JesÃºs empezÃ³ a explicarles a sus discÃ­pulos que tenÃ­a que ir a JerusalÃ©n, sufrir mucho a manos de los lÃ­deres religiosos, ser asesinado y resucitar al tercer dÃ­a."
+        },
+        {
+          "number": 22,
+          "text": "Pedro lo llevÃ³ aparte y empezÃ³ a reprenderlo: Â¡Dios no lo permita, SeÃ±or! Â¡Eso no te puede pasar!"
+        },
+        {
+          "number": 23,
+          "text": "JesÃºs se volteÃ³ y le dijo a Pedro: Â¡QuÃ­tate de mi camino, SatanÃ¡s! Eres un tropiezo para mÃ­. No estÃ¡s pensando en lo que le importa a Dios, sino en lo que le importa a la gente."
+        },
+        {
+          "number": 24,
+          "text": "Luego JesÃºs les dijo a sus discÃ­pulos: Si alguien quiere seguirme, que se olvide de sÃ­ mismo, que cargue su cruz y me siga."
+        },
+        {
+          "number": 25,
+          "text": "El que quiera salvar su vida la perderÃ¡, pero el que pierda su vida por mÃ­ la encontrarÃ¡."
+        },
+        {
+          "number": 26,
+          "text": "Â¿De quÃ© le sirve a alguien ganar el mundo entero si pierde su alma? Â¿O quÃ© puede dar alguien a cambio de su alma?"
+        },
+        {
+          "number": 27,
+          "text": "Porque el Hijo del Hombre vendrÃ¡ en la gloria de su Padre con sus Ã¡ngeles, y entonces le darÃ¡ a cada uno segÃºn lo que haya hecho."
+        }
+      ]
+    },
+    {
+      "chapterNumber": 17,
+      "verses": [
+        {
+          "number": 1,
+          "text": "Seis dÃ­as despuÃ©s, JesÃºs tomÃ³ a Pedro, Santiago y Juan, el hermano de Santiago, y los llevÃ³ aparte a un cerro alto."
+        },
+        {
+          "number": 2,
+          "text": "AllÃ­ se transformÃ³ delante de ellos. Su cara brillÃ³ como el sol y su ropa se volviÃ³ blanca como la luz."
+        },
+        {
+          "number": 3,
+          "text": "De repente aparecieron MoisÃ©s y ElÃ­as hablando con Ã©l."
+        },
+        {
+          "number": 4,
+          "text": "Pedro le dijo a JesÃºs: SeÃ±or, Â¡quÃ© bueno que estamos aquÃ­! Si quieres, hago tres enramadas: una para ti, una para MoisÃ©s y una para ElÃ­as."
+        },
+        {
+          "number": 5,
+          "text": "Mientras todavÃ­a estaba hablando, una nube brillante los cubriÃ³, y desde la nube se oyÃ³ una voz que decÃ­a: Este es mi Hijo amado, en quien me deleito. Â¡EscÃºchenlo!"
+        },
+        {
+          "number": 6,
+          "text": "Cuando los discÃ­pulos oyeron esto, cayeron con la cara en el suelo, llenos de terror."
+        },
+        {
+          "number": 7,
+          "text": "JesÃºs se acercÃ³, los tocÃ³ y les dijo: LevÃ¡ntense, no tengan miedo."
+        },
+        {
+          "number": 8,
+          "text": "Cuando levantaron la vista, no vieron a nadie mÃ¡s que a JesÃºs solo."
+        },
+        {
+          "number": 9,
+          "text": "Mientras bajaban del cerro, JesÃºs les ordenÃ³: No le cuenten a nadie lo que vieron hasta que el Hijo del Hombre resucite de entre los muertos."
+        },
+        {
+          "number": 10,
+          "text": "Los discÃ­pulos le preguntaron: Â¿Por quÃ© dicen los maestros de la ley que primero tiene que venir ElÃ­as?"
+        },
+        {
+          "number": 11,
+          "text": "JesÃºs respondiÃ³: Es verdad que ElÃ­as viene primero a restaurar todo."
+        },
+        {
+          "number": 12,
+          "text": "Pero les digo que ElÃ­as ya vino, y no lo reconocieron sino que lo trataron como quisieron. De la misma manera el Hijo del Hombre va a sufrir a manos de ellos."
+        },
+        {
+          "number": 13,
+          "text": "Entonces los discÃ­pulos entendieron que les estaba hablando de Juan el Bautista."
+        },
+        {
+          "number": 14,
+          "text": "Cuando llegaron donde estaba la multitud, un hombre se le acercÃ³ de rodillas"
+        },
+        {
+          "number": 15,
+          "text": "y le dijo: SeÃ±or, ten compasiÃ³n de mi hijo. Le dan ataques y sufre mucho. Muchas veces cae al fuego o al agua."
+        },
+        {
+          "number": 16,
+          "text": "Se lo traje a tus discÃ­pulos, pero no pudieron sanarlo."
+        },
+        {
+          "number": 17,
+          "text": "JesÃºs respondiÃ³: Â¡Gente sin fe y torcida! Â¿Hasta cuÃ¡ndo voy a estar con ustedes? Â¿Hasta cuÃ¡ndo los voy a aguantar? TrÃ¡iganme al muchacho."
+        },
+        {
+          "number": 18,
+          "text": "JesÃºs reprendiÃ³ al demonio, que saliÃ³ del muchacho, y este quedÃ³ sano desde ese momento."
+        },
+        {
+          "number": 19,
+          "text": "DespuÃ©s los discÃ­pulos se acercaron a JesÃºs en privado y le preguntaron: Â¿Por quÃ© nosotros no pudimos expulsarlo?"
+        },
+        {
+          "number": 20,
+          "text": "Ã‰l les dijo: Por su poca fe. Les juro que si tuvieran fe del tamaÃ±o de un grano de mostaza, le dirÃ­an a este cerro: MuÃ©vete de aquÃ­ para allÃ¡, y se moverÃ­a. Nada serÃ­a imposible para ustedes."
+        },
+        {
+          "number": 21,
+          "text": "Pero este tipo de demonio no sale sino con oraciÃ³n y ayuno."
+        },
+        {
+          "number": 22,
+          "text": "Mientras estaban reunidos en Galilea, JesÃºs les dijo: El Hijo del Hombre va a ser entregado en manos de hombres,"
+        },
+        {
+          "number": 23,
+          "text": "lo van a matar, y al tercer dÃ­a va a resucitar. Y ellos se pusieron muy tristes."
+        },
+        {
+          "number": 24,
+          "text": "Cuando llegaron a CapernaÃºm, los que cobraban el impuesto del templo se acercaron a Pedro y le preguntaron: Â¿Su maestro no paga el impuesto del templo? (Era un impuesto de dos dracmas para el mantenimiento del templo.)"
+        },
+        {
+          "number": 25,
+          "text": "Pedro dijo: SÃ­, lo paga. Cuando Pedro entrÃ³ a la casa, JesÃºs se le adelantÃ³ y le preguntÃ³: Â¿QuÃ© te parece, SimÃ³n? Â¿A quiÃ©nes les cobran impuestos los reyes de la tierra, a sus propios hijos o a los demÃ¡s?"
+        },
+        {
+          "number": 26,
+          "text": "Pedro respondiÃ³: A los demÃ¡s. JesÃºs le dijo: Entonces los hijos estÃ¡n exentos."
+        },
+        {
+          "number": 27,
+          "text": "Pero para no ofenderlos, ve al lago y echa el anzuelo. Saca el primer pez que pique, Ã¡brele la boca y encontrarÃ¡s una moneda. TÃ³mala y pÃ¡gales el impuesto por los dos."
+        }
+      ]
+    },
+    {
+      "chapterNumber": 18,
+      "verses": [
+        {
+          "number": 1,
+          "text": "En ese momento los discÃ­pulos se acercaron a JesÃºs y le preguntaron: Â¿QuiÃ©n es el mÃ¡s importante en el reino de los cielos?"
+        },
+        {
+          "number": 2,
+          "text": "JesÃºs llamÃ³ a un niÃ±o, lo puso en medio de ellos"
+        },
+        {
+          "number": 3,
+          "text": "y dijo: Les juro que si no cambian y se vuelven como niÃ±os, no van a entrar al reino de los cielos."
+        },
+        {
+          "number": 4,
+          "text": "El que se humille como este niÃ±o es el mÃ¡s importante en el reino de los cielos."
+        },
+        {
+          "number": 5,
+          "text": "Y el que recibe a un niÃ±o como este en mi nombre, me recibe a mÃ­."
+        },
+        {
+          "number": 6,
+          "text": "Pero al que haga tropezar a uno de estos pequeÃ±os que creen en mÃ­, mÃ¡s le valdrÃ­a que le colgaran una piedra de molino al cuello y lo hundieran en lo mÃ¡s profundo del mar."
+        },
+        {
+          "number": 7,
+          "text": "Â¡Ay del mundo por las cosas que hacen tropezar a la gente! Esas cosas tienen que venir, pero Â¡ay de aquel por quien vienen!"
+        },
+        {
+          "number": 8,
+          "text": "Si tu mano o tu pie te hace pecar, cÃ³rtatelo y tÃ­ralo. MÃ¡s te vale entrar a la vida manco o cojo que ser lanzado al fuego eterno con las dos manos y los dos pies."
+        },
+        {
+          "number": 9,
+          "text": "Y si tu ojo te hace pecar, sÃ¡catelo y tÃ­ralo. MÃ¡s te vale entrar a la vida con un solo ojo que ser lanzado al fuego del infierno con los dos."
+        },
+        {
+          "number": 10,
+          "text": "Tengan cuidado de no despreciar a ninguno de estos pequeÃ±os. Les digo que sus Ã¡ngeles en el cielo siempre estÃ¡n viendo la cara de mi Padre celestial."
+        },
+        {
+          "number": 11,
+          "text": "Porque el Hijo del Hombre vino a salvar lo que se habÃ­a perdido."
+        },
+        {
+          "number": 12,
+          "text": "Â¿QuÃ© les parece? Si un hombre tiene cien ovejas y se le pierde una, Â¿no deja las noventa y nueve en el cerro y va a buscar la que se perdiÃ³?"
+        },
+        {
+          "number": 13,
+          "text": "Y si la encuentra, les juro que se alegra mÃ¡s por esa oveja que por las noventa y nueve que no se perdieron."
+        },
+        {
+          "number": 14,
+          "text": "AsÃ­ tambiÃ©n, su Padre que estÃ¡ en el cielo no quiere que se pierda ni uno solo de estos pequeÃ±os."
+        },
+        {
+          "number": 15,
+          "text": "Si tu hermano peca contra ti, ve y hÃ¡blale en privado. Si te escucha, ganaste a tu hermano."
+        },
+        {
+          "number": 16,
+          "text": "Pero si no te hace caso, lleva a uno o dos mÃ¡s, para que todo quede confirmado por dos o tres testigos."
+        },
+        {
+          "number": 17,
+          "text": "Si tampoco les hace caso, dÃ­selo a la iglesia. Y si ni a la iglesia le hace caso, trÃ¡talo como a un pagano o un cobrador de impuestos."
+        },
+        {
+          "number": 18,
+          "text": "Les juro que lo que aten en la tierra quedarÃ¡ atado en el cielo, y lo que desaten en la tierra quedarÃ¡ desatado en el cielo."
+        },
+        {
+          "number": 19,
+          "text": "TambiÃ©n les digo que si dos de ustedes en la tierra se ponen de acuerdo para pedir cualquier cosa, mi Padre que estÃ¡ en el cielo se la darÃ¡."
+        },
+        {
+          "number": 20,
+          "text": "Porque donde dos o tres se reÃºnen en mi nombre, ahÃ­ estoy yo en medio de ellos."
+        },
+        {
+          "number": 21,
+          "text": "Pedro se acercÃ³ a JesÃºs y le preguntÃ³: SeÃ±or, Â¿cuÃ¡ntas veces tengo que perdonar a mi hermano cuando peca contra mÃ­? Â¿Hasta siete veces?"
+        },
+        {
+          "number": 22,
+          "text": "JesÃºs le respondiÃ³: No te digo hasta siete veces, sino hasta setenta veces siete. (No es una cuenta matemÃ¡tica, es decir: sin lÃ­mite.)"
+        },
+        {
+          "number": 23,
+          "text": "Por eso el reino de los cielos se parece a un rey que quiso ajustar cuentas con sus siervos."
+        },
+        {
+          "number": 24,
+          "text": "Cuando empezÃ³ a hacerlo, le trajeron a uno que le debÃ­a diez mil talentos. (Una deuda impagable, como decir miles de millones hoy.)"
+        },
+        {
+          "number": 25,
+          "text": "Como no tenÃ­a con quÃ© pagar, el rey ordenÃ³ que lo vendieran a Ã©l, a su esposa, a sus hijos y todo lo que tenÃ­a para pagar la deuda."
+        },
+        {
+          "number": 26,
+          "text": "El siervo se arrodillÃ³ ante Ã©l y le rogÃ³: Ten paciencia conmigo y te lo pagarÃ© todo."
+        },
+        {
+          "number": 27,
+          "text": "El rey se compadeciÃ³ de Ã©l, le perdonÃ³ la deuda y lo dejÃ³ ir."
+        },
+        {
+          "number": 28,
+          "text": "Pero ese mismo siervo saliÃ³ y encontrÃ³ a un compaÃ±ero que le debÃ­a cien denarios. Lo agarrÃ³ del cuello y le dijo: Â¡PÃ¡game lo que me debes!"
+        },
+        {
+          "number": 29,
+          "text": "Su compaÃ±ero se arrodillÃ³ y le rogÃ³: Ten paciencia conmigo y te lo pagarÃ©."
+        },
+        {
+          "number": 30,
+          "text": "Pero Ã©l se negÃ³. Fue y lo metiÃ³ a la cÃ¡rcel hasta que pagara la deuda."
+        },
+        {
+          "number": 31,
+          "text": "Cuando los otros siervos vieron lo que habÃ­a pasado, se pusieron muy tristes y fueron a contarle todo al rey."
+        },
+        {
+          "number": 32,
+          "text": "El rey lo mandÃ³ llamar y le dijo: Â¡Siervo malvado! Te perdonÃ© toda esa deuda porque me lo rogaste."
+        },
+        {
+          "number": 33,
+          "text": "Â¿No debÃ­as tÃº tambiÃ©n tener compasiÃ³n de tu compaÃ±ero, asÃ­ como yo tuve compasiÃ³n de ti?"
+        },
+        {
+          "number": 34,
+          "text": "Enojado, el rey lo entregÃ³ a los carceleros para que lo torturaran hasta que pagara todo lo que debÃ­a."
+        }
+      ]
+    },
+    {
+      "chapterNumber": 19,
+      "verses": [
+        {
+          "number": 1,
+          "text": "Cuando JesÃºs terminÃ³ de decir estas cosas, saliÃ³ de Galilea y fue a la regiÃ³n de Judea, al otro lado del JordÃ¡n."
+        },
+        {
+          "number": 2,
+          "text": "Lo siguieron grandes multitudes y Ã©l los sanÃ³ allÃ­."
+        },
+        {
+          "number": 3,
+          "text": "Unos fariseos se le acercaron para tenderle una trampa y le preguntaron: Â¿EstÃ¡ permitido que un hombre se divorcie de su esposa por cualquier razÃ³n?"
+        },
+        {
+          "number": 4,
+          "text": "JesÃºs respondiÃ³: Â¿No han leÃ­do que al principio el Creador los hizo hombre y mujer?"
+        },
+        {
+          "number": 5,
+          "text": "Y dijo: Por eso el hombre dejarÃ¡ a su padre y a su madre y se unirÃ¡ a su esposa, y los dos serÃ¡n uno solo."
+        },
+        {
+          "number": 6,
+          "text": "AsÃ­ que ya no son dos sino uno. Por eso lo que Dios uniÃ³, que no lo separe el hombre."
+        },
+        {
+          "number": 7,
+          "text": "Ellos le preguntaron: Â¿Entonces por quÃ© MoisÃ©s ordenÃ³ darle un certificado de divorcio y despedirla?"
+        },
+        {
+          "number": 8,
+          "text": "JesÃºs les dijo: MoisÃ©s les permitiÃ³ divorciarse de sus esposas por la dureza de su corazÃ³n. Pero al principio no era asÃ­."
+        },
+        {
+          "number": 9,
+          "text": "Les digo que el que se divorcie de su esposa, excepto por infidelidad, y se case con otra, comete adulterio."
+        },
+        {
+          "number": 10,
+          "text": "Los discÃ­pulos le dijeron: Si asÃ­ estÃ¡n las cosas entre esposo y esposa, mejor no casarse."
+        },
+        {
+          "number": 11,
+          "text": "JesÃºs les respondiÃ³: No todos pueden aceptar esto, solo aquellos a quienes se les ha dado."
+        },
+        {
+          "number": 12,
+          "text": "Porque hay quienes nacen sin poder casarse, otros son hechos asÃ­ por los hombres, y otros se quedan solos por el reino de los cielos. El que pueda aceptar esto, que lo acepte."
+        },
+        {
+          "number": 13,
+          "text": "Entonces le trajeron niÃ±os para que pusiera las manos sobre ellos y orara, pero los discÃ­pulos los regaÃ±aron."
+        },
+        {
+          "number": 14,
+          "text": "JesÃºs dijo: Dejen a los niÃ±os, no los impidan venir a mÃ­, porque de los que son como ellos es el reino de los cielos."
+        },
+        {
+          "number": 15,
+          "text": "DespuÃ©s de poner las manos sobre ellos, siguiÃ³ su camino."
+        },
+        {
+          "number": 16,
+          "text": "Un joven se acercÃ³ a JesÃºs y le preguntÃ³: Maestro, Â¿quÃ© cosa buena tengo que hacer para tener vida eterna?"
+        },
+        {
+          "number": 17,
+          "text": "JesÃºs le dijo: Â¿Por quÃ© me preguntas sobre lo bueno? Solo hay uno que es bueno. Si quieres entrar a la vida, obedece los mandamientos."
+        },
+        {
+          "number": 18,
+          "text": "Â¿CuÃ¡les? preguntÃ³ el joven. JesÃºs respondiÃ³: No mates, no cometas adulterio, no robes, no des falso testimonio,"
+        },
+        {
+          "number": 19,
+          "text": "honra a tu padre y a tu madre, y ama a tu prÃ³jimo como a ti mismo."
+        },
+        {
+          "number": 20,
+          "text": "El joven le dijo: Todo eso lo he cumplido. Â¿QuÃ© me falta?"
+        },
+        {
+          "number": 21,
+          "text": "JesÃºs le dijo: Si quieres ser perfecto, ve, vende todo lo que tienes y dÃ¡selo a los pobres, y tendrÃ¡s tesoro en el cielo. Luego ven y sÃ­gueme."
+        },
+        {
+          "number": 22,
+          "text": "Cuando el joven oyÃ³ esto, se fue triste porque tenÃ­a muchas riquezas."
+        },
+        {
+          "number": 23,
+          "text": "JesÃºs les dijo a sus discÃ­pulos: Les juro que es difÃ­cil para un rico entrar al reino de los cielos."
+        },
+        {
+          "number": 24,
+          "text": "De nuevo les digo: Es mÃ¡s fÃ¡cil que un camello pase por el ojo de una aguja que un rico entre al reino de Dios."
+        },
+        {
+          "number": 25,
+          "text": "Los discÃ­pulos quedaron asombrados y preguntaron: Entonces, Â¿quiÃ©n puede salvarse?"
+        },
+        {
+          "number": 26,
+          "text": "JesÃºs los mirÃ³ y dijo: Para los hombres eso es imposible, pero para Dios todo es posible."
+        },
+        {
+          "number": 27,
+          "text": "Pedro le dijo: Mira, nosotros lo dejamos todo y te seguimos. Â¿QuÃ© vamos a recibir?"
+        },
+        {
+          "number": 28,
+          "text": "JesÃºs les dijo: Les juro que cuando todo sea renovado y el Hijo del Hombre se siente en su trono glorioso, ustedes que me siguieron tambiÃ©n se sentarÃ¡n en doce tronos para juzgar a las doce tribus de Israel."
+        },
+        {
+          "number": 29,
+          "text": "Y todo el que haya dejado casas, hermanos, hermanas, padre, madre, hijos o campos por mi causa recibirÃ¡ cien veces mÃ¡s y heredarÃ¡ la vida eterna."
+        },
+        {
+          "number": 30,
+          "text": "Pero muchos de los primeros serÃ¡n los Ãºltimos, y muchos de los Ãºltimos serÃ¡n los primeros."
+        }
+      ]
+    },
+    {
+      "chapterNumber": 20,
+      "verses": [
+        {
+          "number": 1,
+          "text": "El reino de los cielos se parece a un dueÃ±o de finca que saliÃ³ temprano en la maÃ±ana a contratar trabajadores para su viÃ±edo."
+        },
+        {
+          "number": 2,
+          "text": "AcordÃ³ pagarles un denario por el dÃ­a y los mandÃ³ a trabajar."
+        },
+        {
+          "number": 3,
+          "text": "SaliÃ³ de nuevo como a las nueve de la maÃ±ana y vio a otros parados en la plaza sin hacer nada."
+        },
+        {
+          "number": 4,
+          "text": "Les dijo: Vayan tambiÃ©n ustedes a trabajar en mi viÃ±edo y les pagarÃ© lo justo. Y fueron."
+        },
+        {
+          "number": 5,
+          "text": "SaliÃ³ otra vez al mediodÃ­a y a las tres de la tarde e hizo lo mismo."
+        },
+        {
+          "number": 6,
+          "text": "Cerca de las cinco de la tarde saliÃ³ y encontrÃ³ a otros parados. Les preguntÃ³: Â¿Por quÃ© llevan todo el dÃ­a aquÃ­ sin hacer nada?"
+        },
+        {
+          "number": 7,
+          "text": "Ellos respondieron: Porque nadie nos contratÃ³. Ã‰l les dijo: Vayan tambiÃ©n ustedes a trabajar en mi viÃ±edo."
+        },
+        {
+          "number": 8,
+          "text": "Al atardecer, el dueÃ±o le dijo a su capataz: Llama a los trabajadores y pÃ¡gales, empezando por los Ãºltimos hasta llegar a los primeros."
+        },
+        {
+          "number": 9,
+          "text": "Los que llegaron cerca de las cinco recibieron cada uno un denario."
+        },
+        {
+          "number": 10,
+          "text": "Cuando llegaron los primeros, pensaron que iban a recibir mÃ¡s. Pero cada uno recibiÃ³ tambiÃ©n un denario."
+        },
+        {
+          "number": 11,
+          "text": "Al recibirlo, empezaron a quejarse del dueÃ±o:"
+        },
+        {
+          "number": 12,
+          "text": "Estos Ãºltimos trabajaron solo una hora, y les pagaste igual que a nosotros que aguantamos todo el dÃ­a el calor y el trabajo duro."
+        },
+        {
+          "number": 13,
+          "text": "El dueÃ±o le respondiÃ³ a uno de ellos: Amigo, no te estoy haciendo ninguna injusticia. Â¿No acordamos un denario?"
+        },
+        {
+          "number": 14,
+          "text": "Toma lo tuyo y vete. Yo quiero darle a este Ãºltimo lo mismo que a ti."
+        },
+        {
+          "number": 15,
+          "text": "Â¿O es que no tengo derecho de hacer lo que quiero con mi dinero? Â¿O te molesta que yo sea generoso?"
+        },
+        {
+          "number": 16,
+          "text": "AsÃ­ que los Ãºltimos serÃ¡n los primeros, y los primeros serÃ¡n los Ãºltimos."
+        },
+        {
+          "number": 17,
+          "text": "Mientras subÃ­a a JerusalÃ©n, JesÃºs tomÃ³ aparte a los doce discÃ­pulos y en el camino les dijo:"
+        },
+        {
+          "number": 18,
+          "text": "Escuchen, vamos subiendo a JerusalÃ©n. El Hijo del Hombre va a ser entregado a los jefes de los sacerdotes y a los maestros de la ley. Lo van a condenar a muerte"
+        },
+        {
+          "number": 19,
+          "text": "y lo van a entregar a los gentiles para que se burlen de Ã©l, lo azoten y lo crucifiquen. Pero al tercer dÃ­a va a resucitar."
+        },
+        {
+          "number": 20,
+          "text": "Entonces la madre de los hijos de Zebedeo se acercÃ³ a JesÃºs con sus hijos y se arrodillÃ³ para pedirle algo."
+        },
+        {
+          "number": 21,
+          "text": "JesÃºs le preguntÃ³: Â¿QuÃ© quieres? Ella respondiÃ³: Ordena que estos dos hijos mÃ­os se sienten uno a tu derecha y el otro a tu izquierda en tu reino."
+        },
+        {
+          "number": 22,
+          "text": "JesÃºs respondiÃ³: No saben lo que estÃ¡n pidiendo. Â¿Pueden beber el trago amargo que yo voy a beber? Ellos dijeron: SÃ­ podemos."
+        },
+        {
+          "number": 23,
+          "text": "JesÃºs les dijo: SÃ­ van a beber de mi copa, pero sentarse a mi derecha o a mi izquierda no me toca a mÃ­ concederlo. Eso es para quienes mi Padre lo ha preparado."
+        },
+        {
+          "number": 24,
+          "text": "Cuando los otros diez se enteraron, se enojaron con los dos hermanos."
+        },
+        {
+          "number": 25,
+          "text": "JesÃºs los llamÃ³ y les dijo: Ustedes saben que los gobernantes de este mundo dominan a su gente y los grandes ejercen su autoridad sobre ellos."
+        },
+        {
+          "number": 26,
+          "text": "Entre ustedes no debe ser asÃ­. Al contrario, el que quiera ser grande entre ustedes tiene que ser su servidor."
+        },
+        {
+          "number": 27,
+          "text": "Y el que quiera ser el primero tiene que ser el esclavo de todos."
+        },
+        {
+          "number": 28,
+          "text": "AsÃ­ como el Hijo del Hombre no vino para que le sirvan, sino para servir y dar su vida en rescate por muchos."
+        },
+        {
+          "number": 29,
+          "text": "Cuando salÃ­an de JericÃ³, una gran multitud los seguÃ­a."
+        },
+        {
+          "number": 30,
+          "text": "Dos ciegos que estaban sentados al borde del camino, al oÃ­r que JesÃºs pasaba, gritaron: Â¡SeÃ±or, Hijo de David, ten compasiÃ³n de nosotros!"
+        },
+        {
+          "number": 31,
+          "text": "La gente los regaÃ±aba para que se callaran, pero ellos gritaban mÃ¡s fuerte: Â¡SeÃ±or, Hijo de David, ten compasiÃ³n de nosotros!"
+        },
+        {
+          "number": 32,
+          "text": "JesÃºs se detuvo y los llamÃ³. Les preguntÃ³: Â¿QuÃ© quieren que haga por ustedes?"
+        },
+        {
+          "number": 33,
+          "text": "Ellos respondieron: SeÃ±or, queremos ver."
+        },
+        {
+          "number": 34,
+          "text": "JesÃºs, lleno de compasiÃ³n, les tocÃ³ los ojos. Al instante pudieron ver y lo siguieron."
+        }
+      ]
+    },
+    {
+      "chapterNumber": 21,
+      "verses": [
+        {
+          "number": 1,
+          "text": "Cuando se acercaban a JerusalÃ©n y llegaron a BetfagÃ©, al monte de los Olivos, JesÃºs mandÃ³ a dos discÃ­pulos"
+        },
+        {
+          "number": 2,
+          "text": "diciÃ©ndoles: Vayan al pueblo que estÃ¡ enfrente. Enseguida encontrarÃ¡n una burra atada con su crÃ­a. DesÃ¡tenlas y trÃ¡iganmelas."
+        },
+        {
+          "number": 3,
+          "text": "Si alguien les dice algo, dÃ­ganle que el SeÃ±or las necesita y las devolverÃ¡ pronto."
+        },
+        {
+          "number": 4,
+          "text": "Esto pasÃ³ para que se cumpliera lo que dijo el profeta:"
+        },
+        {
+          "number": 5,
+          "text": "Digan a la ciudad de SiÃ³n: Mira, tu rey viene a ti, humilde, montado en un burro, en un burrito, crÃ­a de una bestia de carga."
+        },
+        {
+          "number": 6,
+          "text": "Los discÃ­pulos fueron e hicieron lo que JesÃºs les ordenÃ³."
+        },
+        {
+          "number": 7,
+          "text": "Trajeron la burra y el burrito, pusieron sus mantos encima y JesÃºs se montÃ³."
+        },
+        {
+          "number": 8,
+          "text": "Una gran multitud tendiÃ³ sus mantos en el camino; otros cortaban ramas de los Ã¡rboles y las tendÃ­an en el camino."
+        },
+        {
+          "number": 9,
+          "text": "Las multitudes que iban delante y las que venÃ­an detrÃ¡s gritaban: Â¡Hosanna al Hijo de David! Â¡Bendito el que viene en el nombre del SeÃ±or! Â¡Hosanna en las alturas!"
+        },
+        {
+          "number": 10,
+          "text": "Cuando JesÃºs entrÃ³ en JerusalÃ©n, toda la ciudad se alborotÃ³. La gente preguntaba: Â¿QuiÃ©n es este?"
+        },
+        {
+          "number": 11,
+          "text": "Las multitudes respondÃ­an: Este es JesÃºs, el profeta de Nazaret de Galilea."
+        },
+        {
+          "number": 12,
+          "text": "JesÃºs entrÃ³ al templo y echÃ³ a todos los que compraban y vendÃ­an allÃ­. VolteÃ³ las mesas de los que cambiaban dinero y los puestos de los que vendÃ­an palomas."
+        },
+        {
+          "number": 13,
+          "text": "Les dijo: Escrito estÃ¡: Mi casa serÃ¡ llamada casa de oraciÃ³n, pero ustedes la han convertido en cueva de ladrones."
+        },
+        {
+          "number": 14,
+          "text": "En el templo se le acercaron ciegos y cojos, y Ã©l los sanÃ³."
+        },
+        {
+          "number": 15,
+          "text": "Pero cuando los jefes de los sacerdotes y los maestros de la ley vieron las cosas maravillosas que hacÃ­a y a los niÃ±os gritando en el templo: Â¡Hosanna al Hijo de David!, se indignaron."
+        },
+        {
+          "number": 16,
+          "text": "Le preguntaron: Â¿Oyes lo que estÃ¡n diciendo estos? JesÃºs respondiÃ³: SÃ­. Â¿Nunca han leÃ­do: De la boca de los niÃ±os y de los bebÃ©s has sacado alabanza perfecta?"
+        },
+        {
+          "number": 17,
+          "text": "Los dejÃ³ y saliÃ³ de la ciudad hacia Betania, donde pasÃ³ la noche."
+        },
+        {
+          "number": 18,
+          "text": "Por la maÃ±ana, cuando volvÃ­a a la ciudad, tuvo hambre."
+        },
+        {
+          "number": 19,
+          "text": "Vio una higuera junto al camino y se acercÃ³, pero no encontrÃ³ nada mÃ¡s que hojas. Le dijo: Â¡Que nunca mÃ¡s des fruto! Y al instante la higuera se secÃ³."
+        },
+        {
+          "number": 20,
+          "text": "Los discÃ­pulos quedaron asombrados al ver esto y preguntaron: Â¿CÃ³mo se secÃ³ tan rÃ¡pido la higuera?"
+        },
+        {
+          "number": 21,
+          "text": "JesÃºs les respondiÃ³: Les juro que si tienen fe y no dudan, no solo harÃ¡n lo que hice con la higuera, sino que tambiÃ©n podrÃ¡n decirle a este cerro: QuÃ­tate y tÃ­rate al mar, y asÃ­ serÃ¡."
+        },
+        {
+          "number": 22,
+          "text": "Todo lo que pidan en oraciÃ³n con fe, lo recibirÃ¡n."
+        },
+        {
+          "number": 23,
+          "text": "JesÃºs entrÃ³ al templo y, mientras enseÃ±aba, se le acercaron los jefes de los sacerdotes y los ancianos del pueblo. Le preguntaron: Â¿Con quÃ© autoridad haces estas cosas? Â¿QuiÃ©n te dio esa autoridad?"
+        },
+        {
+          "number": 24,
+          "text": "JesÃºs les respondiÃ³: Yo tambiÃ©n les voy a hacer una pregunta. Si me responden, les dirÃ© con quÃ© autoridad hago estas cosas."
+        },
+        {
+          "number": 25,
+          "text": "El bautismo de Juan, Â¿de dÃ³nde venÃ­a, del cielo o de los hombres? Ellos se pusieron a discutir entre sÃ­: Si decimos que del cielo, nos va a preguntar por quÃ© no le creyeron."
+        },
+        {
+          "number": 26,
+          "text": "Y si decimos que de los hombres, tenemos miedo de la gente, porque todos consideran a Juan un profeta."
+        },
+        {
+          "number": 27,
+          "text": "AsÃ­ que le respondieron: No sabemos. JesÃºs les dijo: Entonces yo tampoco les digo con quÃ© autoridad hago estas cosas."
+        },
+        {
+          "number": 28,
+          "text": "Â¿QuÃ© les parece? Un hombre tenÃ­a dos hijos. Se acercÃ³ al primero y le dijo: Hijo, ve a trabajar hoy en el viÃ±edo."
+        },
+        {
+          "number": 29,
+          "text": "El hijo respondiÃ³: No quiero. Pero despuÃ©s se arrepintiÃ³ y fue."
+        },
+        {
+          "number": 30,
+          "text": "Luego el padre se acercÃ³ al segundo y le dijo lo mismo. Este respondiÃ³: SÃ­, seÃ±or. Pero no fue."
+        },
+        {
+          "number": 31,
+          "text": "Â¿CuÃ¡l de los dos hizo lo que el padre querÃ­a? El primero, respondieron. JesÃºs les dijo: Les juro que los cobradores de impuestos y las prostitutas entran al reino de Dios antes que ustedes."
+        },
+        {
+          "number": 32,
+          "text": "Porque Juan vino a mostrarles el camino de la justicia y no le creyeron, pero los cobradores de impuestos y las prostitutas sÃ­ le creyeron. Y aunque ustedes lo vieron, tampoco se arrepintieron despuÃ©s para creerle."
+        },
+        {
+          "number": 33,
+          "text": "Escuchen otra parÃ¡bola: HabÃ­a un dueÃ±o de finca que plantÃ³ un viÃ±edo, lo cercÃ³, cavÃ³ un lagar, construyÃ³ una torre de vigilancia, lo arrendÃ³ a unos labradores y se fue de viaje."
+        },
+        {
+          "number": 34,
+          "text": "Cuando llegÃ³ el tiempo de la cosecha, mandÃ³ a sus siervos a los labradores para recibir su parte de la cosecha."
+        },
+        {
+          "number": 35,
+          "text": "Pero los labradores agarraron a sus siervos: a uno lo golpearon, a otro lo mataron y a otro lo apedrearon."
+        },
+        {
+          "number": 36,
+          "text": "MandÃ³ otros siervos, mÃ¡s que la primera vez, y los trataron igual."
+        },
+        {
+          "number": 37,
+          "text": "Por Ãºltimo les mandÃ³ a su propio hijo, pensando: A mi hijo sÃ­ lo van a respetar."
+        },
+        {
+          "number": 38,
+          "text": "Pero cuando los labradores vieron al hijo, se dijeron entre sÃ­: Este es el heredero. MatÃ©moslo y quedÃ©monos con su herencia."
+        },
+        {
+          "number": 39,
+          "text": "Lo agarraron, lo sacaron del viÃ±edo y lo mataron."
+        },
+        {
+          "number": 40,
+          "text": "Cuando vuelva el dueÃ±o del viÃ±edo, Â¿quÃ© harÃ¡ con esos labradores?"
+        },
+        {
+          "number": 41,
+          "text": "Ellos respondieron: Los destruirÃ¡ sin misericordia y arrendarÃ¡ el viÃ±edo a otros labradores que le entreguen su parte a tiempo."
+        },
+        {
+          "number": 42,
+          "text": "JesÃºs les dijo: Â¿Nunca han leÃ­do en las Escrituras: La piedra que los constructores rechazaron se ha convertido en la piedra principal. Esto lo hizo el SeÃ±or y nos parece maravilloso?"
+        },
+        {
+          "number": 43,
+          "text": "Por eso les digo que el reino de Dios se les quitarÃ¡ a ustedes y se le darÃ¡ a un pueblo que produzca sus frutos."
+        },
+        {
+          "number": 44,
+          "text": "El que caiga sobre esta piedra quedarÃ¡ destrozado, y aquel sobre quien caiga la piedra quedarÃ¡ aplastado."
+        },
+        {
+          "number": 45,
+          "text": "Cuando los jefes de los sacerdotes y los fariseos oyeron las parÃ¡bolas de JesÃºs, se dieron cuenta de que hablaba de ellos."
+        }
+      ]
+    },
+    {
+      "chapterNumber": 22,
+      "verses": [
+        {
+          "number": 1,
+          "text": "Jesús siguió hablándoles con parábolas:"
+        },
+        {
+          "number": 2,
+          "text": "El reino del cielo es como un rey que organizó el banquete de bodas de su hijo."
+        },
+        {
+          "number": 3,
+          "text": "Mandó a sus sirvientes a llamar a los invitados, pero ninguno quiso venir."
+        },
+        {
+          "number": 4,
+          "text": "Mandó a otros sirvientes a decirles: Miren, ya tengo todo listo, maté los toros y los animales engordados. Todo está servido. ¡Vengan a la fiesta!"
+        },
+        {
+          "number": 5,
+          "text": "Pero ellos pasaron de largo, sin hacerle caso. Uno se fue a su campo, otro a su negocio."
+        },
+        {
+          "number": 6,
+          "text": "Los demás agarraron a los sirvientes, los golpearon y los mataron."
+        },
+        {
+          "number": 7,
+          "text": "El rey se puso furioso. Mandó a su ejército, destruyó a esos asesinos y quemó su ciudad."
+        },
+        {
+          "number": 8,
+          "text": "Después les dijo a sus sirvientes: El banquete está listo, pero los que invité no lo merecían."
+        },
+        {
+          "number": 9,
+          "text": "Salgan a los cruces de caminos y llamen a todos los que encuentren."
+        },
+        {
+          "number": 10,
+          "text": "Los sirvientes salieron a las calles y juntaron a todos los que encontraron, buenos y malos. El salón se llenó de gente."
+        },
+        {
+          "number": 11,
+          "text": "Cuando el rey entró a ver a los invitados, vio a uno que no traía ropa de boda."
+        },
+        {
+          "number": 12,
+          "text": "Le dijo: Amigo, ¿cómo entraste aquí sin ropa de boda? El hombre no supo qué decir."
+        },
+        {
+          "number": 13,
+          "text": "Entonces el rey les dijo a los que servían: Átenle las manos y los pies y échenlo afuera, a la oscuridad. Allá va a llorar y a rechinar los dientes."
+        },
+        {
+          "number": 14,
+          "text": "Porque muchos son llamados, pero pocos son escogidos."
+        },
+        {
+          "number": 15,
+          "text": "Entonces los fariseos se juntaron para ver cómo le tendían una trampa con sus propias palabras."
+        },
+        {
+          "number": 16,
+          "text": "Le mandaron a sus discípulos junto con los del partido de Herodes. Le dijeron: Maestro, sabemos que eres honesto y que enseñas el camino de Dios tal como es, sin importarte lo que piense la gente ni hacerle la barba a nadie."
+        },
+        {
+          "number": 17,
+          "text": "Dinos entonces: ¿Está bien pagar impuestos al César o no?"
+        },
+        {
+          "number": 18,
+          "text": "Jesús se dio cuenta de su mala intención y les dijo: ¿Por qué me están poniendo a prueba, hipócritas?"
+        },
+        {
+          "number": 19,
+          "text": "Muéstrenme la moneda con que se paga el impuesto. Le trajeron un denario."
+        },
+        {
+          "number": 20,
+          "text": "Jesús les preguntó: ¿De quién es esta cara y este nombre?"
+        },
+        {
+          "number": 21,
+          "text": "Del César, le dijeron. Entonces Jesús les dijo: Pues denle al César lo que es del César, y a Dios lo que es de Dios."
+        },
+        {
+          "number": 22,
+          "text": "Al oír eso se quedaron asombrados, lo dejaron y se fueron."
+        },
+        {
+          "number": 23,
+          "text": "Ese mismo día se acercaron los saduceos, que dicen que no hay resurrección, y le preguntaron:"
+        },
+        {
+          "number": 24,
+          "text": "Maestro, Moisés dijo que si un hombre muere sin hijos, su hermano debe casarse con la viuda para darle descendencia. (Era la ley del levirato, para mantener el nombre y la herencia familiar.)"
+        },
+        {
+          "number": 25,
+          "text": "Había entre nosotros siete hermanos. El primero se casó y murió sin hijos, dejando la viuda a su hermano."
+        },
+        {
+          "number": 26,
+          "text": "Lo mismo pasó con el segundo, el tercero, y así hasta el séptimo."
+        },
+        {
+          "number": 27,
+          "text": "Por último murió también la mujer."
+        },
+        {
+          "number": 28,
+          "text": "En la resurrección, ¿de cuál de los siete será esposa? Porque todos se casaron con ella."
+        },
+        {
+          "number": 29,
+          "text": "Jesús les respondió: Están muy equivocados porque no conocen las Escrituras ni el poder de Dios."
+        },
+        {
+          "number": 30,
+          "text": "En la resurrección la gente no se casa ni la casan, sino que son como los ángeles en el cielo."
+        },
+        {
+          "number": 31,
+          "text": "Y sobre la resurrección de los muertos, ¿no han leído lo que Dios les dijo:"
+        },
+        {
+          "number": 32,
+          "text": "Yo soy el Dios de Abraham, el Dios de Isaac y el Dios de Jacob? Él no es Dios de muertos sino de vivos."
+        },
+        {
+          "number": 33,
+          "text": "La gente que escuchaba quedó impresionada con su enseñanza."
+        },
+        {
+          "number": 34,
+          "text": "Cuando los fariseos se enteraron de que Jesús había dejado callados a los saduceos, se juntaron."
+        },
+        {
+          "number": 35,
+          "text": "Uno de ellos, un experto en la ley, le preguntó para ponerlo a prueba:"
+        },
+        {
+          "number": 36,
+          "text": "Maestro, ¿cuál es el mandamiento más importante de la ley?"
+        },
+        {
+          "number": 37,
+          "text": "Jesús le dijo: Ama al Señor tu Dios con todo tu corazón, con toda tu alma y con toda tu mente."
+        },
+        {
+          "number": 38,
+          "text": "Este es el primero y más importante mandamiento."
+        },
+        {
+          "number": 39,
+          "text": "El segundo es igual: Ama a tu prójimo como a ti mismo."
+        },
+        {
+          "number": 40,
+          "text": "De estos dos mandamientos dependen toda la ley y los profetas."
+        },
+        {
+          "number": 41,
+          "text": "Mientras los fariseos estaban reunidos, Jesús les preguntó:"
+        },
+        {
+          "number": 42,
+          "text": "¿Qué piensan del Mesías? ¿De quién es hijo? Del rey David, le respondieron."
+        },
+        {
+          "number": 43,
+          "text": "Entonces Jesús les dijo: ¿Cómo es que David, inspirado por el Espíritu, lo llama Señor? Porque dice:"
+        },
+        {
+          "number": 44,
+          "text": "El Señor le dijo a mi Señor: Siéntate a mi derecha hasta que ponga a tus enemigos bajo tus pies. Si David lo llama Señor, ¿cómo puede ser solo su hijo? Nadie pudo responderle nada, y desde ese día nadie se atrevió a hacerle más preguntas."
+        }
+      ]
+    },
+    {
+      "chapterNumber": 23,
+      "verses": [
+        {
+          "number": 1,
+          "text": "Entonces Jesús le habló a la gente y a sus discípulos:"
+        },
+        {
+          "number": 2,
+          "text": "Los maestros de la ley y los fariseos tienen la autoridad de Moisés."
+        },
+        {
+          "number": 3,
+          "text": "Así que hagan y cumplan todo lo que les digan. Pero no hagan lo que ellos hacen, porque no practican lo que predican."
+        },
+        {
+          "number": 4,
+          "text": "Atan cargas pesadas e insoportables y las ponen sobre los hombros de la gente, pero ellos ni con un dedo las mueven."
+        },
+        {
+          "number": 5,
+          "text": "Todo lo que hacen es para que la gente los vea. Usan filacterias grandes y flecos largos en su ropa. (Las filacterias eran cajitas con versículos de la Torá que se ataban en la frente y el brazo durante la oración.)"
+        },
+        {
+          "number": 6,
+          "text": "Les encanta ocupar los mejores lugares en los banquetes y los asientos de honor en las sinagogas."
+        },
+        {
+          "number": 7,
+          "text": "Les gusta que la gente los salude en las plazas y que los llamen Rabí."
+        },
+        {
+          "number": 8,
+          "text": "Pero ustedes no se dejen llamar Rabí, porque uno solo es su maestro, y todos ustedes son hermanos."
+        },
+        {
+          "number": 9,
+          "text": "Y no llamen padre a nadie en la tierra, porque uno solo es su Padre, el que está en el cielo."
+        },
+        {
+          "number": 10,
+          "text": "Ni se dejen llamar líderes, porque uno solo es su líder: el Mesías."
+        },
+        {
+          "number": 11,
+          "text": "El más grande entre ustedes será el que sirva a los demás."
+        },
+        {
+          "number": 12,
+          "text": "El que se engrandece será humillado, y el que se humilla será engrandecido."
+        },
+        {
+          "number": 13,
+          "text": "¡Ay de ustedes, maestros de la ley y fariseos, hipócritas! Le cierran el reino del cielo a la gente en la cara. Ustedes no entran, y a los que quieren entrar tampoco los dejan."
+        },
+        {
+          "number": 14,
+          "text": "¡Ay de ustedes, maestros de la ley y fariseos, hipócritas! Se comen los bienes de las viudas y de fachada hacen largas oraciones. Por eso recibirán un castigo mayor."
+        },
+        {
+          "number": 15,
+          "text": "¡Ay de ustedes, maestros de la ley y fariseos, hipócritas! Recorren mar y tierra para ganar un solo converso, y cuando lo ganan lo hacen el doble de hijo del infierno que ustedes."
+        },
+        {
+          "number": 16,
+          "text": "¡Ay de ustedes, guías ciegos! Dicen: Si alguien jura por el templo, no vale nada; pero si jura por el oro del templo, sí está obligado."
+        },
+        {
+          "number": 17,
+          "text": "¡Tontos y ciegos! ¿Qué es más importante, el oro o el templo que hace sagrado al oro?"
+        },
+        {
+          "number": 18,
+          "text": "También dicen: Si alguien jura por el altar, no vale nada; pero si jura por la ofrenda que está sobre el altar, sí está obligado."
+        },
+        {
+          "number": 19,
+          "text": "¡Ciegos! ¿Qué es más importante, la ofrenda o el altar que hace sagrada a la ofrenda?"
+        },
+        {
+          "number": 20,
+          "text": "El que jura por el altar, jura por él y por todo lo que está sobre él."
+        },
+        {
+          "number": 21,
+          "text": "El que jura por el templo, jura por él y por el que vive en él."
+        },
+        {
+          "number": 22,
+          "text": "Y el que jura por el cielo, jura por el trono de Dios y por el que está sentado en él."
+        },
+        {
+          "number": 23,
+          "text": "¡Ay de ustedes, maestros de la ley y fariseos, hipócritas! Dan el diezmo de la menta, del anís y del comino, pero han dejado de lado lo más importante de la ley: la justicia, la misericordia y la fidelidad. Esto último hay que hacerlo sin dejar lo otro."
+        },
+        {
+          "number": 24,
+          "text": "¡Guías ciegos! Cuelan el mosquito pero se tragan el camello."
+        },
+        {
+          "number": 25,
+          "text": "¡Ay de ustedes, maestros de la ley y fariseos, hipócritas! Limpian el exterior del vaso y del plato, pero por dentro están llenos de robo y de desenfreno."
+        },
+        {
+          "number": 26,
+          "text": "¡Fariseo ciego! Limpia primero el interior del vaso, y así el exterior también quedará limpio."
+        },
+        {
+          "number": 27,
+          "text": "¡Ay de ustedes, maestros de la ley y fariseos, hipócritas! Son como tumbas blanqueadas: por fuera se ven bonitas, pero por dentro están llenas de huesos de muertos y de toda clase de podredumbre."
+        },
+        {
+          "number": 28,
+          "text": "Así también ustedes: por fuera parecen justos ante la gente, pero por dentro están llenos de hipocresía y maldad."
+        },
+        {
+          "number": 29,
+          "text": "¡Ay de ustedes, maestros de la ley y fariseos, hipócritas! Construyen tumbas para los profetas y adornan los monumentos de los justos."
+        },
+        {
+          "number": 30,
+          "text": "Y dicen: Si hubiéramos vivido en los tiempos de nuestros antepasados, no habríamos participado con ellos en derramar la sangre de los profetas."
+        },
+        {
+          "number": 31,
+          "text": "Con eso se declaran hijos de los que mataron a los profetas."
+        },
+        {
+          "number": 32,
+          "text": "¡Completen entonces lo que sus antepasados empezaron!"
+        },
+        {
+          "number": 33,
+          "text": "¡Serpientes! ¡Camada de víboras! ¿Cómo van a escapar del juicio del infierno?"
+        },
+        {
+          "number": 34,
+          "text": "Por eso les voy a mandar profetas, sabios y maestros. A algunos los matarán y crucificarán, a otros los azotarán en sus sinagogas y los perseguirán de ciudad en ciudad."
+        },
+        {
+          "number": 35,
+          "text": "Así caerá sobre ustedes toda la sangre justa derramada en la tierra, desde la sangre del justo Abel hasta la sangre de Zacarías hijo de Berequías, a quien mataron entre el templo y el altar."
+        },
+        {
+          "number": 36,
+          "text": "Les digo que todo esto caerá sobre esta generación."
+        },
+        {
+          "number": 37,
+          "text": "¡Jerusalén, Jerusalén, que matas a los profetas y apedreas a los que Dios te manda! ¡Cuántas veces quise juntar a tus hijos como la gallina junta a sus pollitos bajo las alas, pero no quisiste!"
+        },
+        {
+          "number": 38,
+          "text": "Miren, su casa va a quedar abandonada y en ruinas."
+        },
+        {
+          "number": 39,
+          "text": "Les digo que no me van a ver más hasta que digan: ¡Bendito el que viene en el nombre del Señor!"
+        }
+      ]
+    },
+    {
+      "chapterNumber": 24,
+      "verses": [
+        {
+          "number": 1,
+          "text": "Jesús salió del templo y sus discípulos se acercaron para mostrarle los edificios del templo."
+        },
+        {
+          "number": 2,
+          "text": "Él les dijo: ¿Ven todo esto? Les digo que no va a quedar piedra sobre piedra. Todo va a ser demolido."
+        },
+        {
+          "number": 3,
+          "text": "Mientras estaba sentado en el monte de los Olivos, los discípulos se le acercaron en privado y le preguntaron: Dinos, ¿cuándo va a pasar eso? ¿Y cuál será la señal de tu venida y del fin del mundo?"
+        },
+        {
+          "number": 4,
+          "text": "Jesús les respondió: Tengan cuidado de que nadie los engañe."
+        },
+        {
+          "number": 5,
+          "text": "Porque van a venir muchos usando mi nombre, diciendo: Yo soy el Mesías, y van a engañar a mucha gente."
+        },
+        {
+          "number": 6,
+          "text": "Van a oír de guerras y rumores de guerras. No se asusten. Eso tiene que pasar, pero todavía no es el fin."
+        },
+        {
+          "number": 7,
+          "text": "Se va a levantar nación contra nación y reino contra reino. Habrá hambres y terremotos en varios lugares."
+        },
+        {
+          "number": 8,
+          "text": "Todo eso es solo el comienzo de los dolores, como los primeros dolores de parto."
+        },
+        {
+          "number": 9,
+          "text": "Entonces los van a entregar para que los torturen y los maten, y todas las naciones los van a odiar por causa de mí."
+        },
+        {
+          "number": 10,
+          "text": "En ese tiempo muchos van a caer, se van a traicionar unos a otros y se van a odiar."
+        },
+        {
+          "number": 11,
+          "text": "Van a aparecer muchos falsos profetas y van a engañar a mucha gente."
+        },
+        {
+          "number": 12,
+          "text": "Y como la maldad va a aumentar, el amor de muchos se va a enfriar."
+        },
+        {
+          "number": 13,
+          "text": "Pero el que aguante hasta el final, ese se salva."
+        },
+        {
+          "number": 14,
+          "text": "Y este mensaje del reino se va a predicar en todo el mundo como testimonio para todas las naciones. Después vendrá el fin."
+        },
+        {
+          "number": 15,
+          "text": "Cuando vean la abominación desoladora de la que habló el profeta Daniel parada en el lugar santo, el que lea esto que entienda lo que significa. (Daniel habló de una profanación del templo que sería señal de destrucción inminente.)"
+        },
+        {
+          "number": 16,
+          "text": "Entonces los que estén en Judea que huyan a las montañas."
+        },
+        {
+          "number": 17,
+          "text": "El que esté en la azotea que no baje a buscar nada en su casa."
+        },
+        {
+          "number": 18,
+          "text": "El que esté en el campo que no regrese a buscar su ropa."
+        },
+        {
+          "number": 19,
+          "text": "¡Ay de las embarazadas y de las que estén dando pecho en esos días!"
+        },
+        {
+          "number": 20,
+          "text": "Pidan que su huida no sea en invierno ni en sábado."
+        },
+        {
+          "number": 21,
+          "text": "Porque habrá una tribulación tan grande como no ha habido desde el principio del mundo hasta ahora, ni la habrá jamás."
+        },
+        {
+          "number": 22,
+          "text": "Si esos días no se acortaran, nadie sobreviviría. Pero por causa de los escogidos esos días serán acortados."
+        },
+        {
+          "number": 23,
+          "text": "Si alguien les dice: Miren, aquí está el Mesías, o allá está, no le crean."
+        },
+        {
+          "number": 24,
+          "text": "Porque van a aparecer falsos mesías y falsos profetas que harán señales y milagros impresionantes para engañar, si fuera posible, hasta a los escogidos."
+        },
+        {
+          "number": 25,
+          "text": "Miren que ya se los advertí."
+        },
+        {
+          "number": 26,
+          "text": "Así que si les dicen: Está en el desierto, no vayan. O: Está escondido en algún lugar, no lo crean."
+        },
+        {
+          "number": 27,
+          "text": "Porque así como el relámpago sale del oriente y se ve hasta el occidente, así será la venida del Hijo del Hombre."
+        },
+        {
+          "number": 28,
+          "text": "Donde esté el cadáver, allí se juntarán los buitres."
+        },
+        {
+          "number": 29,
+          "text": "Inmediatamente después de la tribulación de esos días, el sol se oscurecerá, la luna no dará su luz, las estrellas caerán del cielo y los poderes celestiales serán sacudidos."
+        },
+        {
+          "number": 30,
+          "text": "Entonces aparecerá en el cielo la señal del Hijo del Hombre. Todas las naciones de la tierra se lamentarán cuando vean al Hijo del Hombre venir sobre las nubes del cielo con poder y gran gloria."
+        },
+        {
+          "number": 31,
+          "text": "Él mandará a sus ángeles con un gran toque de trompeta, y juntarán a sus escogidos de los cuatro vientos, de un extremo del cielo al otro."
+        },
+        {
+          "number": 32,
+          "text": "Aprendan esta lección de la higuera: cuando sus ramas se ponen tiernas y le salen hojas, saben que el verano está cerca."
+        },
+        {
+          "number": 33,
+          "text": "Igual, cuando vean todo esto, sepan que ya está cerca, a las puertas."
+        },
+        {
+          "number": 34,
+          "text": "Les digo que esta generación no pasará hasta que todo esto suceda."
+        },
+        {
+          "number": 35,
+          "text": "El cielo y la tierra pasarán, pero mis palabras no pasarán."
+        },
+        {
+          "number": 36,
+          "text": "Pero nadie sabe el día ni la hora, ni los ángeles del cielo ni el Hijo, sino solo el Padre."
+        },
+        {
+          "number": 37,
+          "text": "Como fue en los días de Noé, así será la venida del Hijo del Hombre."
+        },
+        {
+          "number": 38,
+          "text": "Porque en los días antes del diluvio la gente comía, bebía, se casaba y daba en casamiento, hasta el día en que Noé entró al arca."
+        },
+        {
+          "number": 39,
+          "text": "Y no se dieron cuenta de nada hasta que llegó el diluvio y se los llevó a todos. Así será la venida del Hijo del Hombre."
+        },
+        {
+          "number": 40,
+          "text": "Entonces estarán dos hombres en el campo: uno será llevado y el otro dejado."
+        },
+        {
+          "number": 41,
+          "text": "Dos mujeres estarán moliendo: una será llevada y la otra dejada."
+        },
+        {
+          "number": 42,
+          "text": "Por eso estén despiertos, porque no saben qué día va a venir su Señor."
+        },
+        {
+          "number": 43,
+          "text": "Entiendan esto: si el dueño de la casa supiera a qué hora de la noche viene el ladrón, estaría despierto y no dejaría que le entraran a robar."
+        },
+        {
+          "number": 44,
+          "text": "Por eso ustedes también estén listos, porque el Hijo del Hombre va a venir a la hora que menos lo esperen."
+        }
+      ]
+    },
+    {
+      "chapterNumber": 25,
+      "verses": [
+        {
+          "number": 1,
+          "text": "El reino del cielo será como diez chicas que tomaron sus lámparas y salieron a recibir al novio."
+        },
+        {
+          "number": 2,
+          "text": "Cinco eran descuidadas y cinco eran listas."
+        },
+        {
+          "number": 3,
+          "text": "Las descuidadas llevaron sus lámparas pero no llevaron aceite extra."
+        },
+        {
+          "number": 4,
+          "text": "Las listas llevaron aceite en frascos junto con sus lámparas."
+        },
+        {
+          "number": 5,
+          "text": "Como el novio tardaba, todas se quedaron dormidas."
+        },
+        {
+          "number": 6,
+          "text": "A medianoche se oyó el grito: ¡Ya viene el novio! ¡Salgan a recibirlo!"
+        },
+        {
+          "number": 7,
+          "text": "Todas las chicas se despertaron y arreglaron sus lámparas."
+        },
+        {
+          "number": 8,
+          "text": "Las descuidadas les dijeron a las listas: Dennos un poco de su aceite porque nuestras lámparas se están apagando."
+        },
+        {
+          "number": 9,
+          "text": "Las listas respondieron: No, porque no va a alcanzar para todas. Mejor vayan a comprarlo."
+        },
+        {
+          "number": 10,
+          "text": "Mientras iban a comprarlo, llegó el novio. Las que estaban listas entraron con él al banquete de bodas, y se cerró la puerta."
+        },
+        {
+          "number": 11,
+          "text": "Después llegaron las otras y dijeron: ¡Señor, señor, ábrenos!"
+        },
+        {
+          "number": 12,
+          "text": "Pero él respondió: Les digo la verdad, no las conozco."
+        },
+        {
+          "number": 13,
+          "text": "Por eso estén despiertos, porque no saben el día ni la hora."
+        },
+        {
+          "number": 14,
+          "text": "El reino del cielo es también como un hombre que se iba de viaje y llamó a sus sirvientes y les dejó su dinero a cargo."
+        },
+        {
+          "number": 15,
+          "text": "A uno le dio cinco bolsas de oro, a otro dos, y a otro una, a cada uno según su capacidad. Luego se fue."
+        },
+        {
+          "number": 16,
+          "text": "El que recibió las cinco bolsas fue enseguida a trabajar con ese dinero y ganó otras cinco."
+        },
+        {
+          "number": 17,
+          "text": "El que recibió las dos también ganó otras dos."
+        },
+        {
+          "number": 18,
+          "text": "Pero el que recibió una fue y cavó un hoyo en la tierra y escondió el dinero de su señor."
+        },
+        {
+          "number": 19,
+          "text": "Después de mucho tiempo volvió el señor y les pidió cuentas."
+        },
+        {
+          "number": 20,
+          "text": "El que había recibido las cinco bolsas se acercó y trajo otras cinco. Dijo: Señor, me dejaste cinco bolsas. Mira, gané otras cinco."
+        },
+        {
+          "number": 21,
+          "text": "Su señor le dijo: ¡Bien hecho, sirviente bueno y fiel! Fuiste fiel en lo poco, te voy a poner a cargo de mucho más. ¡Ven a celebrar conmigo!"
+        },
+        {
+          "number": 22,
+          "text": "El que había recibido las dos bolsas también se acercó. Dijo: Señor, me dejaste dos bolsas. Mira, gané otras dos."
+        },
+        {
+          "number": 23,
+          "text": "Su señor le dijo: ¡Bien hecho, sirviente bueno y fiel! Fuiste fiel en lo poco, te voy a poner a cargo de mucho más. ¡Ven a celebrar conmigo!"
+        },
+        {
+          "number": 24,
+          "text": "Entonces se acercó el que había recibido una sola bolsa. Dijo: Señor, yo sabía que eres un hombre duro, que cosechas donde no sembraste y recoges donde no esparciste."
+        },
+        {
+          "number": 25,
+          "text": "Así que tuve miedo y fui a esconder tu bolsa en la tierra. Aquí tienes lo tuyo."
+        },
+        {
+          "number": 26,
+          "text": "Su señor le respondió: ¡Sirviente malo y flojo! ¿Así que sabías que cosecho donde no siembro y recojo donde no esparzo?"
+        },
+        {
+          "number": 27,
+          "text": "Entonces debiste haber puesto mi dinero en el banco, para que al volver yo lo recibiera con intereses."
+        },
+        {
+          "number": 28,
+          "text": "Quítenle la bolsa y dénsela al que tiene diez."
+        },
+        {
+          "number": 29,
+          "text": "Porque al que tiene se le dará más y le sobrará, pero al que no tiene se le quitará hasta lo poco que tiene."
+        },
+        {
+          "number": 30,
+          "text": "Y a ese sirviente inútil échenlo afuera, a la oscuridad. Allá va a llorar y a rechinar los dientes."
+        },
+        {
+          "number": 31,
+          "text": "Cuando el Hijo del Hombre venga en su gloria con todos sus ángeles, se sentará en su trono glorioso."
+        },
+        {
+          "number": 32,
+          "text": "Todas las naciones se reunirán delante de él, y él separará a la gente como el pastor separa las ovejas de las cabras."
+        },
+        {
+          "number": 33,
+          "text": "Pondrá las ovejas a su derecha y las cabras a su izquierda."
+        },
+        {
+          "number": 34,
+          "text": "Entonces el Rey les dirá a los de su derecha: Vengan, benditos de mi Padre, hereden el reino que fue preparado para ustedes desde la creación del mundo."
+        },
+        {
+          "number": 35,
+          "text": "Porque tuve hambre y me dieron de comer, tuve sed y me dieron de beber, fui forastero y me recibieron en su casa."
+        },
+        {
+          "number": 36,
+          "text": "Necesité ropa y me la dieron, estuve enfermo y me visitaron, estuve en la cárcel y fueron a verme."
+        },
+        {
+          "number": 37,
+          "text": "Entonces los justos le preguntarán: Señor, ¿cuándo te vimos con hambre y te dimos de comer, o con sed y te dimos de beber?"
+        },
+        {
+          "number": 38,
+          "text": "¿Cuándo te vimos como forastero y te recibimos, o necesitado de ropa y te la dimos?"
+        },
+        {
+          "number": 39,
+          "text": "¿Cuándo te vimos enfermo o en la cárcel y fuimos a verte?"
+        },
+        {
+          "number": 40,
+          "text": "El Rey les responderá: Les digo que todo lo que hicieron por uno de estos hermanos míos más humildes, por mí lo hicieron."
+        },
+        {
+          "number": 41,
+          "text": "Luego les dirá a los de su izquierda: Váyanse de mí, malditos, al fuego eterno preparado para el diablo y sus ángeles."
+        },
+        {
+          "number": 42,
+          "text": "Porque tuve hambre y no me dieron de comer, tuve sed y no me dieron de beber."
+        },
+        {
+          "number": 43,
+          "text": "Fui forastero y no me recibieron, necesité ropa y no me la dieron, estuve enfermo y en la cárcel y no me visitaron."
+        },
+        {
+          "number": 44,
+          "text": "Ellos también preguntarán: Señor, ¿cuándo te vimos con hambre, con sed, como forastero, necesitado de ropa, enfermo o en la cárcel, y no te ayudamos?"
+        },
+        {
+          "number": 45,
+          "text": "Él les responderá: Les digo que todo lo que no hicieron por uno de estos más humildes, tampoco lo hicieron por mí."
+        },
+        {
+          "number": 46,
+          "text": "Y estos irán al castigo eterno, pero los justos a la vida eterna."
+        }
+      ]
+    },
+    {
+      "chapterNumber": 26,
+      "verses": [
+        {
+          "number": 1,
+          "text": "Cuando Jesús terminó de decir todo esto, les dijo a sus discípulos:"
+        },
+        {
+          "number": 2,
+          "text": "Como saben, en dos días es la Pascua, y el Hijo del Hombre será entregado para que lo crucifiquen."
+        },
+        {
+          "number": 3,
+          "text": "En ese momento los jefes de los sacerdotes y los ancianos del pueblo se reunieron en el palacio del sumo sacerdote, que se llamaba Caifás."
+        },
+        {
+          "number": 4,
+          "text": "Planearon cómo arrestar a Jesús en secreto y matarlo."
+        },
+        {
+          "number": 5,
+          "text": "Pero decían: No durante la fiesta, para que no haya un alboroto entre la gente."
+        },
+        {
+          "number": 6,
+          "text": "Mientras Jesús estaba en Betania, en casa de Simón el leproso,"
+        },
+        {
+          "number": 7,
+          "text": "se acercó una mujer con un frasco de alabastro lleno de perfume muy caro, y lo derramó sobre la cabeza de Jesús mientras él estaba sentado a la mesa."
+        },
+        {
+          "number": 8,
+          "text": "Al ver esto, los discípulos se enojaron y dijeron: ¿Para qué este desperdicio?"
+        },
+        {
+          "number": 9,
+          "text": "Esto se podría haber vendido por mucho dinero para dárselo a los pobres."
+        },
+        {
+          "number": 10,
+          "text": "Jesús se dio cuenta y les dijo: ¿Por qué molestan a esta mujer? Hizo algo hermoso por mí."
+        },
+        {
+          "number": 11,
+          "text": "A los pobres siempre los van a tener con ustedes, pero a mí no me van a tener siempre."
+        },
+        {
+          "number": 12,
+          "text": "Al derramar este perfume sobre mi cuerpo, lo hizo para prepararme para mi entierro."
+        },
+        {
+          "number": 13,
+          "text": "Les digo que dondequiera que se predique este mensaje en todo el mundo, también se contará lo que ella hizo, y así será recordada."
+        },
+        {
+          "number": 14,
+          "text": "Entonces uno de los doce, el que se llamaba Judas Iscariote, fue a ver a los jefes de los sacerdotes"
+        },
+        {
+          "number": 15,
+          "text": "y les preguntó: ¿Cuánto me dan si se lo entrego? Ellos le ofrecieron treinta monedas de plata."
+        },
+        {
+          "number": 16,
+          "text": "Desde ese momento Judas buscaba la oportunidad para entregarlo."
+        },
+        {
+          "number": 17,
+          "text": "El primer día de la fiesta de los Panes sin Levadura, los discípulos se acercaron a Jesús y le preguntaron: ¿Dónde quieres que preparemos la cena de Pascua?"
+        },
+        {
+          "number": 18,
+          "text": "Él les dijo: Vayan a la ciudad, a la casa de tal persona, y díganle: El Maestro dice que su hora está cerca y que va a celebrar la Pascua en tu casa con sus discípulos."
+        },
+        {
+          "number": 19,
+          "text": "Los discípulos hicieron lo que Jesús les ordenó y prepararon la Pascua."
+        },
+        {
+          "number": 20,
+          "text": "Al anochecer, Jesús estaba sentado a la mesa con los doce."
+        },
+        {
+          "number": 21,
+          "text": "Mientras comían, dijo: Les digo que uno de ustedes me va a traicionar."
+        },
+        {
+          "number": 22,
+          "text": "Ellos se pusieron muy tristes y uno por uno le preguntaban: ¿Soy yo, Señor?"
+        },
+        {
+          "number": 23,
+          "text": "Jesús respondió: El que metió la mano conmigo en el plato, ese me va a traicionar."
+        },
+        {
+          "number": 24,
+          "text": "El Hijo del Hombre se va, tal como está escrito de él. Pero ¡ay de ese hombre que traiciona al Hijo del Hombre! Mejor le hubiera sido no haber nacido."
+        },
+        {
+          "number": 25,
+          "text": "Judas, el que lo iba a traicionar, le preguntó: ¿Soy yo, Rabí? Jesús le respondió: Tú lo has dicho."
+        },
+        {
+          "number": 26,
+          "text": "Mientras comían, Jesús tomó pan, dio gracias, lo partió y se lo dio a sus discípulos diciendo: Tomen y coman, esto es mi cuerpo."
+        },
+        {
+          "number": 27,
+          "text": "Luego tomó la copa, dio gracias y se la pasó diciendo: Beban todos de ella."
+        },
+        {
+          "number": 28,
+          "text": "Esto es mi sangre del pacto, que es derramada por muchos para el perdón de los pecados."
+        },
+        {
+          "number": 29,
+          "text": "Les digo que no voy a beber de este fruto de la vid desde ahora hasta el día en que lo beba nuevo con ustedes en el reino de mi Padre."
+        },
+        {
+          "number": 30,
+          "text": "Después de cantar los salmos, salieron al monte de los Olivos."
+        },
+        {
+          "number": 31,
+          "text": "Entonces Jesús les dijo: Esta noche todos ustedes me van a abandonar, porque está escrito: Heriré al pastor y las ovejas del rebaño se dispersarán."
+        },
+        {
+          "number": 32,
+          "text": "Pero después de que resucite, iré delante de ustedes a Galilea."
+        },
+        {
+          "number": 33,
+          "text": "Pedro le respondió: Aunque todos te abandonen, yo nunca te abandonaré."
+        },
+        {
+          "number": 34,
+          "text": "Jesús le dijo: Te digo que esta misma noche, antes de que cante el gallo, me negarás tres veces."
+        },
+        {
+          "number": 35,
+          "text": "Pedro insistió: Aunque tenga que morir contigo, jamás te negaré. Y todos los demás dijeron lo mismo."
+        },
+        {
+          "number": 36,
+          "text": "Entonces Jesús fue con ellos a un lugar llamado Getsemaní y les dijo: Siéntense aquí mientras yo voy allá a orar."
+        },
+        {
+          "number": 37,
+          "text": "Se llevó a Pedro y a los dos hijos de Zebedeo, y comenzó a sentirse angustiado y agobiado."
+        },
+        {
+          "number": 38,
+          "text": "Les dijo: Mi alma está destrozada de tristeza, hasta el punto de la muerte. Quédense aquí y estén despiertos conmigo."
+        },
+        {
+          "number": 39,
+          "text": "Fue un poco más adelante, se postró con la cara en el suelo y oró: Padre mío, si es posible, que esta copa pase de mí. Pero no como yo quiero, sino como tú quieres."
+        },
+        {
+          "number": 40,
+          "text": "Volvió a donde estaban los discípulos y los encontró dormidos. Le dijo a Pedro: ¿No pudieron mantenerse despiertos ni una hora conmigo?"
+        },
+        {
+          "number": 41,
+          "text": "Estén despiertos y oren para que no caigan en tentación. El espíritu está dispuesto, pero el cuerpo es débil."
+        },
+        {
+          "number": 42,
+          "text": "Fue por segunda vez y oró: Padre mío, si no es posible que esta copa pase sin que yo la beba, que se haga tu voluntad."
+        },
+        {
+          "number": 43,
+          "text": "Cuando volvió, los encontró dormidos otra vez, porque no podían mantener los ojos abiertos."
+        },
+        {
+          "number": 44,
+          "text": "Los dejó y fue a orar por tercera vez, diciendo lo mismo."
+        },
+        {
+          "number": 45,
+          "text": "Luego volvió a donde estaban los discípulos y les dijo: ¿Todavía están durmiendo y descansando? Miren, ya llegó la hora. El Hijo del Hombre va a ser entregado en manos de pecadores."
+        },
+        {
+          "number": 46,
+          "text": "¡Levántense! ¡Vámonos! Ya está aquí el que me traiciona."
+        },
+        {
+          "number": 47,
+          "text": "Todavía estaba hablando cuando llegó Judas, uno de los doce, con una multitud armada con espadas y palos, enviada por los jefes de los sacerdotes y los ancianos del pueblo."
+        },
+        {
+          "number": 48,
+          "text": "El traidor les había dado esta señal: Al que yo le dé un beso, ese es. Agárrenlo."
+        },
+        {
+          "number": 49,
+          "text": "Judas se acercó enseguida a Jesús y le dijo: ¡Hola, Rabí! Y lo besó."
+        },
+        {
+          "number": 50,
+          "text": "Jesús le respondió: Amigo, haz lo que viniste a hacer. Entonces se acercaron, pusieron las manos sobre Jesús y lo arrestaron."
+        },
+        {
+          "number": 51,
+          "text": "En ese momento uno de los que estaban con Jesús sacó la espada, hirió al sirviente del sumo sacerdote y le cortó la oreja."
+        },
+        {
+          "number": 52,
+          "text": "Jesús le dijo: Guarda tu espada. El que a espada mata, a espada muere."
+        },
+        {
+          "number": 53,
+          "text": "¿Crees que no puedo pedirle a mi Padre que me mande más de doce legiones de ángeles? (Una legión romana era de unos seis mil soldados. Jesús tenía todo el poder del cielo disponible y eligió no usarlo.)"
+        },
+        {
+          "number": 54,
+          "text": "Pero entonces, ¿cómo se cumplirían las Escrituras que dicen que así tiene que suceder?"
+        },
+        {
+          "number": 55,
+          "text": "En ese momento Jesús le dijo a la multitud: ¿Soy acaso un bandido para que vengan a arrestarme con espadas y palos? Todos los días me sentaba a enseñar en el templo y no me arrestaron."
+        },
+        {
+          "number": 56,
+          "text": "Pero todo esto ha pasado para que se cumplan las Escrituras de los profetas. Entonces todos los discípulos lo abandonaron y huyeron."
+        },
+        {
+          "number": 57,
+          "text": "Los que arrestaron a Jesús lo llevaron a la casa de Caifás, el sumo sacerdote, donde los maestros de la ley y los ancianos ya estaban reunidos."
+        },
+        {
+          "number": 58,
+          "text": "Pedro lo siguió de lejos hasta el patio del sumo sacerdote. Entró y se sentó con los guardias para ver cómo terminaba todo."
+        },
+        {
+          "number": 59,
+          "text": "Los jefes de los sacerdotes y todo el Consejo buscaban algún testimonio falso contra Jesús para poder condenarlo a muerte."
+        },
+        {
+          "number": 60,
+          "text": "Pero no encontraron nada, aunque se presentaron muchos testigos falsos. Por fin se presentaron dos"
+        },
+        {
+          "number": 61,
+          "text": "que dijeron: Este hombre dijo: Puedo destruir el templo de Dios y reconstruirlo en tres días."
+        },
+        {
+          "number": 62,
+          "text": "El sumo sacerdote se puso de pie y le preguntó: ¿No tienes nada que responder? ¿Qué es esto que están diciendo contra ti?"
+        },
+        {
+          "number": 63,
+          "text": "Jesús se quedó callado. El sumo sacerdote le dijo: Te ordeno bajo juramento por el Dios viviente que nos digas si eres el Mesías, el Hijo de Dios."
+        },
+        {
+          "number": 64,
+          "text": "Jesús le respondió: Tú lo has dicho. Pero les digo que de ahora en adelante verán al Hijo del Hombre sentado a la derecha del Todopoderoso y viniendo sobre las nubes del cielo."
+        },
+        {
+          "number": 65,
+          "text": "Entonces el sumo sacerdote se rasgó las vestiduras y dijo: ¡Blasfemó! ¿Para qué necesitamos más testigos? ¡Acaban de oír la blasfemia!"
+        },
+        {
+          "number": 66,
+          "text": "¿Qué piensan? Merece la muerte, respondieron ellos."
+        },
+        {
+          "number": 67,
+          "text": "Entonces le escupieron en la cara y lo golpearon. Otros lo abofeteaban"
+        },
+        {
+          "number": 68,
+          "text": "y le decían: ¡Profetiza, Mesías! ¿Quién te pegó?"
+        },
+        {
+          "number": 69,
+          "text": "Pedro estaba sentado afuera en el patio. Una sirvienta se acercó y le dijo: Tú también estabas con Jesús el galileo."
+        },
+        {
+          "number": 70,
+          "text": "Pero él lo negó delante de todos: No sé de qué estás hablando."
+        },
+        {
+          "number": 71,
+          "text": "Luego salió al portal, donde otra sirvienta lo vio y les dijo a los que estaban allí: Este estaba con Jesús de Nazaret."
+        },
+        {
+          "number": 72,
+          "text": "Él lo negó de nuevo con juramento: ¡No conozco a ese hombre!"
+        },
+        {
+          "number": 73,
+          "text": "Un poco después los que estaban allí se acercaron a Pedro y le dijeron: Seguro que eres uno de ellos, porque hasta tu acento te delata."
+        },
+        {
+          "number": 74,
+          "text": "Entonces Pedro comenzó a maldecir y a jurar: ¡No conozco a ese hombre! Y en ese momento cantó el gallo."
+        },
+        {
+          "number": 75,
+          "text": "Pedro se acordó de lo que Jesús le había dicho: Antes de que cante el gallo, me negarás tres veces. Salió afuera y lloró amargamente."
+        }
+      ]
+    },
+    {
+      "chapterNumber": 27,
+      "verses": [
+        {
+          "number": 1,
+          "text": "Al amanecer, todos los jefes de los sacerdotes y los ancianos del pueblo tomaron la decisión de matar a Jesús."
+        },
+        {
+          "number": 2,
+          "text": "Lo ataron, se lo llevaron y lo entregaron a Pilato, el gobernador romano."
+        },
+        {
+          "number": 3,
+          "text": "Cuando Judas, el que lo había traicionado, vio que habían condenado a Jesús, le entró el remordimiento. Devolvió las treinta monedas de plata a los jefes de los sacerdotes y a los ancianos"
+        },
+        {
+          "number": 4,
+          "text": "y les dijo: Pequé al entregar sangre inocente. ¿Y a nosotros qué nos importa? Eso es problema tuyo, le respondieron."
+        },
+        {
+          "number": 5,
+          "text": "Judas tiró las monedas en el templo, salió y fue a ahorcarse."
+        },
+        {
+          "number": 6,
+          "text": "Los jefes de los sacerdotes recogieron las monedas y dijeron: No está permitido echarlas al tesoro del templo, porque es precio de sangre."
+        },
+        {
+          "number": 7,
+          "text": "Entonces decidieron comprar con ese dinero el campo del alfarero para enterrar a los forasteros."
+        },
+        {
+          "number": 8,
+          "text": "Por eso ese campo se llama Campo de Sangre hasta el día de hoy."
+        },
+        {
+          "number": 9,
+          "text": "Así se cumplió lo que dijo el profeta Jeremías: Tomaron las treinta monedas de plata, el precio que pusieron a aquel a quien los hijos de Israel pusieron precio,"
+        },
+        {
+          "number": 10,
+          "text": "y las dieron por el campo del alfarero, como me ordenó el Señor."
+        },
+        {
+          "number": 11,
+          "text": "Mientras tanto, Jesús estaba de pie ante el gobernador, que le preguntó: ¿Eres tú el rey de los judíos? Tú lo dices, respondió Jesús."
+        },
+        {
+          "number": 12,
+          "text": "Cuando los jefes de los sacerdotes y los ancianos lo acusaban, Jesús no respondía nada."
+        },
+        {
+          "number": 13,
+          "text": "Pilato le preguntó: ¿No oyes todo lo que dicen contra ti?"
+        },
+        {
+          "number": 14,
+          "text": "Pero Jesús no respondió ni una sola palabra, y el gobernador se quedó muy sorprendido."
+        },
+        {
+          "number": 15,
+          "text": "Era costumbre del gobernador soltar a un preso durante la fiesta, el que la gente eligiera."
+        },
+        {
+          "number": 16,
+          "text": "En ese tiempo tenían a un preso famoso llamado Barrabás."
+        },
+        {
+          "number": 17,
+          "text": "Cuando la gente se reunió, Pilato les preguntó: ¿A quién quieren que les suelte, a Barrabás o a Jesús, al que llaman el Mesías?"
+        },
+        {
+          "number": 18,
+          "text": "Porque Pilato sabía que lo habían entregado por envidia."
+        },
+        {
+          "number": 19,
+          "text": "Mientras Pilato estaba sentado en el tribunal, su esposa le mandó a decir: No te metas con ese hombre justo, porque hoy sufrí mucho en un sueño por causa de él."
+        },
+        {
+          "number": 20,
+          "text": "Pero los jefes de los sacerdotes y los ancianos convencieron a la multitud de que pidiera a Barrabás y que mandara matar a Jesús."
+        },
+        {
+          "number": 21,
+          "text": "El gobernador les preguntó: ¿A cuál de los dos quieren que les suelte? A Barrabás, respondieron."
+        },
+        {
+          "number": 22,
+          "text": "Pilato les preguntó: ¿Y qué hago con Jesús, al que llaman el Mesías? ¡Crucifícalo!, gritaron todos."
+        },
+        {
+          "number": 23,
+          "text": "¿Por qué? ¿Qué crimen cometió? preguntó Pilato. Pero ellos gritaban más fuerte: ¡Crucifícalo!"
+        },
+        {
+          "number": 24,
+          "text": "Cuando Pilato vio que no conseguía nada sino que el alboroto crecía, pidió agua y se lavó las manos delante de la multitud diciendo: Soy inocente de la sangre de este hombre. ¡Allá ustedes!"
+        },
+        {
+          "number": 25,
+          "text": "Y toda la gente respondió: ¡Que su sangre caiga sobre nosotros y sobre nuestros hijos!"
+        },
+        {
+          "number": 26,
+          "text": "Entonces Pilato les soltó a Barrabás. A Jesús lo mandó azotar y lo entregó para que lo crucificaran."
+        },
+        {
+          "number": 27,
+          "text": "Los soldados del gobernador llevaron a Jesús al palacio y reunieron a toda la tropa alrededor de él."
+        },
+        {
+          "number": 28,
+          "text": "Le quitaron la ropa y le pusieron un manto rojo."
+        },
+        {
+          "number": 29,
+          "text": "Trenzaron una corona de espinas y se la pusieron en la cabeza, le pusieron una caña en la mano derecha y se arrodillaban burlándose de él: ¡Viva el rey de los judíos!"
+        },
+        {
+          "number": 30,
+          "text": "Le escupían y le quitaban la caña para golpearle la cabeza con ella."
+        },
+        {
+          "number": 31,
+          "text": "Después de burlarse de él, le quitaron el manto, le pusieron su propia ropa y se lo llevaron para crucificarlo."
+        },
+        {
+          "number": 32,
+          "text": "Al salir encontraron a un hombre de Cirene llamado Simón, y lo obligaron a cargar la cruz de Jesús."
+        },
+        {
+          "number": 33,
+          "text": "Llegaron a un lugar llamado Gólgota, que significa Lugar de la Calavera."
+        },
+        {
+          "number": 34,
+          "text": "Allí le ofrecieron vino mezclado con hiel para beber, pero cuando lo probó, no quiso tomarlo."
+        },
+        {
+          "number": 35,
+          "text": "Después de crucificarlo, se repartieron su ropa echando suertes."
+        },
+        {
+          "number": 36,
+          "text": "Y se sentaron allí a vigilarlo."
+        },
+        {
+          "number": 37,
+          "text": "Encima de su cabeza pusieron por escrito la acusación: ESTE ES JESÚS, EL REY DE LOS JUDÍOS."
+        },
+        {
+          "number": 38,
+          "text": "Con él crucificaron a dos bandidos, uno a su derecha y otro a su izquierda."
+        },
+        {
+          "number": 39,
+          "text": "Los que pasaban lo insultaban meneando la cabeza"
+        },
+        {
+          "number": 40,
+          "text": "y diciendo: Tú que ibas a destruir el templo y reconstruirlo en tres días, ¡sálvate a ti mismo! Si eres el Hijo de Dios, ¡bájate de la cruz!"
+        },
+        {
+          "number": 41,
+          "text": "De la misma manera se burlaban de él los jefes de los sacerdotes, los maestros de la ley y los ancianos:"
+        },
+        {
+          "number": 42,
+          "text": "A otros salvó, pero a sí mismo no puede salvarse. ¡Es el rey de Israel! Que baje ahora de la cruz y le creeremos."
+        },
+        {
+          "number": 43,
+          "text": "Confió en Dios. Que lo libre ahora si de verdad lo quiere, ya que dijo: Soy el Hijo de Dios."
+        },
+        {
+          "number": 44,
+          "text": "Los bandidos que estaban crucificados con él también lo insultaban de la misma manera."
+        },
+        {
+          "number": 45,
+          "text": "Desde el mediodía hasta las tres de la tarde toda la tierra quedó en oscuridad."
+        },
+        {
+          "number": 46,
+          "text": "A las tres de la tarde Jesús gritó con fuerza: Elí, Elí, ¿lemá sabactani? Que significa: Dios mío, Dios mío, ¿por qué me abandonaste? (Las primeras palabras del Salmo 22, que describe exactamente lo que estaba pasando.)"
+        },
+        {
+          "number": 47,
+          "text": "Algunos de los que estaban allí oyeron esto y dijeron: Está llamando a Elías."
+        },
+        {
+          "number": 48,
+          "text": "Enseguida uno de ellos corrió, agarró una esponja, la empapó en vinagre, la puso en una caña y se la ofreció para beber."
+        },
+        {
+          "number": 49,
+          "text": "Los demás decían: Déjalo, a ver si viene Elías a salvarlo."
+        },
+        {
+          "number": 50,
+          "text": "Entonces Jesús volvió a gritar con fuerza y entregó su espíritu."
+        },
+        {
+          "number": 51,
+          "text": "En ese momento la cortina del templo se rasgó en dos de arriba abajo, la tierra tembló y las rocas se partieron. (La cortina separaba el lugar santísimo del resto del templo. Que se rasgara significaba que el acceso directo a Dios ya estaba abierto para todos.)"
+        },
+        {
+          "number": 52,
+          "text": "Se abrieron los sepulcros y muchos cuerpos de santos que habían muerto resucitaron."
+        },
+        {
+          "number": 53,
+          "text": "Salieron de los sepulcros y después de la resurrección de Jesús entraron a la ciudad santa y se aparecieron a mucha gente."
+        },
+        {
+          "number": 54,
+          "text": "Cuando el centurión y los que estaban con él vigilando a Jesús vieron el terremoto y todo lo que había pasado, se llenaron de terror y dijeron: ¡De verdad este era el Hijo de Dios!"
+        },
+        {
+          "number": 55,
+          "text": "Había allí muchas mujeres mirando desde lejos. Eran las que habían seguido a Jesús desde Galilea para servirle."
+        },
+        {
+          "number": 56,
+          "text": "Entre ellas estaban María Magdalena, María la madre de Jacobo y de José, y la madre de los hijos de Zebedeo."
+        },
+        {
+          "number": 57,
+          "text": "Al atardecer llegó un hombre rico de Arimatea llamado José, que también era discípulo de Jesús."
+        },
+        {
+          "number": 58,
+          "text": "Fue a ver a Pilato y le pidió el cuerpo de Jesús. Pilato ordenó que se lo entregaran."
+        },
+        {
+          "number": 59,
+          "text": "José tomó el cuerpo, lo envolvió en una sábana limpia"
+        },
+        {
+          "number": 60,
+          "text": "y lo puso en su propio sepulcro nuevo que había cavado en la roca. Hizo rodar una piedra grande a la entrada del sepulcro y se fue."
+        },
+        {
+          "number": 61,
+          "text": "María Magdalena y la otra María estaban sentadas frente al sepulcro."
+        },
+        {
+          "number": 62,
+          "text": "Al día siguiente, el que sigue al día de la preparación, los jefes de los sacerdotes y los fariseos fueron juntos a ver a Pilato."
+        },
+        {
+          "number": 63,
+          "text": "Le dijeron: Señor, nos acordamos de que ese engañador dijo cuando aún vivía: A los tres días resucitaré."
+        },
+        {
+          "number": 64,
+          "text": "Ordena que el sepulcro sea asegurado hasta el tercer día, no sea que vengan sus discípulos, roben el cuerpo y le digan a la gente que resucitó. Ese último engaño sería peor que el primero."
+        },
+        {
+          "number": 65,
+          "text": "Pilato les dijo: Lleven una guardia. Vayan y asegúrenlo lo mejor que puedan."
+        },
+        {
+          "number": 66,
+          "text": "Ellos fueron, sellaron la piedra y dejaron la guardia vigilando el sepulcro."
+        }
+      ]
+    },
+    {
+      "chapterNumber": 28,
+      "verses": [
+        {
+          "number": 1,
+          "text": "Pasado el sábado, al amanecer del primer día de la semana, María Magdalena y la otra María fueron a ver el sepulcro."
+        },
+        {
+          "number": 2,
+          "text": "De repente hubo un gran terremoto, porque un ángel del Señor bajó del cielo, fue a la piedra y la rodó, y se sentó sobre ella."
+        },
+        {
+          "number": 3,
+          "text": "Su aspecto era como el relámpago y su ropa blanca como la nieve."
+        },
+        {
+          "number": 4,
+          "text": "Los guardias temblaron de miedo y quedaron como muertos."
+        },
+        {
+          "number": 5,
+          "text": "El ángel les dijo a las mujeres: No tengan miedo. Sé que buscan a Jesús, el que fue crucificado."
+        },
+        {
+          "number": 6,
+          "text": "No está aquí, porque resucitó, tal como dijo. Vengan a ver el lugar donde estaba."
+        },
+        {
+          "number": 7,
+          "text": "Vayan rápido a decirles a sus discípulos: Resucitó de entre los muertos y va delante de ustedes a Galilea. Allá lo verán. Eso es lo que tenía que decirles."
+        },
+        {
+          "number": 8,
+          "text": "Las mujeres salieron rápido del sepulcro, con miedo pero también con mucha alegría, y corrieron a darles la noticia a los discípulos."
+        },
+        {
+          "number": 9,
+          "text": "De repente Jesús les salió al encuentro y las saludó. Ellas se acercaron, le abrazaron los pies y lo adoraron."
+        },
+        {
+          "number": 10,
+          "text": "Entonces Jesús les dijo: No tengan miedo. Vayan a decirles a mis hermanos que vayan a Galilea, que allá me verán."
+        },
+        {
+          "number": 11,
+          "text": "Mientras las mujeres iban, algunos de los guardias entraron a la ciudad y les contaron a los jefes de los sacerdotes todo lo que había pasado."
+        },
+        {
+          "number": 12,
+          "text": "Estos se reunieron con los ancianos y, después de deliberar, les dieron a los soldados una buena cantidad de dinero"
+        },
+        {
+          "number": 13,
+          "text": "y les dijeron: Digan que sus discípulos vinieron de noche y robaron el cuerpo mientras ustedes dormían."
+        },
+        {
+          "number": 14,
+          "text": "Si el gobernador se entera, nosotros lo convencemos y los sacamos del problema."
+        },
+        {
+          "number": 15,
+          "text": "Los soldados tomaron el dinero e hicieron lo que les dijeron. Y esta historia se ha seguido contando entre los judíos hasta el día de hoy."
+        },
+        {
+          "number": 16,
+          "text": "Los once discípulos fueron a Galilea, al monte donde Jesús les había dicho que fueran."
+        },
+        {
+          "number": 17,
+          "text": "Cuando lo vieron, lo adoraron, aunque algunos dudaban."
+        },
+        {
+          "number": 18,
+          "text": "Jesús se acercó y les dijo: Se me ha dado toda autoridad en el cielo y en la tierra."
+        },
+        {
+          "number": 19,
+          "text": "Por eso vayan y hagan discípulos de todas las naciones, bautizándolos en el nombre del Padre, del Hijo y del Espíritu Santo."
+        },
+        {
+          "number": 20,
+          "text": "Enséñenles a obedecer todo lo que les he mandado. Y sepan que yo estoy con ustedes siempre, hasta el fin del mundo."
+        }
+      ]
+    }
+  ]
+}
