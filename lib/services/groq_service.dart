@@ -7,7 +7,7 @@ class GroqService {
   static const _k2 = 'By5sWGdyb3FYtYo6U3Xg4pZ3NxUjGLGbvUR5';
   static String get _apiKey => _k1 + _k2;
   static const _url = 'https://api.groq.com/openai/v1/chat/completions';
-  static const _model = 'llama3-8b-8192';
+  static const _model = 'llama-3.1-8b-instant';
 
   /// Envía un mensaje al modelo con contexto del versículo.
   /// [verseRef] ej: "Juan 3:16"
