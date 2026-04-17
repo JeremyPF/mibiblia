@@ -344,9 +344,9 @@ class _NoteEditorModalState extends State<NoteEditorModal> {
                     padding: const EdgeInsets.fromLTRB(24, 4, 24, 8),
                     child: Column(mainAxisSize: MainAxisSize.min, children: [
                       _buildSlider('TAMAÑO', _fontSize, 12, 28,
-                          (v) => setState(() { _fontSize = v; _sliderValue = v; })),
+                          (v) => setState(() => _fontSize = v)),
                       _buildSlider('INTERLINEADO', _lineHeight, 1.2, 3.0,
-                          (v) => setState(() { _lineHeight = v; _sliderValue = v; })),
+                          (v) => setState(() => _lineHeight = v)),
                       const SizedBox(height: 8),
                       // Fondo claro/oscuro
                       Row(children: [

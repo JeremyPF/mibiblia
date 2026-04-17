@@ -98,12 +98,6 @@ class _ReadingScreenState extends State<ReadingScreen>
     return book.chapters;
   }
 
-  bool get _hasNextChapter =>
-      BibleService.isBookAvailable(widget.bookId) &&
-      _currentChapter < _totalChaptersInBook;
-
-  bool get _hasPrevChapter => _currentChapter > 1;
-
   // Navegación por scroll al final
   Timer? _navDebounce;
   bool _loadingChapter = false;
@@ -187,10 +181,8 @@ class _ReadingScreenState extends State<ReadingScreen>
         lastLoaded < _totalChaptersInBook;
   }
 
-  bool get _hasPrevChapter => _currentChapter > 1;
-
-  void _goToNextChapter() {}  // no longer used
-  void _goToPrevChapter() {}  // no longer used
+  void _goToNextChapter() {}
+  void _goToPrevChapter() {}
 
   void _handleVerseLongPress(int verseNumber, String verseText) {
     setState(() {
@@ -368,16 +360,7 @@ class _ReadingScreenState extends State<ReadingScreen>
             color: AppTheme.outlineVariant.withOpacity(0.15))),
       ]),
     );
-  },
-    );
   }
-
-  Widget _buildScriptureContent() {
-    if (_chapter == null || _chapter!.verses.isEmpty) {
-      return const SizedBox.shrink();
-    }
-    return Column(
-      children: _chapter!.verses
 }
 
 class _ReadingProgressIndicator extends StatelessWidget {
