@@ -3,6 +3,7 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'screens/reading_screen.dart';
 import 'screens/search_screen.dart';
 import 'screens/onboarding_screen.dart';
+import 'screens/home_screen.dart';
 import 'services/user_profile_service.dart';
 import 'services/supabase_service.dart';
 import 'services/reading_progress_service.dart';
@@ -139,36 +140,9 @@ class _StartupScreenState extends State<_StartupScreen> {
       return;
     }
 
-    // Restaurar última posición guardada
-    final last = await UserProfileService.getLastPosition();
-    if (!mounted) return;
-
-    if (last != null) {
-      Navigator.of(context).pushReplacement(
-        MaterialPageRoute(
-          builder: (ctx) => ReadingScreen(
-            bookId: last['bookId'] as int,
-            bookName: last['bookName'] as String,
-            chapterNumber: last['chapter'] as int,
-          ),
-        ),
-      );
-      return;
-    }
-
-    // Fallback: primer libro disponible
-    final books = await BibleService.getAvailableBooks();
-    if (!mounted) return;
-    final book = books.isNotEmpty ? books.first : null;
-    if (book == null) return;
+    // Ir siempre al HomeScreen — desde ahí el usuario puede continuar leyendo
     Navigator.of(context).pushReplacement(
-      MaterialPageRoute(
-        builder: (ctx) => ReadingScreen(
-          bookId: book.id,
-          bookName: book.name,
-          chapterNumber: 1,
-        ),
-      ),
+      MaterialPageRoute(builder: (_) => const HomeScreen()),
     );
   }
 
