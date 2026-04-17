@@ -4,10 +4,7 @@ import '../widgets/top_app_bar.dart';
 import '../widgets/verse_widget.dart';
 import '../widgets/side_drawer.dart';
 import '../widgets/verse_action_bar.dart';
-import '../widgets/note_dialog.dart';
 import '../theme/app_theme.dart';
-import '../models/highlight.dart';
-import '../models/note.dart';
 import '../models/chapter.dart';
 import '../services/bible_service.dart';
 import '../services/reading_progress_service.dart';
@@ -53,8 +50,6 @@ class _ReadingScreenState extends State<ReadingScreen>
 
   int? _selectedVerseNumber;
   String? _selectedVerseText;
-  final List<Highlight> _highlights = [];
-  final List<Note> _notes = [];
 
   static const Map<int, Map<int, String>> _chapterTitles = {
     20: {
@@ -213,51 +208,6 @@ class _ReadingScreenState extends State<ReadingScreen>
     });
   }
 
-  void _handleSaveVerse(int verseNumber, String verseText) {
-    setState(() {
-      _highlights.add(Highlight(
-        id: DateTime.now().millisecondsSinceEpoch.toString(),
-        bookName: widget.bookName,
-        chapterNumber: _currentChapter,
-        verseNumber: verseNumber,
-        verseText: verseText,
-        createdAt: DateTime.now(),
-      ));
-      _selectedVerseNumber = null;
-      _selectedVerseText = null;
-    });
-  }
-
-  void _handleAddNote(int verseNumber, String verseText) async {
-    final noteText = await showDialog<String>(
-      context: context,
-      builder: (context) =>
-          NoteDialog(verseNumber: verseNumber, verseText: verseText),
-    );
-    if (noteText != null && noteText.isNotEmpty) {
-      setState(() {
-        _notes.add(Note(
-          id: DateTime.now().millisecondsSinceEpoch.toString(),
-          bookName: widget.bookName,
-          chapterNumber: _currentChapter,
-          verseNumber: verseNumber,
-          verseText: verseText,
-          noteText: noteText,
-          createdAt: DateTime.now(),
-        ));
-        _selectedVerseNumber = null;
-        _selectedVerseText = null;
-      });
-      if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-              content: Text('Nota guardada'),
-              duration: Duration(seconds: 2)),
-        );
-      }
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     final hasSelection = _selectedVerseNumber != null;
@@ -361,8 +311,7 @@ class _ReadingScreenState extends State<ReadingScreen>
                                     _selectedVerseNumber = null;
                                     _selectedVerseText = null;
                                   }),
-                                  onSave: _handleSaveVerse,
-                                  onAddNote: _handleAddNote,
+                                  onRefresh: () => setState(() {}),
                                 )
                               : const SizedBox.shrink(),
                         ),
@@ -440,6 +389,8 @@ class _ReadingScreenState extends State<ReadingScreen>
                   number: verse.number,
                   text: verse.text,
                   isHighlighted: false,
+                  bookName: widget.bookName,
+                  chapterNumber: _currentChapter,
                   onVerseLongPress: _handleVerseLongPress,
                 ),
               ))

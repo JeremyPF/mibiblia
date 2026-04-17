@@ -1,3 +1,5 @@
+import 'dart:convert';
+import 'package:crypto/crypto.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class SupabaseService {
@@ -11,32 +13,15 @@ class SupabaseService {
     await Supabase.initialize(url: _url, anonKey: _anonKey);
   }
 
-  static User? get currentUser => _client.auth.currentUser;
-  static bool get isLinked => currentUser != null;
-
-  /// Envía un OTP al correo. El usuario lo ingresa para verificar.
-  static Future<void> sendOtp(String email) async {
-    await _client.auth.signInWithOtp(
-      email: email,
-      shouldCreateUser: true,
-    );
+  /// Deriva un userId estable a partir del email (sha256, primeros 32 chars).
+  static String emailToUserId(String email) {
+    final bytes = utf8.encode(email.trim().toLowerCase());
+    return 'email_${sha256.convert(bytes).toString().substring(0, 32)}';
   }
 
-  /// Verifica el OTP ingresado por el usuario.
-  static Future<bool> verifyOtp(String email, String token) async {
-    try {
-      final res = await _client.auth.verifyOTP(
-        email: email,
-        token: token,
-        type: OtpType.email,
-      );
-      return res.user != null;
-    } catch (_) {
-      return false;
-    }
-  }
+  static bool get isLinked => false; // sin auth real, se controla desde ReadingProgressService
 
-  /// Sube el progreso. Usa el userId autenticado si existe, si no el anónimo.
+  /// Sube el progreso a Supabase.
   static Future<void> uploadProgress(String userId, Set<String> readChapters) async {
     try {
       await _client.from('reading_progress').upsert({
@@ -47,7 +32,7 @@ class SupabaseService {
     } catch (_) {}
   }
 
-  /// Descarga el progreso desde la nube.
+  /// Descarga el progreso desde Supabase.
   static Future<Set<String>?> downloadProgress(String userId) async {
     try {
       final row = await _client
@@ -63,16 +48,13 @@ class SupabaseService {
     }
   }
 
-  /// Migra el progreso anónimo al usuario autenticado tras vincular el correo.
-  static Future<void> migrateAnonProgress(
-      String anonId, Set<String> localChapters) async {
-    final uid = currentUser?.id;
-    if (uid == null) return;
-    // Descargar progreso previo del usuario autenticado (si existe)
-    final remote = await downloadProgress(uid) ?? {};
+  /// Migra el progreso anónimo al userId del correo y lo fusiona con lo remoto.
+  static Future<void> migrateToEmail(
+      String anonId, String emailUserId, Set<String> localChapters) async {
+    final remote = await downloadProgress(emailUserId) ?? {};
     final merged = {...localChapters, ...remote};
-    await uploadProgress(uid, merged);
-    // Eliminar el registro anónimo
+    await uploadProgress(emailUserId, merged);
+    // Limpiar registro anónimo
     try {
       await _client.from('reading_progress').delete().eq('user_id', anonId);
     } catch (_) {}

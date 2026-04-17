@@ -5,6 +5,8 @@ import '../services/bible_service.dart';
 import '../screens/reading_screen.dart';
 import '../screens/search_screen.dart';
 import '../screens/progress_screen.dart';
+import '../screens/saved_verses_screen.dart';
+import '../screens/notes_screen.dart';
 import 'settings_modal.dart';
 
 class SideDrawer extends StatefulWidget {
@@ -89,6 +91,40 @@ class _SideDrawerState extends State<SideDrawer> {
             Divider(
               color: AppTheme.outlineVariant.withOpacity(0.2),
               height: 1,
+            ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(12, 0, 12, 4),
+              child: ListTile(
+                leading: const Icon(Icons.bookmark_border,
+                    color: AppTheme.secondary),
+                title: Text('Guardados',
+                    style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                          fontSize: 16, color: AppTheme.secondary)),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8)),
+                onTap: () {
+                  Navigator.of(context).pop();
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (_) => const SavedVersesScreen()));
+                },
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(12, 0, 12, 4),
+              child: ListTile(
+                leading: const Icon(Icons.edit_note,
+                    color: AppTheme.secondary),
+                title: Text('Anotaciones',
+                    style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                          fontSize: 16, color: AppTheme.secondary)),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8)),
+                onTap: () {
+                  Navigator.of(context).pop();
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (_) => const NotesScreen()));
+                },
+              ),
             ),
             Padding(
               padding: const EdgeInsets.fromLTRB(12, 0, 12, 4),

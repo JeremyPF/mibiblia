@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../theme/app_theme.dart';
-import '../services/supabase_service.dart';
+import '../services/reading_progress_service.dart';
 import '../widgets/email_link_dialog.dart';
 
 class TopAppBar extends StatefulWidget {
@@ -48,7 +48,6 @@ class _TopAppBarState extends State<TopAppBar>
   @override
   Widget build(BuildContext context) {
     final bg = Theme.of(context).scaffoldBackgroundColor;
-    final linked = SupabaseService.isLinked;
 
     return Container(
       decoration: BoxDecoration(
@@ -106,21 +105,28 @@ class _TopAppBarState extends State<TopAppBar>
                   ],
                 ),
               ),
-              // Icono palpitante de correo si no está vinculado
-              if (!linked)
-                AnimatedBuilder(
-                  animation: _pulseAnim,
-                  builder: (_, __) => IconButton(
-                    icon: Icon(Icons.mail_outline,
-                        color: AppTheme.secondary.withOpacity(_pulseAnim.value),
-                        size: 22),
-                    tooltip: 'Vincular correo',
-                    onPressed: () async {
-                      await showEmailLinkDialog(context);
-                      if (mounted) setState(() {});
-                    },
-                  ),
-                ),
+              // Icono palpitante si no está vinculado
+              FutureBuilder<bool>(
+                future: ReadingProgressService.isEmailLinked(),
+                builder: (context, snap) {
+                  final linked = snap.data ?? true; // asumir vinculado hasta saber
+                  if (linked) return const SizedBox.shrink();
+                  return AnimatedBuilder(
+                    animation: _pulseAnim,
+                    builder: (_, __) => IconButton(
+                      icon: Icon(Icons.mail_outline,
+                          color: AppTheme.secondary
+                              .withOpacity(_pulseAnim.value),
+                          size: 22),
+                      tooltip: 'Vincular correo',
+                      onPressed: () async {
+                        await showEmailLinkDialog(context);
+                        if (mounted) setState(() {});
+                      },
+                    ),
+                  );
+                },
+              ),
               IconButton(
                 icon: const Icon(Icons.search, color: AppTheme.secondary),
                 onPressed: widget.onSearchTap,
